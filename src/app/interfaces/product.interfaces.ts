@@ -1,4 +1,3 @@
-
 export interface Product {
 
     idproducto: number;
@@ -9,8 +8,9 @@ export interface Product {
     descripcion: string;
     barcode: string;
     codigo: string;
-    url_foto: string;
     cantidad: number;
     nomalmacen: string;
+    Description_Store: string;
+    Urls_Img: string;
     
 }

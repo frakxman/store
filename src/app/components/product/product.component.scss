@@ -2,3 +2,20 @@ p, h2 {
     margin: 0;
 }
 
+.primary-button {
+    background-color: #ACD9B2;
+    border-radius: 8px;
+    border: none;
+    color: #FFFFFF;
+    width: 100%;
+    cursor: pointer;
+    font-size: var(--md);
+    font-weight: bold;
+    height: 50px;
+}
+
+.add-to-cart-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

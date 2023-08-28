@@ -24,9 +24,10 @@ export class ProductsComponent implements OnInit {
     descripcion: '',
     barcode: '',
     codigo: '',
-    url_foto: '',
+    Urls_Img: '',
     cantidad: 0,
     nomalmacen: '',
+    Description_Store: ''
   };
 
   constructor( private storeService: StoreService, private productService: ProductsService ) {
@@ -50,8 +51,10 @@ export class ProductsComponent implements OnInit {
   onShowDetail( id: number ) {
     this.productService.getOneProduct(id)
       .subscribe( data => {
+        console.log( data );
         this.toggleProductDetail();
         this.productChosen = data;
+        console.log(this.productChosen);
       });
   }
 }

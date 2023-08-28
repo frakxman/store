@@ -1,64 +1,134 @@
 {
     "products": [
         {
-            "id": "1",
-            "name": "Phone",
-            "image": "assets/logo_celulares.png",
-            "price": 1000
+            "idproducto": 1,
+            "costo": 15127,
+            "ultcosto": 15126,
+            "codiva": "03",
+            "precioventa": 37000,
+            "descripcion": "SHAMPOO DE CRECIMIENTO",
+            "barcode": "12345",
+            "codigo": "001001",
+            "url_foto": "https://res.cloudinary.com/dlkch59ot/image/upload/v1690902377/obglx2fygdfzaeyczh3s.jpg",
+            "cantidad": 99,
+            "nomalmacen": "TIENDA VIRTUAL CX POS                             "
         },
         {
-            "id": "2",
-            "name": "Phone 2",
-            "image": "assets/logo_celulares.png",
-            "price": 1300
+            "idproducto": 2,
+            "costo": 15126,
+            "ultcosto": 15126,
+            "codiva": "03",
+            "precioventa": 37000,
+            "descripcion": "SHAMPOO ANTICAIDA",
+            "barcode": "987654",
+            "codigo": "001002",
+            "url_foto": "https://res.cloudinary.com/dlkch59ot/image/upload/v1690902725/fsehq3ols6olgxfnqdyp.jpg",
+            "cantidad": 99,
+            "nomalmacen": "TIENDA VIRTUAL CX POS                             "
         },
         {
-            "id": "3",
-            "name": "Phone 3",
-            "image": "assets/logo_celulares.png",
-            "price": 1500
+            "idproducto": 3,
+            "costo": 15126,
+            "ultcosto": 15126,
+            "codiva": "03",
+            "precioventa": 37000,
+            "descripcion": "SHAMPOO ANTICASPA",
+            "barcode": "001003",
+            "codigo": "001003",
+            "url_foto": "https://res.cloudinary.com/dlkch59ot/image/upload/v1692028175/i67crtkpwcshwnj1jmfe.png",
+            "cantidad": 100,
+            "nomalmacen": "TIENDA VIRTUAL CX POS                             "
         },
         {
-            "id": "4",
-            "name": "Phone 4",
-            "image": "assets/logo_celulares.png",
-            "price": 1700
+            "idproducto": 4,
+            "costo": 15126,
+            "ultcosto": 15126,
+            "codiva": "03",
+            "precioventa": 37000,
+            "descripcion": "SHAMPOO KIDS",
+            "barcode": "001004",
+            "codigo": "001004",
+            "url_foto": null,
+            "cantidad": 99,
+            "nomalmacen": "TIENDA VIRTUAL CX POS                             "
         },
         {
-            "id": "5",
-            "name": "Phone 5",
-            "image": "assets/logo_celulares.png",
-            "price": 2000
+            "idproducto": 5,
+            "costo": 15126,
+            "ultcosto": 15126,
+            "codiva": "03",
+            "precioventa": 37000,
+            "descripcion": "SHAMPOO BOOM",
+            "barcode": "001005",
+            "codigo": "001005",
+            "url_foto": null,
+            "cantidad": 100,
+            "nomalmacen": "TIENDA VIRTUAL CX POS                             "
         },
         {
-            "id": "6",
-            "name": "Phone 6",
-            "image": "assets/logo_celulares.png",
-            "price": 2300
+            "idproducto": 6,
+            "costo": 15126,
+            "ultcosto": 15126,
+            "codiva": "03",
+            "precioventa": 37000,
+            "descripcion": "ACONDICIONADOR CRECIMIENTO",
+            "barcode": "001006",
+            "codigo": "001006",
+            "url_foto": null,
+            "cantidad": 98,
+            "nomalmacen": "TIENDA VIRTUAL CX POS                             "
         },
         {
-            "id": "7",
-            "name": "Phone 7",
-            "image": "assets/logo_celulares.png",
-            "price": 2500
+            "idproducto": 7,
+            "costo": 15126,
+            "ultcosto": 15126,
+            "codiva": "03",
+            "precioventa": 37000,
+            "descripcion": "ACONDICIONADOR ANTICAIDA",
+            "barcode": "001007",
+            "codigo": "001007",
+            "url_foto": null,
+            "cantidad": 100,
+            "nomalmacen": "TIENDA VIRTUAL CX POS                             "
         },
         {
-            "id": "8",
-            "name": "Phone 8",
-            "image": "assets/logo_celulares.png",
-            "price": 2800
+            "idproducto": 8,
+            "costo": 15126,
+            "ultcosto": 15126,
+            "codiva": "03",
+            "precioventa": 37000,
+            "descripcion": "ACONDICIONADOR ANTICASPA",
+            "barcode": "001008",
+            "codigo": "001008",
+            "url_foto": null,
+            "cantidad": 100,
+            "nomalmacen": "TIENDA VIRTUAL CX POS                             "
         },
         {
-            "id": "9",
-            "name": "Phone 9",
-            "image": "assets/logo_celulares.png",
-            "price": 3000
+            "idproducto": 9,
+            "costo": 10924.36,
+            "ultcosto": 10924.36,
+            "codiva": "03",
+            "precioventa": 23000,
+            "descripcion": "TONICO CRECIMIENTO",
+            "barcode": "001009",
+            "codigo": "001009",
+            "url_foto": "https://res.cloudinary.com/dlkch59ot/image/upload/v1692028774/mcrmubr2nbcpmtszi6vv.jpg",
+            "cantidad": 100,
+            "nomalmacen": "TIENDA VIRTUAL CX POS                             "
         },
         {
-            "id": "10",
-            "name": "Phone X",
-            "image": "assets/logo_celulares.png",
-            "price": 5000
+            "idproducto": 10,
+            "costo": 15126,
+            "ultcosto": 15126,
+            "codiva": "03",
+            "precioventa": 37000,
+            "descripcion": "ACONDICIONADOR BOOM",
+            "barcode": "001010",
+            "codigo": "001010",
+            "url_foto": null,
+            "cantidad": 100,
+            "nomalmacen": "TIENDA VIRTUAL CX POS                             "
         }
     ]
 }

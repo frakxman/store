@@ -1,9 +1,9 @@
-<app-img [img]="product.url_foto"></app-img>
+<app-img [img]="product.Urls_Img"></app-img>
 <h2>{{ product.precioventa | currency }}</h2>
 <p>{{ product.descripcion }}</p>
-<button (click)="onShowDetail()">
+<button (click)="onShowDetail()" class="primary-button">
     Ver más
 </button>
-<button (click)="onAddToCart()">
+<button (click)="onAddToCart()" class="primary-button add-to-cart-button">
     Añadir
 </button>

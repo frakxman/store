@@ -17,7 +17,14 @@ export class ProductsService {
   getAllProducts() {
     return this.http.get<Product[]>(`${this.baseUrl}/products/4?page=1&limit=10`);
   }
+
   getOneProduct(id: number) {
-    return this.http.get<Product>(`${this.baseUrl}/products/get-product/${id}`);
+    return this.http.get<Product>(`${this.baseUrl}/products/get-product/${id}/4`);
   }
+
+  // createNewProduct () {}
+
+  // uptdateProduct() {}
+
+  // deleteProduct() {}
 }

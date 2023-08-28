@@ -18,9 +18,10 @@ export class ProductComponent {
     descripcion: '',
     barcode: '',
     codigo: '',
-    url_foto: '',
+    Urls_Img: '',
     cantidad: 0,
     nomalmacen: '',
+    Description_Store: ''
   }
   @Output() addedProduct = new EventEmitter<Product>();
   @Output() showProduct = new EventEmitter<number>();
