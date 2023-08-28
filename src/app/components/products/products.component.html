@@ -1,13 +1,18 @@
 <!-- <p>Quantity of products {{ myShoppingCart.length }}</p>
 <p>Total cost ${{ total }}</p> -->
 
+<div class="paginator">
+    <button (click)="previousPage()">Anterior</button>
+    <p>{{page}}</p>
+    <button (click)="nextPage()">Siguiente</button>
+</div>
 <div class="products--grid">
-        <app-product 
-            [product]="product" 
-            *ngFor="let product of products" 
-            (addedProduct)="addToShoppingCart($event)"
-            (showProduct)="onShowDetail($event)"
-        ></app-product>
+    <app-product 
+        [product]="product" 
+        *ngFor="let product of products" 
+        (addedProduct)="addToShoppingCart($event)"
+        (showProduct)="onShowDetail($event)"
+    ></app-product>
 </div>
 
 <div class="product-detail" [class.active]="showProductDetail">

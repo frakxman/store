@@ -29,13 +29,16 @@ export class ProductsComponent implements OnInit {
     nomalmacen: '',
     Description_Store: ''
   };
+  page = 1;
+  limit = 10;
+  newProducts: Product[] = [];
 
   constructor( private storeService: StoreService, private productService: ProductsService ) {
     this.myShoppingCart = this.storeService.getSoppingCart();
   }
 
   ngOnInit(): void {
-      this.productService.getAllProducts()
+      this.productService.getAllProducts(1, 10)
         .subscribe( products => this.products = products );
   }
 
@@ -55,6 +58,28 @@ export class ProductsComponent implements OnInit {
         this.toggleProductDetail();
         this.productChosen = data;
         console.log(this.productChosen);
+      });
+  }
+
+  previousPage() {
+    this.productService.getProductsByPage(this.page, this.limit)
+      .subscribe( data => {
+        if(this.newProducts.length === 0 ) {
+          return;
+        }
+        this.newProducts = data;
+        this. products = this.newProducts;
+        this.page--;
+      });
+  }
+
+  nextPage() {
+    this.productService.getProductsByPage(this.page, this.limit)
+      .subscribe( data => {
+        console.log( data );
+        this.newProducts = data;
+        this. products = this.newProducts;
+        this.page++;
       });
   }
 }

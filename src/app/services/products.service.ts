@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environments } from 'src/environments/environments';
 
@@ -14,17 +14,24 @@ export class ProductsService {
 
   constructor( private http: HttpClient ) { }
 
-  getAllProducts() {
-    return this.http.get<Product[]>(`${this.baseUrl}/products/4?page=1&limit=10`);
+  getAllProducts(page?: number, limit?: number) {
+    let params = new HttpParams();
+    if ( page && limit ) {
+      params = params.set('page', page);
+      params = params.set('limit', limit);
+    }
+    return this.http.get<Product[]>(`${this.baseUrl}/products/4`, { params });
+  }
+
+  getProductsByPage( page: number, limit: number ) {
+    return this.http.get<Product[]>(`${this.baseUrl}/products/4`, { params: { page, limit }});
   }
 
   getOneProduct(id: number) {
     return this.http.get<Product>(`${this.baseUrl}/products/get-product/${id}/4`);
   }
 
-  // createNewProduct () {}
-
   // uptdateProduct() {}
 
-  // deleteProduct() {}
+
 }
