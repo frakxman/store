@@ -1,0 +1,44 @@
+<div class="show-mobile">
+    <div>
+        <button (click)="toggleMenu()">
+            <img src="" alt="menu">
+        </button>
+        <a href="">
+            <img src="" alt="logo">
+        </a>
+        <a href="">
+            <img src="" alt="logo">
+        </a>
+    </div>
+    <div class="side-menu" [class.active]="activeMenu">
+        <button (click)="toggleMenu()">Close</button>
+        <ul>
+            <li><a href="">Todos</a></li>
+            <li><a href="">Productos</a></li>
+            <li><a href="">Categorias</a></li>
+        </ul>
+    </div>
+</div>
+<div class="hide-mobile">
+    <div>
+        <nav>
+            <a class="logo" href="">
+            <img src="" alt="logo">
+            </a>
+            <ul>
+            <li><a href="">Todos</a></li>
+            <li><a href="">Productos</a></li>
+            <li><a href="">Categorias</a></li>
+            </ul>
+        </nav>
+        <div class="info">
+            <div class="account">conexionPos@syscomp.com</div>
+            <div class="cart">
+                <a href="">
+                    <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
+                </a>
+                <span class="counter">{{ counter }}</span>
+            </div>
+        </div>
+    </div>
+</div>
