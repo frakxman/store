@@ -1,9 +1,15 @@
-<app-img [img]="product.Urls_Img"></app-img>
-<h2>{{ product.precioventa | currency }}</h2>
-<p>{{ product.descripcion }}</p>
-<button (click)="onShowDetail()" class="primary-button">
-    Ver más
-</button>
-<button (click)="onAddToCart()" class="primary-button add-to-cart-button">
-    Añadir
-</button>
+<div class="product-card">
+    <app-img [img]="product.Urls_Img"></app-img>
+    <h2>{{ product.precioventa | currency }}</h2>
+    <p>{{ product.descripcion }}</p>
+    
+    <div class="button-card">
+        <button (click)="onShowDetail()" class="primary-button">
+            Ver más
+        </button>
+        <span class="spacer"></span>
+        <button (click)="onAddToCart()" class="primary-button add-to-cart-button">
+            Añadir
+        </button>
+    </div>
+</div>

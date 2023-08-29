@@ -1,17 +1,29 @@
+.product-card {
+    border: 1px solid #800000;
+    border-radius: 2%;
+}
+
 p, h2 {
-    margin: 0;
+    margin: 0 0 0.5em 0;
+    padding: 1%;
+}
+
+.button-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .primary-button {
-    background-color: #ACD9B2;
+    background-color: #FF2400;
     border-radius: 8px;
     border: none;
     color: #FFFFFF;
-    width: 100%;
+    width: 40%;
     cursor: pointer;
     font-size: var(--md);
     font-weight: bold;
-    height: 50px;
+    height: 30px;
 }
 
 .add-to-cart-button {

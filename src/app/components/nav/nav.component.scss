@@ -27,7 +27,16 @@
             transform: translateX(0);
         }
     }
+    .logo-menu {
+        width: 40px;
+        height: 40px;
+    }
+    logo {
+        width: 100px;
+        height: 100px;
+    }
 }
+
 .hide-mobile {
     display: none;
     box-shadow: 0px 2px 5px rgb(black, .2);
@@ -39,6 +48,10 @@
     }
     .logo {
         margin-right: 1em;
+    }
+    .logo-menu {
+        width: 60px;
+        height: 60px;
     }
     nav {
         display: flex;
