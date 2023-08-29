@@ -6,6 +6,24 @@
     margin: 1% 0;
 }
 
+.paginator-number {
+    color: #FFFFFF;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.primary-button {
+    background-color: #FF2400;
+    border-radius: 8px;
+    border: none;
+    color: #FFFFFF;
+    width: 10%;
+    cursor: pointer;
+    font-size: var(--md);
+    font-weight: bold;
+    height: 35px;
+}
+
 .products--grid {
     border: 1px solid greenyellow;
     display: flex;

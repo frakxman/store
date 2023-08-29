@@ -1,6 +1,7 @@
 .product-card {
     border: 1px solid #800000;
     border-radius: 2%;
+    margin-bottom: 2%;
 }
 
 p, h2 {
@@ -23,7 +24,7 @@ p, h2 {
     cursor: pointer;
     font-size: var(--md);
     font-weight: bold;
-    height: 30px;
+    height: 35px;
 }
 
 .add-to-cart-button {

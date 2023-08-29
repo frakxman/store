@@ -2,9 +2,9 @@
 <p>Total cost ${{ total }}</p> -->
 
 <div class="paginator">
-    <button (click)="previousPage()">Anterior</button>
-    <p>{{page}}</p>
-    <button (click)="nextPage()">Siguiente</button>
+    <button (click)="previousPage()" class="primary-button">Anterior</button>
+    <p class="paginator-number">{{page}}</p>
+    <button (click)="nextPage()" class="primary-button">Siguiente</button>
 </div>
 
 <div class="products--grid">
