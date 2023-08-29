@@ -52,11 +52,14 @@ export class ProductsComponent implements OnInit {
   }
 
   onShowDetail( id: number ) {
+    // let images: string[] = [];
     this.productService.getOneProduct(id)
       .subscribe( data => {
         console.log( data );
         this.toggleProductDetail();
         this.productChosen = data;
+        // images = this.productChosen.Urls_Img.split(',');
+        // console.log( images[1] );
         console.log(this.productChosen);
       });
   }

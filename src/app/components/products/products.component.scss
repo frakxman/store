@@ -1,11 +1,24 @@
-.paginator {
+.slider {
+    margin: 1%;
     border: 1px solid white;
+    border-radius: 5px;
+    box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
+}
+
+.searcher {
+    border: 1px solid white;
+    margin: 1%;
+    border-radius: 5px;
+    box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
+}
+
+.paginator {
+    // border: 1px solid white;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 1%;
-    box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
 }
 
 .paginator-number {
@@ -19,7 +32,7 @@
     border-radius: 8px;
     border: none;
     color: #FFFFFF;
-    width: 10%;
+    width: 15%;
     cursor: pointer;
     font-size: var(--md);
     font-weight: bold;
@@ -49,13 +62,6 @@
         transform: translateX(0);
     }
 }
-
-.swiper {
-    width: 600px;
-    height: 300px;
-}
-
-
 
 // tablets
 @media screen and (min-width: 40em) and (max-width: 63.9em){

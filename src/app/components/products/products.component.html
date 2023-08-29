@@ -1,10 +1,18 @@
-<!-- <p>Quantity of products {{ myShoppingCart.length }}</p>
-<p>Total cost ${{ total }}</p> -->
 
-<div class="paginator">
-    <button (click)="previousPage()" class="primary-button">Anterior</button>
-    <p class="paginator-number">{{page}}</p>
-    <button (click)="nextPage()" class="primary-button">Siguiente</button>
+<div class="slider">
+    <app-slider></app-slider>
+</div>
+
+<div class="searcher">
+    <div class="paginator">
+        <button (click)="previousPage()" class="primary-button">Anterior</button>
+        <p class="paginator-number">{{page}}</p>
+        <button (click)="nextPage()" class="primary-button">Siguiente</button>
+    </div>
+    
+    <div class="searcher-bar">
+        <app-searcher></app-searcher>
+    </div>
 </div>
 
 <div class="products--grid">
@@ -22,21 +30,7 @@
         <button (click)="toggleProductDetail()">
             Cerrar
         </button>
-        <swiper-container
-            navigation="true"
-            pagination="true"
-            pagination-clickable="true"
-        >
-            <swiper-slide>
-                <img src="https://images.pexels.com/photos/1029598/pexels-photo-1029598.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
-            </swiper-slide>
-            <swiper-slide>
-                <img src="https://images.pexels.com/photos/208698/pexels-photo-208698.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
-            </swiper-slide>
-            <swiper-slide>
-                <img src="https://images.pexels.com/photos/2861655/pexels-photo-2861655.jpeg?auto=compress&cs=tinysrgb&w=600" alt="">
-            </swiper-slide>
-        </swiper-container>
+        <app-slider></app-slider>
         <p>{{ productChosen.Description_Store }}</p>
     </div>
 </div>

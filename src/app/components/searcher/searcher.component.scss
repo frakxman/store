@@ -1,0 +1,17 @@
+.searcher-bar {
+    margin:  1%;
+    border: 1px solid white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searcher-bar_input {
+    width: 80%;
+    border-radius: 5px;
+}
+
+.searcher-bar_img {
+    width: 20%;
+    height: 35px;
+}
