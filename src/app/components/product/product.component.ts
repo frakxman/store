@@ -33,5 +33,4 @@ export class ProductComponent {
   onShowDetail() {
     this.showProduct.emit(this.product.idproducto);
   }
-
 }

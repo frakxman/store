@@ -1,7 +1,8 @@
 .product-card {
-    border: 1px solid #800000;
+    border: 1px solid #FFFFFF;
     border-radius: 2%;
     margin-bottom: 2%;
+    box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
 }
 
 p, h2 {
@@ -13,11 +14,12 @@ p, h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 3px;
 }
 
 .primary-button {
     background-color: #FF2400;
-    border-radius: 8px;
+    border-radius: 5px;
     border: none;
     color: #FFFFFF;
     width: 40%;

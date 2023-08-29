@@ -1,9 +1,11 @@
 .paginator {
-    border: 1px solid black;
+    border: 1px solid white;
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1% 0;
+    margin: 1%;
+    box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
 }
 
 .paginator-number {
@@ -25,7 +27,7 @@
 }
 
 .products--grid {
-    border: 1px solid greenyellow;
+    margin: 1%;
     display: flex;
     flex-direction: column;
     gap: 1%;
@@ -47,6 +49,13 @@
         transform: translateX(0);
     }
 }
+
+.swiper {
+    width: 600px;
+    height: 300px;
+}
+
+
 
 // tablets
 @media screen and (min-width: 40em) and (max-width: 63.9em){

@@ -1,7 +1,9 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { SwiperModule } from 'swiper/angular';
+
+import { register } from 'swiper/element/bundle';
+register();
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -30,10 +32,10 @@ import { SliderComponent } from './components/slider/slider.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    SwiperModule
+    HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
