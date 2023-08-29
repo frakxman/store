@@ -12,6 +12,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { NavComponent } from './components/nav/nav.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { SearcherComponent } from './components/searcher/searcher.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { SliderComponent } from './components/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { SearcherComponent } from './components/searcher/searcher.component';
     ProductsComponent,
     NavComponent,
     PaginatorComponent,
-    SearcherComponent
+    SearcherComponent,
+    CategoriesComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
