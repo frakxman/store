@@ -3,9 +3,9 @@
         <button (click)="toggleMenu()">
             <img src="../../../assets/logo_celulares.png" alt="menu" class="logo-menu">
         </button>
-        <a href="">
-            <img src="" alt="logo">
-        </a>
+        <div class="searcher-bar">
+            <app-searcher></app-searcher>
+        </div>
         <a href="">
             <img src="../../../assets/shopping-cart-light.svg" alt="logo" class="shopping-cart">
         </a>
@@ -31,6 +31,17 @@
                 <li><a href="">Categorias</a></li>
             </ul>
         </nav>
+        <div class="searcher">
+            <div class="paginator">
+                <button class="primary-button">Anterior</button>
+                <p class="paginator-number"> 1 </p>
+                <button  class="primary-button">Siguiente</button>
+            </div>
+            
+            <div class="searcher-bar">
+                <app-searcher></app-searcher>
+            </div>
+        </div>
         <div class="info">
             <div class="account">conexionPos@syscomp.com</div>
             <div class="cart">

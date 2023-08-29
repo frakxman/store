@@ -16,6 +16,9 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
 import { SearcherComponent } from './components/searcher/searcher.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { SliderComponent } from './components/slider/slider.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { SliderComponent } from './components/slider/slider.component';
     PaginatorComponent,
     SearcherComponent,
     CategoriesComponent,
-    SliderComponent
+    SliderComponent,
+    LoginComponent,
+    RegisterComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
