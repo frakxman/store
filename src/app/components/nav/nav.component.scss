@@ -12,6 +12,7 @@
             background: transparent;
         }
     }
+
     .side-menu {
         position: fixed;
         top: 0;
@@ -25,7 +26,7 @@
         transform: translateX(-100%);
         transition: all ease-out .5s;
         &.active {
-            transform: translateX(0);
+            transform: translateX(0%);
         }
     }
     .logo-menu {
@@ -35,6 +36,11 @@
     logo {
         width: 100px;
         height: 100px;
+    }
+    .searcher-bar {
+        margin: 1%;
+        border-radius: 5px;
+        flex-grow: 1;
     }
     .shopping-cart {
         width: 30px;
@@ -92,12 +98,10 @@
     }
 }
 
-.searcher-bar {
-    border: 1px solid white;
-    margin: 1%;
-    border-radius: 5px;
-    box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
-}
+// .searcher-bar {
+//     margin: 1%;
+//     border-radius: 5px;
+// }
 
 .paginator {
     // border: 1px solid white;
@@ -129,12 +133,11 @@
 
 /* Medium only */
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
-    .show-mobile {
-        display: none;
-        }
-    .hide-mobile {
-        display: block;
+    .side-menu {
+        width: 25%;
     }
+
+    
 }
 
 /* Large and up */
