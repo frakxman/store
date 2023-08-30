@@ -1,5 +1,5 @@
 .searcher-bar {
-    border: 1px solid #fff;
+    // border: 1px solid #fff;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
@@ -21,6 +21,22 @@
 
 /* Medium only */
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    .searcher-bar_img {
+        display: block;
+        height: 30px;
+    }
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+    .searcher-bar {
+        margin: 1%;
+        border: 1px solid #FFF;
+        border-radius: 5px;
+        flex-grow: 1;
+        width: 180%;
+        margin-left: -40%;
+    }
     .searcher-bar_img {
         display: block;
         height: 30px;
