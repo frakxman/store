@@ -1,12 +1,12 @@
 .paginator {
-    border: 1px solid white;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1%;
-    box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
+    width: 100%;
+    height: 20px;
 }
+
 
 .paginator-number {
     color: #FFFFFF;
@@ -19,9 +19,9 @@
     border-radius: 8px;
     border: none;
     color: #FFFFFF;
-    width: 10%;
+    width: 15%;
     cursor: pointer;
     font-size: var(--md);
     font-weight: bold;
-    height: 35px;
+    height: 20px;
 }

@@ -98,34 +98,6 @@
     }
 }
 
-.paginator {
-    // border: 1px solid white;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1%;
-}
-
-.paginator-number {
-    color: #FFFFFF;
-    font-size: 1.2em;
-    font-weight: 600;
-}
-
-.primary-button {
-    background-color: #FF2400;
-    border-radius: 8px;
-    border: none;
-    color: #FFFFFF;
-    width: 15%;
-    cursor: pointer;
-    font-size: var(--md);
-    font-weight: bold;
-    height: 35px;
-}
-
-
 /* Medium only */
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
     .side-menu {
