@@ -37,15 +37,16 @@
         width: 100px;
         height: 100px;
     }
-    .searcher-bar {
-        margin: 1%;
-        border-radius: 5px;
-        flex-grow: 1;
-    }
     .shopping-cart {
         width: 30px;
         height: 30px;
     }
+}
+
+.searcher{
+    border: 1px solid #fff;
+    border-radius: 5px;
+    width: 35%;
 }
 
 .hide-mobile {
