@@ -39,57 +39,114 @@
 </div>
 
 <div class="client-form">
-    <form action="">
+    <form [formGroup]="createUserForm" (ngSubmit)="createUser()">
         <h2>Creacion de cliente</h2>
         <div class="first-row">
+
             <label for="nit"></label>
-            <input type="text" placeholder="C.C o Nit">    
+            <input
+                type="text"
+                formControlName="nit"
+                placeholder="C.C o Nit"
+            >  
+        
             <label for="digit"></label>
-            <input type="number" placeholder="0" disabled>
+            <input
+                type="number"
+                formControlName="digit"
+                placeholder="0" 
+            >
+
             <label for="document">Tipo de Documento</label>
-            <select name="document" id="">
-                <option value=""></option>
+            <select name="document"  id="document" formControlName="document">
+                <option value="">Seleccione una opción</option>
+                <option value="regCiv">Registro Civil</option>
+                <option value="tI">Tarjeta de Identidad</option>
+                <option value="cedCiu">Cédula de Ciudadanía</option>
+                <option value="tiExt">Tarjeta de Extranjería</option>
+                <option value="cedExt">Cédula de Extranjería</option>
+                <option value="nit">N.I.T.</option>
+                <option value="passport">Pasaporte</option>
+                <option value="docIdEx">Documento de Identificación Extranjero</option>
+                <option value="nitOP">N.I.T. de otro País</option>
+                <option value="nuip">N.U.I.P</option>
             </select>
+
         </div>
         <div class="principal-row">
             <label for="">Primer Nombre</label>
-            <input type="text" placeholder="Primer Nombre">
+            <input
+                type="text"
+                formControlName="firstName"
+                placeholder="Primer Nombre"
+            >
             <label for="">Segundo Nombre</label>
-            <input type="text" placeholder="Segundo Nombre">
+            <input
+                type="text"
+                formControlName="secondName"
+                placeholder="Segundo Nombre"
+            >
             <label for="">Primer Apellido</label>
-            <input type="text" placeholder="Primer Apellido">
+            <input
+                type="text"
+                formControlName="firstLastName"
+                placeholder="Primer Apellido"
+            >
             <label for="">Segundo Apellido</label>
-            <input type="text" placeholder="Segundo Apellido">
+            <input
+                type="text"
+                formControlName="secondLastName"
+                placeholder="Segundo Apellido"
+            >
             <label for="">Dirección</label>
-            <input type="text" placeholder="Dirección">
+            <input
+                type="text"
+                formControlName="address"
+                placeholder="Dirección"
+            >
             <label for="">Teléfono</label>
-            <input type="text" placeholder="Teléfono">
+            <input
+                type="text"
+                formControlName="phone"
+                placeholder="Teléfono"
+            >
             <label for="">Correo Electrónico</label>
-            <input type="email" placeholder="Correo Electrónico">
+            <input
+                type="email"
+                formControlName="email"
+                placeholder="Correo Electrónico"
+            >
             <label for="">Segundo Correo Electrónico</label>
-            <input type="email" placeholder="Segundo Correo Electrónico">
+            <input
+                type="email"
+                formControlName="confEmail"
+                placeholder="Segundo Correo Electrónico">
         </div>
         <div class="localization">
             <label for="country">Pais</label>
-            <select name="country">
+            <select name="country" id="country" formControlName="country">
                 <option value=""></option>
             </select>
         
-            <label for="deparment">Departamento</label>
-            <select name="deparment" id="">
+            <label for="department">Departamento</label>
+            <select name="department" id="department" formControlName="department">
                 <option value=""></option>
             </select>
         
-            <label for="village"></label>
-            <select name="village" id="">
+            <label for="town"></label>
+            <select name="town" id="town" formControlName="town">
                 <option value=""></option>
             </select>
         </div>
         <div class="last-row">
             <label for="bill">Tipo de Factura</label>
-            <select name="bill" id="">
-                <option value=""></option>
+            <select name="bill" id="bill">
+                <option value="">Seleccione una</option>
+                <option value="pos">P.O.S.</option>
+                <option value="factElec">Factura Electrónica</option>
             </select>
         </div>
+
+        <input type="submit" value="Registrarse" class="secondary-button login-button" [disabled]="createUserForm.invalid">
     </form>
 </div>
