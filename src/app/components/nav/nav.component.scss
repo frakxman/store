@@ -92,7 +92,7 @@
     }
 }
 
-.searcher {
+.searcher-bar {
     border: 1px solid white;
     margin: 1%;
     border-radius: 5px;
@@ -129,10 +129,10 @@
 
 /* Medium only */
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
-        .show-mobile {
+    .show-mobile {
         display: none;
         }
-        .hide-mobile {
+    .hide-mobile {
         display: block;
     }
 }
@@ -142,7 +142,7 @@
     .show-mobile {
         display: none;
         }
-        .hide-mobile {
+    .hide-mobile {
         display: block;
     }
 }

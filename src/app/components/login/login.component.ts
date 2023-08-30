@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  private fb = inject( FormBuilder );
+
+  public loginForm: FormGroup = this.fb.group({
+    user: ['', [ Validators.required, Validators.minLength(3)]],
+    password: ['', [ Validators.required, Validators.minLength(4), Validators.maxLength(12)]]
+  });
+
+
+  login(){
+    console.log(this.loginForm.value);
+    this.loginForm.reset();
+  }
 }
