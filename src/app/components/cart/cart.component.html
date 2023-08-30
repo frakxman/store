@@ -1,29 +1,95 @@
-<form action="">
-    <label for=""></label>
-    <input type="text">    
-    <label for=""></label>
-    <input type="number">
-    <label for=""></label>
-    <input type="text">
-    <label for=""></label>
-    <input type="text">
-    <label for=""></label>
-    <input type="text">
-    <label for=""></label>
-    <input type="text">
-    <label for=""></label>
-    <input type="text">
-    <label for=""></label>
-    <input type="text">
-    <label for=""></label>
-    <input type="text">
-    <label for=""></label>
-    <input type="text">
-    <label for=""></label>
-    <input type="text">
-    <label for=""></label>
-    <input type="text">
-    <label for=""></label>
-    <input type="text">
-    <label for=""></label>
-</form>
+<div class="cart-table">
+    <h2>Carrito</h2>
+    <table class="default">
+        <tr>
+            <th>Producto</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
+            <th>Acción</th>
+        </tr>
+        <tr>
+            <td>
+                <img src="../../../assets/shopping-cart-light.svg" alt="">
+            </td>
+            <td>
+                Bla Bla BLa
+            </td>
+            <td>
+                <div class="add-product">
+                    <button>-</button>
+                    <p>1</p>
+                    <button>+</button>
+                </div>
+            </td>
+            <td>$000.000=</td>
+            <td>$000.000=</td>
+            <td>
+                <button>Eliminar</button>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        
+    </table>
+</div>
+
+<div class="client-form">
+    <form action="">
+        <h2>Creacion de cliente</h2>
+        <div class="first-row">
+            <label for="nit"></label>
+            <input type="text" placeholder="C.C o Nit">    
+            <label for="digit"></label>
+            <input type="number" placeholder="0" disabled>
+            <label for="document">Tipo de Documento</label>
+            <select name="document" id="">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="principal-row">
+            <label for="">Primer Nombre</label>
+            <input type="text" placeholder="Primer Nombre">
+            <label for="">Segundo Nombre</label>
+            <input type="text" placeholder="Segundo Nombre">
+            <label for="">Primer Apellido</label>
+            <input type="text" placeholder="Primer Apellido">
+            <label for="">Segundo Apellido</label>
+            <input type="text" placeholder="Segundo Apellido">
+            <label for="">Dirección</label>
+            <input type="text" placeholder="Dirección">
+            <label for="">Teléfono</label>
+            <input type="text" placeholder="Teléfono">
+            <label for="">Correo Electrónico</label>
+            <input type="email" placeholder="Correo Electrónico">
+            <label for="">Segundo Correo Electrónico</label>
+            <input type="email" placeholder="Segundo Correo Electrónico">
+        </div>
+        <div class="localization">
+            <label for="country">Pais</label>
+            <select name="country">
+                <option value=""></option>
+            </select>
+        
+            <label for="deparment">Departamento</label>
+            <select name="deparment" id="">
+                <option value=""></option>
+            </select>
+        
+            <label for="village"></label>
+            <select name="village" id="">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="last-row">
+            <label for="bill">Tipo de Factura</label>
+            <select name="bill" id="">
+                <option value=""></option>
+            </select>
+        </div>
+    </form>
+</div>
