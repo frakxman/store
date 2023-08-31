@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: '', loadChildren: () => import('./web/web.module').then( m => m.WebModule ) },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule ) },
   { path: '404', component: ErrorComponent },
-  { path: '**', redirectTo: 'store', pathMatch: 'full' }
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
