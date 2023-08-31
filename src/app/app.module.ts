@@ -16,10 +16,9 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
 import { SearcherComponent } from './components/searcher/searcher.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { SliderComponent } from './components/slider/slider.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SearcherComponent,
     CategoriesComponent,
     SliderComponent,
-    LoginComponent,
-    RegisterComponent,
-    CartComponent
+    CartComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
