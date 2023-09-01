@@ -12,7 +12,7 @@ import { Product } from '../../interfaces/product.interfaces';
 })
 export class CategoryComponent {
 
-  products: Product[] = [];
+  productsBycategory: Product[] = [];
   categoryName?: string | null = null;
   page = 1;
   limit= 10;
@@ -27,7 +27,7 @@ export class CategoryComponent {
           this.productService.getByCategory(this.categoryName, this.page, this.limit)
             .subscribe( data => {
               console.log(data);
-              this.products = data;
+              this.productsBycategory = data;
             });
           }
         });

@@ -23,6 +23,7 @@ export class ProductComponent {
     nomalmacen: '',
     Description_Store: ''
   }
+  
   @Output() addedProduct = new EventEmitter<Product>();
   @Output() showProduct = new EventEmitter<number>();
 

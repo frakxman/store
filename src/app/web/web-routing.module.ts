@@ -12,8 +12,8 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
+      { path: 'category', component: CategoryComponent },
       { path: 'categories', component: CategoriesComponent },
-      { path: 'categories', component: CategoryComponent },
       { path: 'cart', component: CartComponent },
       { path: 'products', component: ProductsComponent },
       { path: '**', redirectTo: 'products'}

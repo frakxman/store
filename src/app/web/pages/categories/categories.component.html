@@ -2,8 +2,8 @@
     <h2>Categorias</h2>
     <div class="categoryList">
         <ul>
-            <li>
-                <a routerLink="./">Shammpoo</a>
+            <li *ngFor="let category of categories">
+                <input type="button" value="{{ category.nombre }}">
             </li>
         </ul>
     </div>
