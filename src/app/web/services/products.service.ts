@@ -14,6 +14,15 @@ export class ProductsService {
 
   constructor( private http: HttpClient ) { }
 
+  getByCategory(categoryName?: string, page?: number, limit?: number ) {
+    let params = new HttpParams();
+    if ( page && limit ) {
+      params = params.set('page', page);
+      params = params.set('limit', limit);
+    }
+    return this.http.get<Product[]>(`${this.baseUrl}/categories/4/${categoryName}`, { params });
+  }
+
   getAllProducts(page?: number, limit?: number) {
     let params = new HttpParams();
     if ( page && limit ) {
