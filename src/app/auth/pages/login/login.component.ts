@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent {
 
   private fb = inject( FormBuilder );
+  private router = inject( Router );
 
   public loginForm: FormGroup = this.fb.group({
     user: ['', [ Validators.required, Validators.minLength(3)]],
@@ -19,5 +21,10 @@ export class LoginComponent {
   login(){
     console.log(this.loginForm.value);
     this.loginForm.reset();
+    this.router.navigate(['/auth/admin']);
+  }
+
+  register() {
+    this.router.navigate(['/auth/register']);
   }
 }

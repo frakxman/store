@@ -29,13 +29,13 @@
             <button 
                 type="submit"
                 class="primary-button login-button"
-                [disabled]="loginForm.invalid"
-            >
+                >
+                <!-- [disabled]="loginForm.invalid" -->
                 Iniciar Sesión
             </button>
             <a href="/">Olvide my contraseña</a>
         </form>
 
-        <button class="secondary-button signup-button">Registrarse</button>
+        <button class="secondary-button signup-button" routerLink="/auth/register">Registrarse</button>
     </div>
 </div>
