@@ -1,17 +1,43 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { WebRoutingModule } from './web-routing.module';
-import { LayoutComponent } from './pages/layout/layout.component';
+import { register } from 'swiper/element/bundle';
+register();
 
+import { WebRoutingModule } from './web-routing.module';
+
+import { ImgComponent } from './components/img/img.component';
+import { LayoutComponent } from './pages/layout/layout.component';
+import { NavComponent } from './components/nav/nav.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { SearcherComponent } from './components/searcher/searcher.component';
+import { SliderComponent } from './components/slider/slider.component';
+
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { ProductComponent } from './pages/product/product.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { ErrorComponent } from './pages/error/error.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    LayoutComponent
+    LayoutComponent,
+    ImgComponent,
+    NavComponent,
+    PaginatorComponent,
+    SearcherComponent,
+    SliderComponent,CategoriesComponent,
+    ErrorComponent,
+    CartComponent,
+    ProductComponent,
+    ProductsComponent,
   ],
   imports: [
     CommonModule,
-    WebRoutingModule
-  ]
+    WebRoutingModule,
+    ReactiveFormsModule,
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class WebModule { }

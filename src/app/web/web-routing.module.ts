@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { LayoutComponent } from './pages/layout/layout.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
     children: [
-      // { path: 'home', component: HomeComponent },
-      // { path: 'categories', component: CategoriesComponent },
-      // { path: 'cart', component: CartComponent },
-      // { path: 'home', component: HomeComponent },
-      { path: '**', redirectTo: 'home'}
+      { path: 'categories', component: CategoriesComponent },
+      { path: 'cart', component: CartComponent },
+      { path: 'products', component: ProductsComponent },
+      { path: '**', redirectTo: 'products'}
     ]
   }
 ];

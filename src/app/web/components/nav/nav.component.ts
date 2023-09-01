@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { StoreService } from 'src/app/services/store.service';
+import { StoreService } from 'src/app/web/services/store.service';
 
 @Component({
   selector: 'app-nav',
