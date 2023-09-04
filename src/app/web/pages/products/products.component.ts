@@ -31,14 +31,16 @@ export class ProductsComponent implements OnInit {
   };
   page = 1;
   limit = 10;
-  newProducts: Product[] = [];
 
-  constructor( private storeService: StoreService, private productService: ProductsService ) {
+  constructor( 
+    private storeService: StoreService,
+    private productService: ProductsService
+  ) {
     this.myShoppingCart = this.storeService.getSoppingCart();
   }
 
   ngOnInit(): void {
-      this.productService.getAllProducts(1, 10)
+      this.productService.getAllProducts( this.page, this.limit )
         .subscribe( products => this.products = products );
   }
 
@@ -61,28 +63,6 @@ export class ProductsComponent implements OnInit {
         // images = this.productChosen.Urls_Img.split(',');
         // console.log( images[1] );
         console.log(this.productChosen);
-      });
-  }
-
-  previousPage() {
-    this.productService.getProductsByPage(this.page, this.limit)
-      .subscribe( data => {
-        if(this.newProducts.length === 0 ) {
-          return;
-        }
-        this.newProducts = data;
-        this. products = this.newProducts;
-        this.page--;
-      });
-  }
-
-  nextPage() {
-    this.productService.getProductsByPage(this.page, this.limit)
-      .subscribe( data => {
-        console.log( data );
-        this.newProducts = data;
-        this. products = this.newProducts;
-        this.page++;
       });
   }
 }

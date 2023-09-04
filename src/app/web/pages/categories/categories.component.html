@@ -11,9 +11,9 @@
         <app-product 
             [product]="product" 
             *ngFor="let product of products" 
+            (addedProduct)="addToShoppingCart($event)"
             ></app-product>
-            <!-- (addedProduct)="addToShoppingCart($event)"
-            (showProduct)="onShowDetail($event)" -->
+            <!-- (showProduct)="onShowDetail($event)" -->
     </div>
 </div>
 

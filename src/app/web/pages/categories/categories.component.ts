@@ -5,6 +5,7 @@ import { CategoriesService } from '../../services/categories.service';
 import { ProductsService } from '../../services/products.service';
 import { Router } from '@angular/router';
 import { Product } from '../../interfaces/product.interfaces';
+import { StoreService } from '../../services/store.service';
 
 
 @Component({
@@ -13,15 +14,18 @@ import { Product } from '../../interfaces/product.interfaces';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent {
-
-  public categories: Categories[] = [];
-  public products: Product[] = [];
+  
+  myShoppingCart: Product[] = [];
+  categories: Categories[] = [];
+  products: Product[] = [];
   
   constructor( 
     private categoriesServices: CategoriesService,
     private productsService: ProductsService,
-    private router: Router
-  ) {}
+    private storeService: StoreService
+  ) {
+    this.myShoppingCart = this.storeService.getSoppingCart();
+  }
 
   ngOnInit(): void {
       this.categoriesServices.getAllCategories()
@@ -37,10 +41,15 @@ export class CategoriesComponent {
         this.productsService.getByCategory( categoriesNames[i], 1, 10 )
           .subscribe( data => this.products = data );
           console.log( this.products );
-        // this.router.navigate(['/store/category']);
       }
     }
     return this.products;
   }
+
+  addToShoppingCart(product: Product) {
+    this.storeService.addProduct(product);
+    // this.total = this.storeService.getTotal();
+  }
+
 
 }
