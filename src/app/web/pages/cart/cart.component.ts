@@ -12,7 +12,6 @@ export class CartComponent implements OnInit {
 
   private fb = inject( FormBuilder );
   products: Product[] = [];
-  quantities: number[] = [];
 
   public createUserForm: FormGroup = this.fb.group({
     nit: ['', [ Validators.required ]],
@@ -38,10 +37,9 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.storeService.myCart$
-    .subscribe( products => {
-      console.log( products );
-      this.products = products
-    });
+      .subscribe( products => {
+        this.products = products
+      });
   }
 
   createUser() {

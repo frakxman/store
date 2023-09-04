@@ -4,6 +4,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environments } from 'src/environments/environments';
 
 import { Product } from '../interfaces/product.interfaces';
+import { WarehouseService } from './warehouse.service';
+import { WareHouse } from '../interfaces/wareHouse';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +13,23 @@ import { Product } from '../interfaces/product.interfaces';
 export class ProductsService {
 
   baseUrl: string = environments.baseUrl;
+  wareHouse: WareHouse = {
+    virtualStoreId: 0,
+    wareHouseId: 0,
+  };
 
-  constructor( private http: HttpClient ) { }
+  constructor( 
+    private http: HttpClient,
+    private wareHouseService: WarehouseService
+  ) { }
 
+  getWareHouse() {
+    this.wareHouseService.getWareHouse()
+      .subscribe( data => {
+        console.log( data );
+      }
+    )
+  }
   getByCategory(categoryName?: string, page?: number, limit?: number ) {
     let params = new HttpParams();
     if ( page && limit ) {
