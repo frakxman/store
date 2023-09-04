@@ -9,24 +9,26 @@
             <th>Total</th>
             <th>Acción</th>
         </tr>
-        <tr>
+        <tr *ngFor="let product of products">
             <td>
                 <img src="../../../assets/shopping-cart-light.svg" alt="">
             </td>
             <td>
-                Bla Bla BLa
+           {{ product.descripcion }}
             </td>
             <td>
                 <div class="add-product">
                     <button>-</button>
-                    <p>1</p>
+                    <p *ngFor="let quantity of quantities">{{ quantity }}</p>
                     <button>+</button>
                 </div>
             </td>
-            <td>$000.000=</td>
-            <td>$000.000=</td>
+            <td>{{ product.precioventa}}</td>
+            <td></td>
             <td>
-                <button>Eliminar</button>
+                <button>
+                    Eliminar
+                </button>
             </td>
         </tr>
         <tr>

@@ -1,14 +1,18 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Product } from '../../interfaces/product.interfaces';
+import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent {
+export class CartComponent implements OnInit {
 
   private fb = inject( FormBuilder );
+  products: Product[] = [];
+  quantities: number[] = [];
 
   public createUserForm: FormGroup = this.fb.group({
     nit: ['', [ Validators.required ]],
@@ -29,8 +33,23 @@ export class CartComponent {
     bill: ['', [ Validators.required ]]
   });
 
+
+  constructor( private storeService: StoreService ) {}
+
+  ngOnInit(): void {
+    this.storeService.myCart$
+    .subscribe( products => {
+      console.log( products );
+      this.products = products
+    });
+  }
+
   createUser() {
     console.log(this.createUserForm.value);
+  }
+
+  getQuantityofProducts() {
+    
   }
 
 }
