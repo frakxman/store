@@ -1,19 +1,7 @@
 
-<div class="slider">
+<div class="slider" *ngIf="!showProductDetail">
     <app-slider></app-slider>
 </div>
-
-<!-- <div class="searcher">
-    <div class="paginator">
-        <button (click)="previousPage()" class="primary-button">Anterior</button>
-        <p class="paginator-number">{{page}}</p>
-        <button (click)="nextPage()" class="primary-button">Siguiente</button>
-    </div>
-    
-    <div class="searcher-bar">
-        <app-searcher></app-searcher>
-    </div>
-</div> -->
 
 <div class="products--grid">
     <app-product 
