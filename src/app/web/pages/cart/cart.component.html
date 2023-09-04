@@ -9,7 +9,7 @@
             <th>Total</th>
             <th>Acción</th>
         </tr>
-        <tr *ngFor="let products of ">
+        <tr>
             <td>
                 <img src="../../../assets/shopping-cart-light.svg" alt="">
             </td>
@@ -43,14 +43,14 @@
         <h2>Creacion de cliente</h2>
         <div class="first-row">
 
-            <label for="nit"></label>
+            <label for="nit">Nit o C.C</label>
             <input
                 type="text"
                 formControlName="nit"
                 placeholder="C.C o Nit"
             >  
         
-            <label for="digit"></label>
+            <label for="digit">Codigo de verificacion</label>
             <input
                 type="number"
                 formControlName="digit"

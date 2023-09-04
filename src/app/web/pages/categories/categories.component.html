@@ -1,12 +1,10 @@
 <div class="categories">
     <h2>Categorias</h2>
-    <div class="categoryList">
-        <ul>
-            <li *ngFor="let category of categories; index as i">
-                <input type="button" value="{{ category.nombre }}" (click)="categorySelected(i)">
-            </li>
-        </ul>
-    </div>
+    <ul class="categoryList">
+        <li *ngFor="let category of categories; index as i">
+            <input type="button" value="{{ category.nombre }}" (click)="categorySelected(i)" class="primary-button">
+        </li>
+    </ul>
     <div class="products--grid">
         <app-product 
             [product]="product" 
