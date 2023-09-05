@@ -12,7 +12,7 @@
             <input
                 type="text"
                 id="user"
-                formControlName="user"
+                formControlName="username"
                 placeholder="conexion@pos.com"
                 class="input input-email"
             >
@@ -29,8 +29,8 @@
             <button 
                 type="submit"
                 class="primary-button login-button"
+                [disabled]="loginForm.invalid"
                 >
-                <!-- [disabled]="loginForm.invalid" -->
                 Iniciar Sesión
             </button>
             <a href="/">Olvide my contraseña</a>

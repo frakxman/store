@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { environments } from 'src/environments/environments';
+import { WareHouse } from '../interfaces/wareHouse';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class WarehouseService {
   constructor( private http: HttpClient ) { }
 
   getWareHouse() {
-    return this.http.get(`${this.baseUrl}/warehouse/active-virtual-store?wareHouseId`);
+    return this.http.get<WareHouse>(`${this.baseUrl}/warehouse/active-virtual-store`);
    } 
  
 }

@@ -2,6 +2,10 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { AuthService } from '../../services/auth.service';
+
+import { Auth } from '../../interfaces/auth.interface';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,16 +14,23 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   private fb = inject( FormBuilder );
+  private authService = inject( AuthService );
   private router = inject( Router );
+  token = '';
 
   public loginForm: FormGroup = this.fb.group({
-    user: ['', [ Validators.required, Validators.minLength(3)]],
+    username: ['', [ Validators.required, Validators.minLength(3)]],
     password: ['', [ Validators.required, Validators.minLength(4), Validators.maxLength(12)]]
   });
 
 
   login(){
-    console.log(this.loginForm.value);
+    const { username, password } = this.loginForm.value;
+    this.authService.login( username, password )
+      .subscribe( rta => {
+        this.token = rta.access_token;
+        localStorage.setItem('token', this.token );
+      });
     this.loginForm.reset();
     this.router.navigate(['/auth/admin']);
   }

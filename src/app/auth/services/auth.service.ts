@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { environments } from 'src/environments/environments';
+
+import { Auth } from '../interfaces/auth.interface';
+import { User } from '../interfaces/user.interface';
 
 
 @Injectable({
@@ -8,12 +12,17 @@ import { environments } from 'src/environments/environments';
 })
 export class AuthService {
 
-  private baseUrl = `${environments.baseUrl}/users/auth`;
+  private baseUrl = `${environments.baseUrl}/users`;
 
   constructor( private http: HttpClient ) { }
 
   login( username: string, password: string ) {
-    return this.http.post(`${ this.baseUrl }/login`, { username, password });
+    return this.http.post<Auth>(`${ this.baseUrl }/login`, { username, password });
   }
+
+  register( username: string, password: string, email: string ) {
+    return this.http.post<User>(`${ this.baseUrl}/signup`, { username, password, email });
+  }
+
 
 }

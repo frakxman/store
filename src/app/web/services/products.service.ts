@@ -14,23 +14,29 @@ export class ProductsService {
 
   baseUrl: string = environments.baseUrl;
   wareHouse: WareHouse = {
-    virtualStoreId: 0,
+    warehouse: {
+      idalmacen: 0,
+      nomalmacen: '',
+    },
     wareHouseId: 0,
   };
+  wareHouseId: number = 0;
 
   constructor( 
     private http: HttpClient,
     private wareHouseService: WarehouseService
-  ) { }
+  ) {}
 
   getWareHouse() {
     this.wareHouseService.getWareHouse()
       .subscribe( data => {
-        console.log( data );
+        this.wareHouse = data;
+        this.wareHouseId = this.wareHouse.wareHouseId;
       }
     )
   }
-  getByCategory(categoryName?: string, page?: number, limit?: number ) {
+
+  getByCategory( categoryName?: string, page?: number, limit?: number ) {
     let params = new HttpParams();
     if ( page && limit ) {
       params = params.set('page', page);

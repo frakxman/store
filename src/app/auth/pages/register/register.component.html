@@ -4,13 +4,13 @@
 
         <h1 class="title">Registro</h1>
 
-        <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
+        <form class="form" [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
             <div>
                 <label for="name" class="label">Usuario</label>
                 <input
                     type="text"
                     id="name"
-                    formControlName="user"
+                    formControlName="username"
                     placeholder="Administrador"
                     class="input input-email"
                 >
@@ -34,7 +34,7 @@
                 >
             </div>
 
-            <input type="submit" value="Registrarse" class="secondary-button login-button" routerLink="login">
+            <input type="submit" value="Registrarse" class="secondary-button login-button" [disabled]="registerForm.invalid">
         </form>
     </div>
 </div>
