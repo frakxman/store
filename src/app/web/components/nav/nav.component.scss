@@ -18,16 +18,34 @@
         left: 0;
         bottom: 0;
         right: 0;
-        background: white;
+        background: #A8351B;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        z-index: 2;
         transform: translateX(-100%);
         transition: all ease-out .5s;
         &.active {
             transform: translateX(0%);
         }
     }
+    .side-menu_header {
+        background-color: #E17E68;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        padding: 3.5%;
+        color: #fff;
+        margin-left: -3%;
+    }
+
+    .side-menu_header img {
+        width: 30px;
+        height: 30px;
+        // margin-right: 10%;
+    }
+
     .logo-menu {
         width: 40px;
         height: 40px;
