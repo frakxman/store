@@ -6,9 +6,17 @@
         <div class="searcher-bar">
             <app-searcher></app-searcher>
         </div>
-        <a href="">
-            <img src="../../../assets/shopping-cart-light.svg" alt="logo" class="shopping-cart">
-        </a>
+        <div class="info">
+            <div class="account">conexionPos@syscomp.com</div>
+            <div class="cart">
+                <a routerLink="/store/cart">
+                    <img src="../../../assets/shopping-cart-light.svg" alt="logo" class="shopping-cart">
+                </a>
+                <div class="cart-counter">
+                    <p class="counter">{{ counter }}</p>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="side-menu" [class.active]="activeMenu">
         <button (click)="toggleMenu()">
@@ -54,7 +62,9 @@
                 <a routerLink="/store/cart">
                     <img src="../../../assets/shopping-cart-light.svg" alt="logo" class="shopping-cart">
                 </a>
-                <span class="counter">{{ counter }}</span>
+                <div class="cart-counter">
+                    <p class="counter">{{ counter }}</p>
+                </div>
             </div>
         </div>
     </div>
