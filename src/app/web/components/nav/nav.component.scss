@@ -43,7 +43,23 @@
     .side-menu_header img {
         width: 30px;
         height: 30px;
-        // margin-right: 10%;
+    }
+
+    .side-menu_body {
+        margin: 10% 0 0 -10%;
+    }
+
+    .side-menu_body li {
+        border: 1px solid white;
+        border-radius: 5px;
+        padding: 10% 30%;
+        margin: 10% 0 0 -20%;
+        width: 100%;
+    }
+
+    .side-menu_body li a {
+        text-decoration: none;
+        color: #fff;
     }
 
     .logo-menu {
