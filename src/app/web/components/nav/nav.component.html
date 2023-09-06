@@ -6,29 +6,42 @@
         <div class="searcher-bar">
             <app-searcher></app-searcher>
         </div>
-        <a href="">
-            <img src="../../../assets/shopping-cart-light.svg" alt="logo" class="shopping-cart">
-        </a>
+        <div class="info">
+            <div class="account">conexionPos@syscomp.com</div>
+            <div class="cart">
+                <a routerLink="/store/cart">
+                    <img src="assets/svg/shopping-cart-light.svg" alt="logo" class="shopping-cart">
+                </a>
+                <div class="cart-counter">
+                    <p class="counter">{{ counter }}</p>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="side-menu" [class.active]="activeMenu">
-        <button (click)="toggleMenu()">
-            Close
-        </button>
-        <ul>
-            <li>
-                <a routerLink="/store/products">Productos</a>
-            </li>
-            <li>
-                <a routerLink="/store/categories">Categorias</a>
-            </li>
-        </ul>
+        <div class="side-menu_header">
+            <p>Menu</p>
+            <button (click)="toggleMenu()">
+                <img src="assets/svg/close.svg" alt="cerrar pestaña">
+            </button>
+        </div>
+        <side-menu_body>
+            <ul>
+                <li>
+                    <a routerLink="/store/products" (click)="toggleMenu()">Productos</a>
+                </li>
+                <li>
+                    <a routerLink="/store/categories" (click)="toggleMenu()">Categorias</a>
+                </li>
+            </ul>
+        </side-menu_body>
     </div>
 </div>
 <div class="hide-mobile">
     <div>
         <nav>
             <a class="logo" href="">
-            <img src="../../../assets/logo_celulares.png" alt="logo" class="logo-menu">
+            <img src="assets/logo_celulares.png" alt="logo" class="logo-menu">
             </a>
             <ul>
                 <li>
@@ -52,9 +65,11 @@
             <div class="account">conexionPos@syscomp.com</div>
             <div class="cart">
                 <a routerLink="/store/cart">
-                    <img src="../../../assets/shopping-cart-light.svg" alt="logo" class="shopping-cart">
+                    <img src="assets/svg/shopping-cart-light.svg" alt="logo" class="shopping-cart">
                 </a>
-                <span class="counter">{{ counter }}</span>
+                <div class="cart-counter">
+                    <p class="counter">{{ counter }}</p>
+                </div>
             </div>
         </div>
     </div>
