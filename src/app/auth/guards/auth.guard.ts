@@ -9,6 +9,8 @@ const checkAuthStatus = (): boolean | Observable<boolean> => {
   const authService: AuthService = inject( AuthService );
   const router: Router = inject( Router );
 
+  
+
   return  true;
 }
 
@@ -20,9 +22,9 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: R
 };
 
 
-export const canMatchGuard: CanMatchFn = ( route: Route, segments: UrlSegment[] ) => {
-  // console.log('CanMatch');
-  // console.log({ route, segments });
+// export const canMatchGuard: CanMatchFn = ( route: Route, segments: UrlSegment[] ) => {
+//   // console.log('CanMatch');
+//   // console.log({ route, segments });
   
-  return checkAuthStatus();
-};
+//   return checkAuthStatus();
+// };
