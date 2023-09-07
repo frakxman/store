@@ -7,11 +7,16 @@ import { LayoutComponent } from './pages/layout/layout.component';
 import { ProductsComponent } from './pages/products/products.component';
 
 const routes: Routes = [
-  { path: '', component: LayoutComponent, children: [
-    { path: 'list', component: ProductsComponent },
-    { path: 'edit', component: EditComponent },
-    { path: 'img', component: ImgComponent }
-  ]}
+  { 
+    path: '',
+    component: LayoutComponent,
+    children: [
+      { path: 'list', component: ProductsComponent },
+      { path: 'edit', component: EditComponent },
+      { path: 'img', component: ImgComponent },
+      { path: '**', redirectTo: 'list' }
+    ]
+  }
 ]
 
 @NgModule({

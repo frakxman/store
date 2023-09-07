@@ -9,7 +9,6 @@ const checkAuthStatus = (): boolean | Observable<boolean> => {
   const authService: AuthService = inject( AuthService );
   const router: Router = inject( Router );
 
-
   // return  true;
   return authService.checkAuthentication()
   .pipe(
