@@ -9,12 +9,16 @@ import { CreateUserDTO, User } from '../interfaces/user.interface';
 })
 export class UserService {
 
-  private baseUrl = `${environments.baseUrl}/users/login`;
+  private baseUrl = `${environments.baseUrl}/users`;
 
   constructor( private http: HttpClient ) { }
 
   create(dto: CreateUserDTO) {
-    return this.http.post<User>(this.baseUrl, dto);
+    return this.http.post<User>(`${this.baseUrl}/login`, dto);
+  }
+
+  getAll() {
+    return this.http.get<User[]>(`${this.baseUrl}`);
   }
   
 }

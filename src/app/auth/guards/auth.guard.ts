@@ -9,29 +9,20 @@ const checkAuthStatus = (): boolean | Observable<boolean> => {
   const authService: AuthService = inject( AuthService );
   const router: Router = inject( Router );
 
-  // return  true;
-  return authService.checkAuthentication()
-  .pipe(
-      tap( isAuthenticated => console.log('Authenticated', isAuthenticated )),
-      tap((isAuthenticated) => {
-          if (!isAuthenticated) {
-              router.navigate(['/auth/login']);
-          }
-      })
-  );
+  return  true;
 }
 
 export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-  console.log('CanActivate');
-  console.log({ route, state });
+  // console.log('CanActivate');
+  // console.log({ route, state });
   
   return checkAuthStatus();
 };
 
 
 export const canMatchGuard: CanMatchFn = ( route: Route, segments: UrlSegment[] ) => {
-  console.log('CanMatch');
-  console.log({ route, segments });
+  // console.log('CanMatch');
+  // console.log({ route, segments });
   
   return checkAuthStatus();
 };

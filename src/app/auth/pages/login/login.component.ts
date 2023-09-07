@@ -16,7 +16,6 @@ export class LoginComponent {
   private fb = inject( FormBuilder );
   private authService = inject( AuthService );
   private router = inject( Router );
-  // token = '';
 
   public loginForm: FormGroup = this.fb.group({
     username: ['', [ Validators.required, Validators.minLength(3)]],
@@ -27,6 +26,7 @@ export class LoginComponent {
   login(){
     const { username, password } = this.loginForm.value;
     this.authService.login( username, password )
+      .subscribe( rta => console.log( rta ));
     this.loginForm.reset();
     this.router.navigate(['/admin/list']);
   }
