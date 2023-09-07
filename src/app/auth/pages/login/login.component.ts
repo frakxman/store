@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
 
-import { Auth } from '../../interfaces/auth.interface';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -26,9 +24,9 @@ export class LoginComponent {
   login(){
     const { username, password } = this.loginForm.value;
     this.authService.login( username, password )
-      .subscribe( rta => console.log( rta ));
+      .subscribe( rta => console.log( rta.access_token ));
     this.loginForm.reset();
-    this.router.navigate(['/admin/list']);
+    // this.router.navigate(['/admin/list']);
   }
 
   register() {

@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, of, tap } from 'rxjs';
 
 import { environments } from 'src/environments/environments';
 
@@ -19,7 +18,7 @@ export class AuthService {
   constructor( private http: HttpClient ) { }
 
   login( username: string, password: string ) {
-    return this.http.post<User>(`${ this.baseUrl }/login`, { username, password });
+    return this.http.post<Auth>(`${ this.baseUrl }/login`, { username, password });
   }
 
   register( username: string, password: string, email: string ) {
