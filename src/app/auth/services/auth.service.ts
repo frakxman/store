@@ -14,7 +14,6 @@ export class AuthService {
 
   private baseUrl = `${environments.baseUrl}/users`;
 
-
   constructor( private http: HttpClient ) { }
 
   login( username: string, password: string ) {
@@ -26,7 +25,7 @@ export class AuthService {
   }
 
   profile() {
-    return this.http.get(`${ this.baseUrl}`);
+    return this.http.get<User[]>(`${ this.baseUrl}`);
   }
 
 }
