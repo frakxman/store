@@ -24,10 +24,9 @@ export class LoginComponent {
 
   login(){
     const { username, password } = this.loginForm.value;
-    this.authService.login( username, password )
-      .subscribe( rta => console.log( rta ));
+    this.authService.login( username, password );
     this.loginForm.reset();
-    // this.router.navigate(['/admin/list']);
+    this.router.navigate(['/admin/list']);
   }
 
   register() {

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { BehaviorSubject, map, tap } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 
 import { environments } from 'src/environments/environments';
 
@@ -17,11 +17,10 @@ import { UserService } from './user.service';
 export class AuthService {
 
   private baseUrl = `${environments.baseUrl}/users`;
-  private user = new BehaviorSubject<User | null>( null );
-  private usersId: User[] = [] ;
   private userId?: Auth | number; 
+  private users: User[] = [];
+  private _currentUser: boolean = false;
 
-  user$ = this.user.asObservable();
 
   private http = inject( HttpClient );
   private tokenService = inject( TokenService );
@@ -39,6 +38,17 @@ export class AuthService {
     return this.http.post<User>(`${ this.baseUrl}/signup`, { username, password, email });
   }
 
-  
+  userAuhtenticated(): Observable<boolean> {
+    this.userService.getAll()
+      .subscribe( userList => {this.users = userList} );
+      console.log( this. users );
+      for (let i = 0; i < this.users.length; i++) {
+        if( this.userId === this.users[i].userId ) {
+          console.log('inside for');
+           return of( true );
+        }
+      }
+      return of( false );
+  }
 
 }
