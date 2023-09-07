@@ -16,7 +16,7 @@ export class LoginComponent {
   private fb = inject( FormBuilder );
   private authService = inject( AuthService );
   private router = inject( Router );
-  token = '';
+  // token = '';
 
   public loginForm: FormGroup = this.fb.group({
     username: ['', [ Validators.required, Validators.minLength(3)]],
@@ -27,12 +27,8 @@ export class LoginComponent {
   login(){
     const { username, password } = this.loginForm.value;
     this.authService.login( username, password )
-      .subscribe( rta => {
-        this.token = rta.access_token;
-        localStorage.setItem('token', this.token );
-      });
     this.loginForm.reset();
-    this.router.navigate(['/auth/admin']);
+    this.router.navigate(['/admin/list']);
   }
 
   register() {
