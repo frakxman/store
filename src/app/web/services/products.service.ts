@@ -6,6 +6,7 @@ import { environments } from 'src/environments/environments';
 import { Product } from '../interfaces/product.interfaces';
 import { WarehouseService } from './warehouse.service';
 import { WareHouse } from '../interfaces/wareHouse';
+import { switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class ProductsService {
     },
     wareHouseId: 0,
   };
-  wareHouseId: number = 0;
+  wareHouseId = 0;
 
   constructor( 
     private http: HttpClient,
@@ -31,9 +32,13 @@ export class ProductsService {
     this.wareHouseService.getWareHouse()
       .subscribe( data => {
         this.wareHouse = data;
-        this.wareHouseId = this.wareHouse.wareHouseId;
-      }
-    )
+        console.log(this.wareHouse);
+      } );
+  }
+
+  getWareHouseId() {
+    this.wareHouseId = this.wareHouse.wareHouseId;
+    console.log(this.wareHouseId);
   }
 
   getByCategory( categoryName?: string, page?: number, limit?: number ) {
@@ -42,7 +47,7 @@ export class ProductsService {
       params = params.set('page', page);
       params = params.set('limit', limit);
     }
-    return this.http.get<Product[]>(`${this.baseUrl}/categories/4/${categoryName}`, { params });
+    return this.http.get<Product[]>(`${this.baseUrl}/categories/${ this.wareHouseId }/${categoryName}`, { params });
   }
 
   getAllProducts(page?: number, limit?: number) {

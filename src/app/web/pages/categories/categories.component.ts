@@ -43,6 +43,8 @@ export class CategoriesComponent {
           console.log( this.products );
       }
     }
+    this.productsService.getWareHouse();
+    this.productsService.getWareHouseId();
     return this.products;
   }
 
