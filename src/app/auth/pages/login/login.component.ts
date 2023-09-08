@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent {
 
   private fb = inject( FormBuilder );
   private authService = inject( AuthService );
+  private userService = inject( UserService );
   private router = inject( Router );
   token = '';
 
@@ -27,16 +29,9 @@ export class LoginComponent {
       .subscribe( rta => {
         this.token = rta.access_token;
       });
+    this.authService.login( username, password );
     this.loginForm.reset();
     // this.router.navigate(['/admin/list']);
-  }
-
-  getProfile() {
-    const userId: number = 0;
-    this.authService.profile()
-      .subscribe( rta => {
-        console.log( rta );
-      });
   }
 
   register() {

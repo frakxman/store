@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { environments } from 'src/environments/environments';
 import { CreateUserDTO, User } from '../interfaces/user.interface';
+import { toArray } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ import { CreateUserDTO, User } from '../interfaces/user.interface';
 export class UserService {
 
   private baseUrl = `${environments.baseUrl}/users`;
+  users: User[] = [];
+
 
   constructor( private http: HttpClient ) { }
 
