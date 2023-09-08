@@ -21,10 +21,7 @@ export class AuthService {
   private users: User[] = [];
   private _currentUser: boolean = false;
 
-
-  private http = inject( HttpClient );
-  private tokenService = inject( TokenService );
-  private userService = inject( UserService );
+  constructor( private http: HttpClient, private tokenService: TokenService ) { }
 
   login( username: string, password: string ) {
     return this.http.post<Auth>(`${ this.baseUrl }/login`, { username, password })
@@ -38,17 +35,8 @@ export class AuthService {
     return this.http.post<User>(`${ this.baseUrl}/signup`, { username, password, email });
   }
 
-  userAuhtenticated(): Observable<boolean> {
-    this.userService.getAll()
-      .subscribe( userList => {this.users = userList} );
-      console.log( this. users );
-      for (let i = 0; i < this.users.length; i++) {
-        if( this.userId === this.users[i].userId ) {
-          console.log('inside for');
-           return of( true );
-        }
-      }
-      return of( false );
+  profile() {
+    return this.http.get<User[]>(`${ this.baseUrl}`);
   }
 
 }
