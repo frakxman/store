@@ -21,7 +21,7 @@ export class AuthService {
   private users: User[] = [];
   private _currentUser: boolean = false;
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient, private tokenService: TokenService ) { }
 
   login( username: string, password: string ) {
     return this.http.post<Auth>(`${ this.baseUrl }/login`, { username, password })
