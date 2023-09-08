@@ -6,6 +6,7 @@ import { ProductsService } from '../../services/products.service';
 import { Router } from '@angular/router';
 import { Product } from '../../interfaces/product.interfaces';
 import { StoreService } from '../../services/store.service';
+import { WarehouseService } from '../../services/warehouse.service';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class CategoriesComponent {
   constructor( 
     private categoriesServices: CategoriesService,
     private productsService: ProductsService,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private wareHouseService: WarehouseService
   ) {
     this.myShoppingCart = this.storeService.getSoppingCart();
   }
@@ -40,11 +42,8 @@ export class CategoriesComponent {
       if ( index === i ) {
         this.productsService.getByCategory( categoriesNames[i], 1, 10 )
           .subscribe( data => this.products = data );
-          console.log( this.products );
       }
     }
-    this.productsService.getWareHouse();
-    this.productsService.getWareHouseId();
     return this.products;
   }
 
