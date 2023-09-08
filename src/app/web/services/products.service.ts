@@ -5,40 +5,24 @@ import { environments } from 'src/environments/environments';
 
 import { Product } from '../interfaces/product.interfaces';
 import { WarehouseService } from './warehouse.service';
-import { WareHouse } from '../interfaces/wareHouse';
-import { switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  baseUrl: string = environments.baseUrl;
-  wareHouse: WareHouse = {
-    warehouse: {
-      idalmacen: 0,
-      nomalmacen: '',
-    },
-    wareHouseId: 0,
-  };
-  wareHouseId = 0;
+  private baseUrl: string = environments.baseUrl;
+  private wareHouseId: number = 0;
 
   constructor( 
     private http: HttpClient,
     private wareHouseService: WarehouseService
-  ) {}
-
-  getWareHouse() {
+  ) {
     this.wareHouseService.getWareHouse()
-      .subscribe( data => {
-        this.wareHouse = data;
-        console.log(this.wareHouse);
-      } );
-  }
-
-  getWareHouseId() {
-    this.wareHouseId = this.wareHouse.wareHouseId;
-    console.log(this.wareHouseId);
+      .subscribe(({ warehouseId }) => {
+        this.wareHouseId = warehouseId;
+        console.log( this.wareHouseId );
+      });
   }
 
   getByCategory( categoryName?: string, page?: number, limit?: number ) {
@@ -56,15 +40,15 @@ export class ProductsService {
       params = params.set('page', page);
       params = params.set('limit', limit);
     }
-    return this.http.get<Product[]>(`${this.baseUrl}/products/4`, { params });
+    return this.http.get<Product[]>(`${this.baseUrl}/products/${ this.wareHouseId }`, { params });
   }
 
   getProductsByPage( page: number, limit: number ) {
-    return this.http.get<Product[]>(`${this.baseUrl}/products/4`, { params: { page, limit }});
+    return this.http.get<Product[]>(`${this.baseUrl}/products/${ this.wareHouseId }`, { params: { page, limit }});
   }
 
   getOneProduct(id: number) {
-    return this.http.get<Product>(`${this.baseUrl}/products/get-product/${id}/4`);
+    return this.http.get<Product>(`${this.baseUrl}/products/get-product/${id}/${ this.wareHouseId }`);
   }
 
   // uptdateProduct() {}
