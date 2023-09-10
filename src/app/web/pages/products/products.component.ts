@@ -27,7 +27,10 @@ export class ProductsComponent implements OnInit {
     Urls_Img: '',
     cantidad: 0,
     nomalmacen: '',
-    Description_Store: ''
+    Description_Store: '',
+    porcentaje: 0,
+    baseValue: 0,
+    taxValue: 0
   };
   page = 1;
   limit = 10;

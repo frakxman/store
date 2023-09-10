@@ -19,10 +19,7 @@ export class ProductsService {
     private wareHouseService: WarehouseService
   ) {
     this.wareHouseService.getWareHouse()
-      .subscribe(({ warehouseId }) => {
-        this.wareHouseId = warehouseId;
-        console.log( this.wareHouseId );
-      });
+      .subscribe(({ warehouseId }) => this.wareHouseId = warehouseId );
   }
 
   getByCategory( categoryName?: string, page?: number, limit?: number ) {
@@ -50,8 +47,4 @@ export class ProductsService {
   getOneProduct(id: number) {
     return this.http.get<Product>(`${this.baseUrl}/products/get-product/${id}/${ this.wareHouseId }`);
   }
-
-  // uptdateProduct() {}
-
-
 }
