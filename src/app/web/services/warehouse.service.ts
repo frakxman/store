@@ -15,6 +15,8 @@ export class WarehouseService {
 
   getWareHouse() {
     return this.http.get<WareHouse>(`${this.baseUrl}/warehouses/active-virtual-store`);
-   } 
+  } 
+
  
+  
 }
