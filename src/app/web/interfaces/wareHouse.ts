@@ -5,5 +5,5 @@ export interface House {
 
 export interface WareHouse {
     warehouse?: House;
-    wareHouseId: number;
+    warehouseId: number;
 }

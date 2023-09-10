@@ -12,5 +12,7 @@ export interface Product {
     nomalmacen: string;
     Description_Store: string;
     Urls_Img: string;
-    
+    porcentaje: number,
+    baseValue: number,
+    taxValue: number
 }

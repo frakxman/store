@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-edit',
@@ -8,6 +9,21 @@ import { FormBuilder } from '@angular/forms';
 })
 export class EditComponent {
 
-  private fb = inject( FormBuilder )
+  private fb = inject( FormBuilder );
+
+  public editProductForm: FormGroup = this.fb.group({
+    barcode: ['',[]],
+    descripcion: ['',[]],
+    Description_Store: ['',[]],
+    precioventa: ['',[]],
+    precioespecial1: ['',[]],
+    precioespecial2: ['',[]],
+    costo: ['',[]],
+    ultcosto: ['',[]]
+  });
+
+  editProduct() {
+    console.log(this.editProductForm.value);
+  }
 
 }
