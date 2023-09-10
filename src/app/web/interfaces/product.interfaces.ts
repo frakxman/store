@@ -16,3 +16,14 @@ export interface Product {
     baseValue: number,
     taxValue: number
 }
+
+export interface UpdateProductDTO {
+    barcode: string,
+    descripcion: string,
+    Description_Store: string,
+    precioventa: number,
+    precioespecial1: number,
+    precioespecial2: number,
+    costo: number,
+    ultcosto: number
+}

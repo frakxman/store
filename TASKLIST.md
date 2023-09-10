@@ -7,7 +7,7 @@
 -	Searcher: Desarrollar la funcionalidad de búsqueda tanto por producto como para las categorías
 -	Paginator: Desarrollar la funcionalidad de paginación para los productos como para las categorias
 -	Slider: Programar la funcionalidad basado en la extracción de las direcciones de la respuesta del api
--	Productos: Arreglar el problema de la carga inicial y el bloqueo del botón de menú
+-	Productos: Arreglar el problema de la carga inicial y el bloqueo del botón de menú ( El problema se da por la carga inicial del warehouse sí el valor asignado precarga es 0 revienta la aplicación y no se renderizan los productos, por otra parte si el valor esta quemado por defecto este si hace el cambio a la asignación como respuesta de la API)
 -	Footer: Organizar los tamaños para tablets y pantallas más grandes.
 -	Cart:  - Diseño y funcionalidad de la tabla donde se renderizan los productos seleccionados. -Hacer funcional el formulario de ingreso de datos de nuevos clientes.
 -	Product: Crear la página de muestra especifica de cada producto.

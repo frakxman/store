@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -23,7 +22,7 @@ export class EditComponent {
   });
 
   editProduct() {
-    console.log(this.editProductForm.value);
+    return 
   }
 
 }
