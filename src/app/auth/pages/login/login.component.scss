@@ -56,10 +56,11 @@ body {
     background-color: #F7F7F7;
     border: none;
     border-radius: 8px;
-    height: 30px;
+    height: 11%;
     font-size: var(--md);
     padding: 6px;
     margin-bottom: 12px;
+    outline: none;
 }
 .input-email {
     margin-bottom: 22px;
@@ -99,4 +100,28 @@ body {
 .login-button {
     margin-top: 14px;
     margin-bottom: 30px;
+}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    .searcher-bar {
+        width: 100%;
+    }
+    .searcher-bar_img {
+        display: block;
+        height: 30px;
+    }
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+    .searcher-bar {
+        border-radius: 5px;
+        flex-grow: 1;
+        width: 100%;
+    }
+    .searcher-bar_img {
+        display: block;
+        height: 30px;
+    }
 }

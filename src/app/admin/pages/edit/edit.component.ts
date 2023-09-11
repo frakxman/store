@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit',
@@ -11,14 +11,14 @@ export class EditComponent {
   private fb = inject( FormBuilder );
 
   public editProductForm: FormGroup = this.fb.group({
-    barcode: ['',[]],
-    descripcion: ['',[]],
-    Description_Store: ['',[]],
-    precioventa: ['',[]],
-    precioespecial1: ['',[]],
-    precioespecial2: ['',[]],
-    costo: ['',[]],
-    ultcosto: ['',[]]
+    barcode: ['',[ Validators.required ]],
+    descripcion: ['',[ Validators.required ]],
+    Description_Store: ['',[ Validators.required ]],
+    precioventa: ['',[ Validators.required ]],
+    precioespecial1: ['',[ Validators.required ]],
+    precioespecial2: ['',[ Validators.required ]],
+    costo: ['',[ Validators.required ]],
+    ultcosto: ['',[ Validators.required ]]
   });
 
   editProduct() {
