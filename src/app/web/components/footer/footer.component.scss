@@ -35,11 +35,30 @@ img {
         height: 200px;
         margin: 1% 1%;
     }
-
-    
+    img {
+        width: 30%;
+        margin: 0 35%;
+    }
+    .syscomp img {
+        margin-left: 38%;
+    }
 }
 
 /* Large and up */
 @media screen and (min-width: 64em) {
-    
+    .footer {
+        width: 98%;
+        height: 200px;
+        margin: 1%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    img {
+        width: 100%;
+        margin: 0 auto;
+    }
+    // .syscomp img {
+    //     margin-left: 38%;
+    // }
 }

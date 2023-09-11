@@ -19,6 +19,8 @@ export class CategoriesComponent {
   myShoppingCart: Product[] = [];
   categories: Categories[] = [];
   products: Product[] = [];
+  page = 1;
+  limit = 10;
   
   constructor( 
     private categoriesServices: CategoriesService,
@@ -30,7 +32,7 @@ export class CategoriesComponent {
   }
 
   ngOnInit(): void {
-      this.categoriesServices.getAllCategories()
+      this.categoriesServices.getAllCategories( this.page, this.limit )
         .subscribe( data => {
           this.categories = data;
         });
