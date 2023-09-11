@@ -3,8 +3,14 @@
         <button (click)="toggleMenu()">
             <img src="../../../assets/logo_celulares.png" alt="menu" class="logo-menu">
         </button>
-        <div class="searcher-bar">
-            <app-searcher></app-searcher>
+        <div class="searcher">
+            <div>
+                <app-searcher></app-searcher>
+            </div>
+
+            <div>
+                <app-paginator></app-paginator>
+            </div>
         </div>
         <div class="info">
             <div class="account">conexionPos@syscomp.com</div>

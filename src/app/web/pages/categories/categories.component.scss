@@ -16,21 +16,24 @@ h2 {
     align-items: center;
 }
 
-// .primary-button {
-//     background-color: #FF2400;
-//     border-radius: 8px;
-//     border: none;
-//     color: #FFFFFF;
-//     display: block;
-//     justify-content: center;
-//     align-items: center;
-//     max-width: 100%;
-//     cursor: pointer;
-//     font-size: var(--md);
-//     font-weight: bold;
-//     height: 35px;
-//     margin: 5% 15%;
-// }
+.categoryList li {
+    margin: 0px auto;
+}
+
+.primary-button {
+    background-color: #FF2400;
+    border-radius: 8px;
+    border: none;
+    color: #FFFFFF;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    cursor: pointer;
+    font-size: var(--md);
+    font-weight: bold;
+    height: 35px;
+}
 
 .products--grid {
     margin: 5% 1%;

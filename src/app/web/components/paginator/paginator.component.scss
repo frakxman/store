@@ -22,9 +22,16 @@ img {
     border-radius: 8px;
     border: none;
     color: #FFFFFF;
-    width: 15%;
+    width: 30%;
     cursor: pointer;
     font-size: var(--md);
     font-weight: bold;
     height: 20px;
+}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    img {
+        margin: 0 auto;
+    }
 }

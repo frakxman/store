@@ -41,7 +41,7 @@ export class CategoriesComponent {
     for( let i = 0; i <= this.categories.length; i++ ) {
       if ( index === i ) {
         this.productsService.getByCategory( categoriesNames[i], 1, 10 )
-          .subscribe( data => this.products = data );
+          .subscribe( products => this.products = products );
       }
     }
     return this.products;
@@ -51,6 +51,4 @@ export class CategoriesComponent {
     this.storeService.addProduct(product);
     // this.total = this.storeService.getTotal();
   }
-
-
 }

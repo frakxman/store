@@ -70,6 +70,13 @@
         width: 100px;
         height: 100px;
     }
+
+    .searcher{
+        border: 1px solid #fff;
+        border-radius: 5px;
+        width: 50%;
+    }
+    
     .account {
         font-size: 1em;
         display: none;
@@ -93,11 +100,6 @@
     }
 }
 
-.searcher{
-    border: 1px solid #fff;
-    border-radius: 5px;
-    width: 35%;
-}
 
 .hide-mobile {
     background-color: #A8351B;
@@ -179,5 +181,10 @@
         }
     .hide-mobile {
         display: block;
+    }
+    .searcher{
+        border: 1px solid #fff;
+        border-radius: 5px;
+        width: 45%;
     }
 }
