@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { Categories } from '../../interfaces/categories.interfaces';
 import { CategoriesService } from '../../services/categories.service';
 import { ProductsService } from '../../services/products.service';
-import { Router } from '@angular/router';
 import { Product } from '../../interfaces/product.interfaces';
 import { StoreService } from '../../services/store.service';
 import { WarehouseService } from '../../services/warehouse.service';
@@ -26,7 +25,6 @@ export class CategoriesComponent {
     private categoriesServices: CategoriesService,
     private productsService: ProductsService,
     private storeService: StoreService,
-    private wareHouseService: WarehouseService
   ) {
     this.myShoppingCart = this.storeService.getSoppingCart();
   }
@@ -42,7 +40,7 @@ export class CategoriesComponent {
     let categoriesNames = this.categories.map((category) => category.nombre );
     for( let i = 0; i <= this.categories.length; i++ ) {
       if ( index === i ) {
-        this.productsService.getByCategory( categoriesNames[i], 1, 10 )
+        this.productsService.getByCategory( categoriesNames[i], this.page, this.limit, '' )
           .subscribe( products => this.products = products );
       }
     }

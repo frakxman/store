@@ -28,11 +28,12 @@ export class ProductsService implements OnInit {
     });
   }
 
-  getByCategory( categoryName?: string, page?: number, limit?: number, descripcion?: string ) {
+  getByCategory( categoryName: string, page: number, limit: number, descripcion: string ) {
     let params = new HttpParams();
     if ( page && limit ) {
       params = params.set('page', page);
       params = params.set('limit', limit);
+      params = params.set('descripcion', descripcion);
     }
     return this.http.get<Product[]>(`${this.baseUrl}/categories/${ this.wareHouseId }/${categoryName}`, { params });
   }

@@ -9,6 +9,11 @@
 .searcher-bar_input {
     width: 100%;
     border-radius: 5px;
+    outline: none;
+}
+
+.searcher-bar_button {
+    background: transparent;
 }
 
 .searcher-bar_img {
