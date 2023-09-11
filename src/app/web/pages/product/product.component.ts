@@ -21,7 +21,10 @@ export class ProductComponent {
     Urls_Img: '',
     cantidad: 0,
     nomalmacen: '',
-    Description_Store: ''
+    Description_Store: '',
+    porcentaje: 0,
+    baseValue: 0,
+    taxValue: 0
   }
   
   @Output() addedProduct = new EventEmitter<Product>();

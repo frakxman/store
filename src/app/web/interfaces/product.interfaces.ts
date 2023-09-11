@@ -12,5 +12,18 @@ export interface Product {
     nomalmacen: string;
     Description_Store: string;
     Urls_Img: string;
-    
+    porcentaje: number,
+    baseValue: number,
+    taxValue: number
+}
+
+export interface UpdateProductDTO extends Omit<Product, 'idproducto' | 'barcode' | 'descripcion' | 'Description_Store' | 'precioventa' | 'costo' | 'ultcosto'> {
+    precioespecial1: number,
+    precioespecial2: number,
+    // barcode: string,
+    // descripcion: string,
+    // Description_Store: string,
+    // precioventa: number,
+    // costo: number,
+    // ultcosto: number
 }

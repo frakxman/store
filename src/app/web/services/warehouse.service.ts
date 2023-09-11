@@ -14,7 +14,6 @@ export class WarehouseService {
   constructor( private http: HttpClient ) { }
 
   getWareHouse() {
-    return this.http.get<WareHouse>(`${this.baseUrl}/warehouse/active-virtual-store`);
-   } 
- 
+    return this.http.get<WareHouse>(`${this.baseUrl}/warehouses/active-virtual-store`);
+  } 
 }

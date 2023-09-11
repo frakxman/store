@@ -1,1 +1,72 @@
-<p>edit works!</p>
+
+<h1>Editar Producto</h1>
+<div class="edit">
+    <div class="container">
+        <form [formGroup]="editProductForm" (ngSubmit)="editProduct()">
+            <!-- barcode -->
+            <label for="barcode">Código de barras</label>
+            <input
+                type="text"
+                id="barcode"
+                formControlName="barcode"
+            >
+            <!-- descripcion -->
+            <label for="descripcion">Nombre del producto</label>
+            <input
+                type="text"
+                id="descripcion"
+                formControlName="descripcion"
+            >
+            <!-- Description_Store -->
+            <label for="Description_Store">Descripcion del producto</label>
+            <input
+                type="text"
+                id="Description_Store"
+                formControlName="Description_Store"
+            >
+                <!-- precioventa -->
+            <label for="precioventa">Precio de venta</label>
+            <input
+                type="number"
+                id="precioventa"
+                formControlName="precioventa"
+            >
+            <!-- precioespecial1 -->
+            <label for="precioespecial1">Precio especial</label>
+            <input
+                type="number"
+                id="precioespecial1"
+                formControlName="precioespecial1"
+            >
+            <!-- precioespecial2 -->
+            <label for="precioespecial2">Segundo precio especial</label>
+            <input
+                type="number"
+                id="precioespecial2"
+                formControlName="precioespecial2"
+            >
+            <!-- costo -->
+            <label for="costo">Costo</label>
+            <input
+                type="number"
+                id="costo"
+                formControlName="costo"
+            >
+            <!-- ultcosto -->
+            <label for="ultcosto">Último costo</label>
+            <input
+                type="number"
+                id="ultcosto"
+                formControlName="ultcosto"
+            >
+        
+            <button 
+                type="submit"
+                class="primary-button login-button"
+                [disabled]="editProductForm.invalid"
+                >
+                Guardar Cambios
+            </button>
+        </form>
+    </div>
+</div>

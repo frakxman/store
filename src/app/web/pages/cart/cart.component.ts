@@ -32,7 +32,6 @@ export class CartComponent implements OnInit {
     bill: ['', [ Validators.required ]]
   });
 
-
   constructor( private storeService: StoreService ) {}
 
   ngOnInit(): void {
@@ -46,8 +45,8 @@ export class CartComponent implements OnInit {
     console.log(this.createUserForm.value);
   }
 
-  getQuantityofProducts() {
-    
+  getQuantityOfProducts() {
+    console.log(this.products);
   }
 
 }
