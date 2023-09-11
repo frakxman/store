@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environments } from 'src/environments/environments';
@@ -9,7 +9,7 @@ import { WarehouseService } from './warehouse.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class ProductsService implements OnInit {
 
   private baseUrl: string = environments.baseUrl;
   private wareHouseId = 1;
@@ -17,13 +17,15 @@ export class ProductsService {
   constructor( 
     private http: HttpClient,
     private wareHouseService: WarehouseService
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.wareHouseService.getWareHouse()
       .subscribe(({ warehouseId }) => {
-        console.log( warehouseId )
+        console.log( warehouseId );
         this.wareHouseId = warehouseId
-        console.log( this.wareHouseId )
-      });
+        console.log( this.wareHouseId );
+    });
   }
 
   getByCategory( categoryName?: string, page?: number, limit?: number ) {
@@ -53,7 +55,7 @@ export class ProductsService {
     return this.http.get<Product>(`${this.baseUrl}/products/get-product/${id}/${ this.wareHouseId }`);
   }
 
-  updateProduct(id: number, dto: any ) {
+  updateProduct(id: number, dto: UpdateProductDTO ) {
     return this.http.put<UpdateProductDTO>(`${this.baseUrl}/products/update-product/${id}`, dto )
   }
 }

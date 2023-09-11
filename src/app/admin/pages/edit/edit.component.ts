@@ -22,7 +22,7 @@ export class EditComponent {
   });
 
   editProduct() {
-    return 
+    console.log(this.editProductForm.value);
   }
 
 }
