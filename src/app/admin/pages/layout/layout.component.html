@@ -1,11 +1,28 @@
 <div class="container">
-    <div class="navbar">
+    <div class="navbar"></div>
+    <div class="sidebar">
         <h2>Menu</h2>
         <ul>
-            <li>Cargar Imagen</li>
-            <li>Editar Producto</li>
-            <li>Lista de Productos</li>
-            <li>Salir</li>
+            <li>
+                <a [routerLink]="'/admin/img'">
+                    Cargar Imagen
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="'/admin/edit'">
+                    Editar Producto
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="'/admin/list'">
+                    Lista de Productos
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="'/auth/login'">
+                    Salir
+                </a>
+            </li>
         </ul>
     </div>
     <div class="main">

@@ -1,11 +1,12 @@
 .container {
     display: flex;
-    
+    margin: 2%;
 }
 
 .navbar {
     border: 1px solid red;
     width: 25%;
+    margin: 0 auto;
 }
 
 .main {
