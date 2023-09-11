@@ -65,7 +65,6 @@ export class ProductsComponent implements OnInit {
         this.productChosen = data;
         // images = this.productChosen.Urls_Img.split(',');
         // console.log( images[1] );
-        console.log(this.productChosen);
       });
   }
 
