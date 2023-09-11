@@ -28,7 +28,7 @@ export class ProductsService implements OnInit {
     });
   }
 
-  getByCategory( categoryName?: string, page?: number, limit?: number ) {
+  getByCategory( categoryName?: string, page?: number, limit?: number, descripcion?: string ) {
     let params = new HttpParams();
     if ( page && limit ) {
       params = params.set('page', page);
