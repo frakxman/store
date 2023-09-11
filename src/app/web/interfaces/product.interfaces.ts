@@ -17,13 +17,13 @@ export interface Product {
     taxValue: number
 }
 
-export interface UpdateProductDTO {
-    barcode: string,
-    descripcion: string,
-    Description_Store: string,
-    precioventa: number,
+export interface UpdateProductDTO extends Omit<Product, 'idproducto' | 'barcode' | 'descripcion' | 'Description_Store' | 'precioventa' | 'costo' | 'ultcosto'> {
     precioespecial1: number,
     precioespecial2: number,
-    costo: number,
-    ultcosto: number
+    // barcode: string,
+    // descripcion: string,
+    // Description_Store: string,
+    // precioventa: number,
+    // costo: number,
+    // ultcosto: number
 }
