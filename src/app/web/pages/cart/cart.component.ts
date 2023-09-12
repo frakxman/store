@@ -55,14 +55,4 @@ export class CartComponent implements OnInit {
   getQuantityOfProducts() {
     console.log(this.products);
   }
-
-  getDepartments() {
-    this.customerService.getDepartments()
-      .subscribe( rta => console.log( rta ));
-  }
-
-  getMunicipalities() {
-    
-  }
-
 }

@@ -53,16 +53,17 @@
                 placeholder="C.C o Nit"
             >  
         
-            <label for="digit">Codigo de verificacion</label>
+            <label for="digit">Código de verificacion</label>
             <input
                 type="number"
                 formControlName="digit"
-                placeholder="0" 
+                placeholder="Digito de Verificacion"
+                class="digito"
             >
 
             <label for="document">Tipo de Documento</label>
             <select name="document"  id="document" formControlName="document">
-                <option value="">Seleccione una opción</option>
+                <option value="">Tipo de Documento</option>
                 <option value="regCiv">Registro Civil</option>
                 <option value="tI">Tarjeta de Identidad</option>
                 <option value="cedCiu">Cédula de Ciudadanía</option>
@@ -156,6 +157,6 @@
             </select>
         </div>
 
-        <input type="submit" value="Guardar" class="primary-button login-button" >
+        <input type="submit" value="Guardar" class="primary-button" [disabled]="createUserForm.invalid">
     </form>
 </div>
