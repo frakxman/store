@@ -30,9 +30,9 @@ h2 {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    padding: 2% 1%;
-    height: 155vh;
-    width: 300px;
+    padding: 2% 0;
+    height: 158vh;
+    width: 98%;
 }
 
 .client-form h2 {
@@ -83,45 +83,50 @@ input {
         margin: 0;
     }
     .client-form {
-        width: 96%;
+        width: 98%;
         margin: 0 1%;
-        height: 133vh;
+        height: 70vh;
     }
-
     .first-row, .localization {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-
-    .first-row label {
-        margin: 1%;
-    }
-
     .first-row input, select {
         width: 40%;
     }
-
-    .prinicpal-row {
+    .principal-row {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         grid-gap: 2%;
-    }
-
-    .prinicpal-row input {
-       width: 50%;
-    }
-
-    .localization {
-
+        height: auto;
+        margin: 1%;
     }
 }
 
 /* Large and up */
 @media screen and (min-width: 64em) {
-    .container {
-        margin: 0 auto;
-        width: 80%;
-        height: 100vh;
+    h2 {
+        margin: 0;
+    }
+    .client-form {
+        width: 98%;
+        margin: 0 1%;
+        height: 55vh;
+    }
+    .first-row, .localization {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .first-row input, select {
+        width: 40%;
+    }
+    .principal-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 2%;
+        height: auto;
+        margin: 1%;
     }
 }
