@@ -128,17 +128,23 @@
         <div class="localization">
             <label for="country">Pais</label>
             <select name="country" id="country" formControlName="country">
-                <option value=""></option>
+                <option *ngFor="let country of countries; index as i" [value]="country.idpais">
+                    {{ country.nompais }}
+                </option>
             </select>
         
             <label for="department">Departamento</label>
             <select name="department" id="department" formControlName="department">
-                <option value=""></option>
+                <option *ngFor="let department of departments; index as i" [value]="department.iddepto">
+                    {{ department.nomdepartamento }}
+                </option>
             </select>
         
-            <label for="town"></label>
+            <label for="town">Municipalities</label>
             <select name="town" id="town" formControlName="town">
-                <option value=""></option>
+                <option *ngFor="let municipality of municipalities; index as i" [value]="municipality.idmunicipio">
+                    {{ municipality.nommunicipio }}
+                </option>
             </select>
         </div>
         <div class="last-row">

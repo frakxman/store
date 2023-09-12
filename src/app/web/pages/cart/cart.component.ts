@@ -2,6 +2,10 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../../interfaces/product.interfaces';
 import { StoreService } from '../../services/store.service';
+import { CustomerService } from '../../services/customer.service';
+import { Country } from '../../interfaces/countries';
+import { Departments } from '../../interfaces/departments';
+import { Municipalities } from '../../interfaces/municipalities';
 
 @Component({
   selector: 'app-cart',
@@ -12,6 +16,9 @@ export class CartComponent implements OnInit {
 
   private fb = inject( FormBuilder );
   products: Product[] = [];
+  countries: Country[] = [];
+  departments: Departments[] = [];
+  municipalities: Municipalities[] = [];
 
   public createUserForm: FormGroup = this.fb.group({
     nit: ['', [ Validators.required ]],
@@ -32,13 +39,13 @@ export class CartComponent implements OnInit {
     bill: ['', [ Validators.required ]]
   });
 
-  constructor( private storeService: StoreService ) {}
+  constructor( private storeService: StoreService, private customerService: CustomerService ) {}
 
   ngOnInit(): void {
-    this.storeService.myCart$
-      .subscribe( products => {
-        this.products = products
-      });
+    this.storeService.myCart$.subscribe( products => this.products = products );
+    this.customerService.getCountries().subscribe( countries => this.countries = countries );
+    this.customerService.getDepartments().subscribe( departments => this.departments = departments );
+    this.customerService.getMunicipalities().subscribe( municipalities => this.municipalities = municipalities );
   }
 
   createUser() {
@@ -47,6 +54,15 @@ export class CartComponent implements OnInit {
 
   getQuantityOfProducts() {
     console.log(this.products);
+  }
+
+  getDepartments() {
+    this.customerService.getDepartments()
+      .subscribe( rta => console.log( rta ));
+  }
+
+  getMunicipalities() {
+    
   }
 
 }
