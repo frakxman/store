@@ -3,6 +3,9 @@ h2 {
     font-size: 1.5em;
     margin: 2%;
 }
+img {
+    width: 100%;
+}
 .form {
     width: 100%;
     margin: 3%;
@@ -11,4 +14,24 @@ h2 {
 
 .input-text, .input-file {
     margin: 1%;
+}
+
+.input-text label {
+    width: 96%;
+    margin: 2% 0;
+    border-radius: 5px;
+    outline: none;
+    height: 5%;
+}
+
+.input-text input {
+    width: 94%;
+}
+
+.input-file {
+    width: 96%;
+    margin: 2% 1%;
+    border-radius: 5px;
+    outline: none;
+    height: 5%;
 }
