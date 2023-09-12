@@ -1,32 +1,36 @@
 <div class="container">
-    <div class="navbar"></div>
-    <div class="sidebar">
-        <h2>Menu</h2>
-        <ul>
-            <li>
-                <a [routerLink]="'/admin/img'">
-                    Cargar Imagen
-                </a>
-            </li>
-            <li>
-                <a [routerLink]="'/admin/edit'">
-                    Editar Producto
-                </a>
-            </li>
-            <li>
-                <a [routerLink]="'/admin/list'">
-                    Lista de Productos
-                </a>
-            </li>
-            <li>
-                <a [routerLink]="'/auth/login'">
-                    Salir
-                </a>
-            </li>
-        </ul>
+    <div class="navbar">
+        <app-navbar></app-navbar>
     </div>
     <div class="main">
-        <router-outlet></router-outlet>
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li>
+                    <a [routerLink]="'/admin/img'">
+                        Cargar Imagen
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="'/admin/edit'">
+                        Editar Producto
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="'/admin/list'">
+                        Lista de Productos
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="'/auth/login'">
+                        Salir
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="page">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </div>
 

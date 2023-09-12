@@ -8,6 +8,7 @@ import { EditComponent } from './pages/edit/edit.component';
 import { ImgComponent } from './pages/img/img.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ProductsComponent } from './pages/products/products.component';
     LayoutComponent,
     ProductsComponent,
     EditComponent,
-    ImgComponent
+    ImgComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,

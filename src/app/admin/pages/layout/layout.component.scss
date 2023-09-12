@@ -1,15 +1,51 @@
-.container {
-    display: flex;
+h2 {
+    text-align: center;
+    font-size: 2em;
     margin: 2%;
 }
-
-.sidebar {
-    border: 1px solid red;
-    width: 25%;
-    margin: 0 auto;
+.container {
+    display: block;
+    margin: 2%;
+}
+.navbar {
+    width: 100%;
 }
 
 .main {
-    border: 1px solid blue;
-    width: 75%;
+    display: flex;
+}
+
+.sidebar {
+    display: none;
+}
+
+.page {
+    width: 100%;
+}
+
+// tablets
+@media screen and (min-width: 40em) and (max-width: 63.9em){
+    .sidebar {
+        border: 1px solid red;
+        display: block;
+        width: 20%;
+        margin: 0 auto;
+    }
+    .page {
+        width: 80%;
+    }
+    
+}
+
+// web
+@media screen and (min-width: 64em){
+    .sidebar {
+        border: 1px solid red;
+        display: block;
+        width: 20%;
+        margin: 0 auto;
+    }
+    .page {
+        width: 80%;
+    }
 }
