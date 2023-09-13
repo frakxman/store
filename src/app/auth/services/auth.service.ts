@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable, of, tap } from 'rxjs';
 
 import { environments } from 'src/environments/environments';
@@ -8,7 +8,6 @@ import { Auth } from '../interfaces/auth.interface';
 import { User } from '../interfaces/user.interface';
 
 import { TokenService } from './token.service';
-import { UserService } from './user.service';
 
 
 @Injectable({
@@ -35,8 +34,24 @@ export class AuthService {
     return this.http.post<User>(`${ this.baseUrl}/signup`, { username, password, email });
   }
 
-  profile() {
-    return this.http.get<User[]>(`${ this.baseUrl}`);
+  getUsers() {
+    return this.http.get<User[]>(`${ this.baseUrl}/users`).subscribe( resp => this.users = resp );
   }
 
+  getCurrentUser() {
+    for (let i = 0; i < this.users.length; i++) {
+      if( this.userId == this.users[i].userId )
+        this._currentUser = true;
+    }
+  }
+
+  userValidated(): Observable<boolean> {
+    if( !this.tokenService.getToken() ) return of( false );
+    
+    if( this._currentUser ) {
+      return of( true );
+    }
+   
+    return of( false );
+  }
 }

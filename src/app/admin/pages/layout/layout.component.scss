@@ -22,7 +22,6 @@ h2 {
     border-radius: 5px;
     box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
 }
-
 // tablets
 @media screen and (min-width: 40em) and (max-width: 63.9em){
     .sidebar {
@@ -31,6 +30,19 @@ h2 {
         border: 1px solid white;
         border-radius: 5px;
         box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
+    }
+    .sidebar li {
+        border: 1px solid white;
+        border-radius: 5px;
+        padding: 5%;
+        margin: 2%;
+        text-align: center;
+        width: 85%;
+    }
+    
+    .sidebar a {
+        text-decoration: none;
+        color: #fff;
     }
     .page {
         width: 80%;
@@ -49,6 +61,20 @@ h2 {
         border: 1px solid white;
         border-radius: 5px;
         box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
+    }
+
+    .sidebar li {
+        border: 1px solid white;
+        border-radius: 5px;
+        padding: 5%;
+        margin: 2%;
+        text-align: center;
+        width: 85%;
+    }
+    
+    .sidebar a {
+        text-decoration: none;
+        color: #fff;
     }
     .page {
         width: 80%;
