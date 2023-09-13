@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environments } from 'src/environments/environments';
+
 import { Country } from '../interfaces/countries';
 import { Municipalities } from '../interfaces/municipalities';
 import { Departments } from '../interfaces/departments';
+import { Customer } from '../interfaces/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +27,10 @@ export class CustomerService {
 
   getMunicipalities() {
     return this.http.get<Municipalities[]>(`${ this.baseUrl}/municipalities`);
+  }
+
+  createCustomer( body: Customer ) {
+    return this.http.post<Customer>(`${ this.baseUrl}/customers`, body );
   }
 
 }

@@ -20,6 +20,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { CustomerComponent } from './components/customer/customer.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ProductComponent,
     ProductsComponent,
     FooterComponent,
+    CustomerComponent,
   ],
   imports: [
     CommonModule,

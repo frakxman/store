@@ -1,0 +1,114 @@
+h2 {
+    text-align: center;
+    font-size: 2em;
+    margin: 2% 0;
+}
+
+.client-form {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
+    margin: 2% auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 2% 0;
+    height: 158vh;
+    width: 98%;
+}
+
+.client-form h2 {
+    margin: 0 0 3% 0;
+}
+
+label {
+    margin: 1% 0 0 1%;
+}
+
+select {
+    border-radius: 5px;
+    width: 98%;
+    height: 28px;
+    outline: none;
+    margin: 1%;
+}
+input {
+    height: 20px;
+    border-radius: 5px;
+    outline: none;
+    margin: 1%;
+    width: 96%;
+}
+
+.first-row {
+    display: block;
+    width: 100%;
+}
+
+.primary-button {
+    background-color: #FF2400;
+    border-radius: 8px;
+    border: none;
+    color: #FFFFFF;
+    width: 98%;
+    cursor: pointer;
+    font-size: var(--md);
+    font-weight: bold;
+    height: 35px;
+    margin: 2% 1%;
+}
+
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    h2 {
+        margin: 0;
+    }
+    .client-form {
+        width: 98%;
+        margin: 0 1%;
+        height: 70vh;
+    }
+    .first-row, .localization {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .first-row input, select {
+        width: 40%;
+    }
+    .principal-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 2%;
+        height: auto;
+        margin: 1%;
+    }
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+    h2 {
+        margin: 0;
+    }
+    .client-form {
+        width: 98%;
+        margin: 0 1%;
+        height: 55vh;
+    }
+    .first-row, .localization {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .first-row input, select {
+        width: 40%;
+    }
+    .principal-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 2%;
+        height: auto;
+        margin: 1%;
+    }
+}
