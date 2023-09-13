@@ -5,6 +5,9 @@ h2 {
 }
 .add-product{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40% 15%;
 }
 .cart-table {
     margin: 1%;
@@ -13,7 +16,82 @@ h2 {
     box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
 }
 .default {
+    width: 98%;
+    margin: 1%;
+    height: 2%;
+}
+tr {
+    border: 1px solid white;
+    border-radius: 5px;
     display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2%;
+    margin: 1%;
+    width: 98%;
+}
+th {
+    color: #fff;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2%;
+    width: 100%;
+    margin-left: 15%;
+}
+td {
+    height: 75px;
+}
+.totalForProduct {
+    border: 1px solid green;
+    margin: 43% 8%;
+    height: 20px;
+}
+img {
+    width:70px;
+    height:70px;
+    margin: 4% 2%;
+}
+.description {
+    display: none;
+}
+.delete {
+    background-color: transparent;
+    border: none;
+}
+.totalFact {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2%;
+    width: 98%;
+}
+.totalFact-td {
+    width: 40px;
+}
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    tr {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    .totalFact {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2%;
+        margin-left: 49%;
+        width: 50%;
+    }
+    .description {
+        display: block;
+    }
+}
+/* Large and up */
+@media screen and (min-width: 64em) {
+    .totalFact {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2%;
+        margin-left: 49%;
+        width: 50%;
+    }
+    .description {
+        display: block;
+    }
 }

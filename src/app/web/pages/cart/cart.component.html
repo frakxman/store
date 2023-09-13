@@ -1,42 +1,45 @@
 <div class="cart-table">
     <h2>Carrito</h2>
-    <table class="default">
+    <table class="default" *ngIf="products.length">
         <tr>
             <th>Producto</th>
-            <th>Descripción</th>
+            <th class="description">Descripción</th>
             <th>Cantidad</th>
-            <th>Precio</th>
+            <th class="description">Precio</th>
             <th>Total</th>
             <th>Acción</th>
         </tr>
         <tr *ngFor="let product of products">
             <td>
-                <img src="../../../assets/shopping-cart-light.svg" alt="">
+                <img src="assets/logo_celulares.png" alt="">
             </td>
-            <td>
-           {{ product.descripcion }}
+            <td class="description">
+                {{ product.descripcion}}
             </td>
             <td>
                 <div class="add-product">
                     <button>-</button>
                     <p>
-                        
+                       1 
                     </p>
                     <button>+</button>
                 </div>
             </td>
-            <td>{{ product.precioventa}}</td>
-            <td></td>
+            <td class="description">
+                {{ product.precioventa }}
+            </td>
+            <td class="totalForProduct">
+               $ {{ product.precioventa }}
+            </td>
             <td>
-                <button>
-                    Eliminar
+                <button (click)="getQuantityOfProduct()" class="delete">
+                    <img src="assets/logo_celulares.png" alt="">
                 </button>
             </td>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr class="totalFact">
+            <td class="totalFact-td">Total</td>
+            <td class="totalFact-td">$$$</td>
         </tr>
     </table>
 </div>
