@@ -19,6 +19,10 @@ export class CartComponent implements OnInit {
     this.storeService.myCart$.subscribe( products => this.products = products );
   }  
 
+  extractProductId() {
+    let productId = this.products.map((productId) => productId.idproducto );
+    
+  }
   getQuantityOfProduct() {
     console.log()
   }
