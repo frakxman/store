@@ -32,6 +32,8 @@ tr {
 th {
     color: #fff;
     display: grid;
+    font-size: 1.1em;
+    font-weight: 600;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2%;
     width: 100%;

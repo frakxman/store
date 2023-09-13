@@ -12,7 +12,6 @@ export class CartComponent implements OnInit {
 
   products: Product[] = [];
   productById: number[] = [];
-  accumProduct = 0;
 
   constructor( private storeService: StoreService ) {}
 
@@ -21,11 +20,14 @@ export class CartComponent implements OnInit {
   }  
 
   getQuantityOfProduct() {
-    if( this.products.length > 0 ) {
-      for (let i = 0; i < this.products.length; i++) {
-        this.productById.push( this.products[i].idproducto )
-      }
-    }
-    console.log( this.productById );
+    console.log()
+  }
+
+  addUnitProduct() {
+    console.log()
+  }
+
+  restUnitProduct() {
+    console.log()
   }
 }
