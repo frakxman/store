@@ -11,7 +11,9 @@
         </tr>
         <tr *ngFor="let product of products">
             <td>
-                <img src="assets/logo_celulares.png" alt="">
+                <a [routerLink]="'store/info'">
+                    <img src="assets/logo_celulares.png" alt="">
+                </a>
             </td>
             <td class="description">
                 {{ product.descripcion}}
@@ -22,7 +24,7 @@
                     <p>
                         &nbsp;1&nbsp; 
                     </p>
-                    <button>+</button>
+                    <button (click)="totalProductById()">+</button>
                 </div>
             </td>
             <td class="description">
@@ -32,7 +34,7 @@
                $ {{ product.precioventa }}
             </td>
             <td>
-                <button (click)="extractProductId()" class="delete">
+                <button class="delete">
                     <img src="assets/logo_celulares.png" alt="">
                 </button>
             </td>

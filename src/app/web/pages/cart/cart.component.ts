@@ -11,7 +11,6 @@ import { StoreService } from '../../services/store.service';
 export class CartComponent implements OnInit {
 
   products: Product[] = [];
-  productById: number[] = [];
 
   constructor( private storeService: StoreService ) {}
 
@@ -19,19 +18,22 @@ export class CartComponent implements OnInit {
     this.storeService.myCart$.subscribe( products => this.products = products );
   }  
 
-  extractProductId() {
+  // Saber cuantos productos son iguales o tengan el mismo identificador
+  totalProductById() {
     let productId = this.products.map((productId) => productId.idproducto );
-    
-  }
-  getQuantityOfProduct() {
-    console.log()
+    console.log( productId );
   }
 
-  addUnitProduct() {
-    console.log()
-  }
+  // Saber cuanto es el valor total por producto
+  totalCostbyProduct() {}
 
-  restUnitProduct() {
-    console.log()
-  }
+  // Adicionar un producto desde la tabla del carrito
+  addUnitProduct() {}
+
+  // Disminuir un producto desde la tabla del carrito
+  restUnitProduct() {}
+
+  // Saber cuanto es el valor total por todos los productos
+  totalCostbyAllProducts() {}
+
 }
