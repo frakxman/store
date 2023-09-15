@@ -25,6 +25,9 @@ export class LoginComponent {
     const { username, password } = this.loginForm.value;
     this.authService.login( username, password )
       .subscribe( resp => this.token = resp.access_token );
+    console.log('Login works!!!');
+    this.authService.getUsers()
+    this.authService.getCurrentUser()
     this.loginForm.reset();
     this.router.navigate(['/admin/list']);
   }

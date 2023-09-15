@@ -18,7 +18,6 @@ export class AuthService {
   private baseUrl = `${environments.baseUrl}/users`;
   private userId?: Auth | number; 
   private users: User[] = [];
-  private _currentUser: boolean = false;
 
   constructor( private http: HttpClient, private tokenService: TokenService ) { }
 
@@ -26,7 +25,9 @@ export class AuthService {
     return this.http.post<Auth>(`${ this.baseUrl }/login`, { username, password })
     .pipe(
       tap( token => this.tokenService.saveToken( token.access_token )),
-      tap( userId => this.userId = userId.userId ),
+      tap( userId => {
+        this.userId = userId.userId;
+      } )
     )
   }
 
@@ -35,22 +36,23 @@ export class AuthService {
   }
 
   getUsers() {
-    return this.http.get<User[]>(`${ this.baseUrl}/users`).subscribe( resp => this.users = resp );
+    return this.http.get<User[]>(`${ this.baseUrl}`).subscribe( resp => this.users = resp );
   }
 
   getCurrentUser() {
-    for (let i = 0; i < this.users.length; i++) {
-      if( this.userId == this.users[i].userId )
-        this._currentUser = true;
-    }
+    setTimeout(() => {
+      const user = this.users.find((user) => user.userId === this.userId);
+      if (user) {
+         console.log('El usuario si está registrado');
+      } else {
+        console.log('El usuario no está registrado');
+      }
+    }, 1000);
   }
 
   userValidated(): Observable<boolean> {
-    if( !this.tokenService.getToken() ) return of( false );
-    
-    if( this._currentUser ) {
-      return of( true );
-    }
+    if( this.tokenService.getToken() ) return of( true );
+
    
     return of( false );
   }
