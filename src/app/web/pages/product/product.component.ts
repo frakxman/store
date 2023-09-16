@@ -24,7 +24,8 @@ export class ProductComponent {
     Description_Store: '',
     porcentaje: 0,
     baseValue: 0,
-    taxValue: 0
+    taxValue: 0,
+    store: 0
   }
   
   @Output() addedProduct = new EventEmitter<Product>();

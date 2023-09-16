@@ -41,9 +41,9 @@ export class CustomerComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.customerService.getCountries().subscribe( countries => this.countries = countries );
-    this.customerService.getDepartments().subscribe( departments => this.departments = departments );
-    this.customerService.getMunicipalities().subscribe( municipalities => this.municipalities = municipalities );
+    // this.customerService.getCountries().subscribe( countries => this.countries = countries );
+    // this.customerService.getDepartments().subscribe( departments => this.departments = departments );
+    // this.customerService.getMunicipalities().subscribe( municipalities => this.municipalities = municipalities );
   }
 
   createUser() {

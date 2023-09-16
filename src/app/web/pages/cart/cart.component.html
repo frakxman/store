@@ -1,6 +1,6 @@
 <div class="cart-table">
     <h2>Carrito</h2>
-    <table class="default" *ngIf="products.length">
+    <table class="default" *ngIf="products.length; else noProducts">
         <tr>
             <th>Producto</th>
             <th class="description">Descripción</th>
@@ -20,29 +20,36 @@
             </td>
             <td>
                 <div class="add-product">
-                    <button>-</button>
+                    <button (click)="updateUnitProduct('minus', product.idproducto)">
+                        -
+                    </button>
                     <p>
-                        &nbsp;1&nbsp; 
+                        &nbsp;{{ product.store }}&nbsp; 
                     </p>
-                    <button (click)="totalProductById()">+</button>
+                    <button (click)="updateUnitProduct('plus', product.idproducto)">
+                        +
+                    </button>
                 </div>
             </td>
             <td class="description">
                 {{ product.precioventa }}
             </td>
             <td class="totalForProduct">
-               $ {{ product.precioventa }}
+                $ {{ product.precioventa *  product.store  }}
             </td>
             <td>
-                <button class="delete">
+                <button class="delete" (click)="deleteProduct(product.idproducto)">
                     <img src="assets/logo_celulares.png" alt="">
                 </button>
             </td>
         </tr>
         <tr class="totalFact">
             <td class="totalFact-td">Total</td>
-            <td class="totalFact-td">$$$</td>
+            <td class="totalFact-td">{{ getTotal() }}</td>
         </tr>
     </table>
+    <ng-template #noProducts>
+        <p>No hay productos agregados al carrito aún</p>
+    </ng-template>
 </div>
 <app-customer></app-customer>

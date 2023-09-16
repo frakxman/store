@@ -16,15 +16,45 @@ export class StoreService {
   constructor() { }
 
   addProduct( product: Product ){
-    this.myShoppingCart.push( product );
-    this.myCart.next(this.myShoppingCart);
+    if( this.myShoppingCart.length === 0) {
+      product.store = 1;
+      this.myShoppingCart.push( product );
+      this.myCart.next(this.myShoppingCart);
+    } else {
+      const productMod = this.myShoppingCart.find((item) => {
+        return item.idproducto === product.idproducto
+      });
+      if( productMod ) {
+        productMod.store = productMod.store + 1;
+        this.myCart.next(this.myShoppingCart);
+      } else {
+        product.store = 1;
+        this.myShoppingCart.push( product );
+        this.myCart.next(this.myShoppingCart);
+      }
+    }
   }
 
   getSoppingCart() {
     return this.myShoppingCart;
   }
 
-  getTotal(){
-    return this.myShoppingCart.reduce((sum, item) => sum + item.precioventa, 0);
+  getTotalCart() {
+    const total = this.myShoppingCart.reduce((sum, item) => {
+      return sum + ( item.store * item.precioventa )}, 0);
+    return total;
+  }
+
+  findProductById( id: number ) {
+    return this.myShoppingCart.find(( item ) => {
+      return item.idproducto === id;
+    })
+  }
+
+  deleteProduct(id: number ) {
+    this.myShoppingCart = this.myShoppingCart.filter((product) => {
+      return product.idproducto !== id;
+    });
+    this.myCart.next(this.myShoppingCart);
   }
 }

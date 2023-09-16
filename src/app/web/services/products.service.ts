@@ -20,12 +20,7 @@ export class ProductsService implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.wareHouseService.getWareHouse()
-      .subscribe(({ warehouseId }) => {
-        console.log( warehouseId );
-        this.wareHouseId = warehouseId
-        console.log( this.wareHouseId );
-    });
+    this.wareHouseService.getWareHouse().subscribe(({ warehouseId }) => this.wareHouseId = warehouseId );
   }
 
   getByCategory( categoryName: string, page: number, limit: number, descripcion: string ) {

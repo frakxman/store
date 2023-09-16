@@ -2,7 +2,6 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Product } from '../../interfaces/product.interfaces';
 import { StoreService } from '../../services/store.service';
 
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -18,22 +17,32 @@ export class CartComponent implements OnInit {
     this.storeService.myCart$.subscribe( products => this.products = products );
   }  
 
-  // Saber cuantos productos son iguales o tengan el mismo identificador
-  totalProductById() {
-    let productId = this.products.map((productId) => productId.idproducto );
-    console.log( productId );
+  totalCostbyProduct( price: number, quantity: number) {
+    return price * quantity;
   }
 
-  // Saber cuanto es el valor total por producto
-  totalCostbyProduct() {}
+  updateUnitProduct(operation: string, id: number ) {
+    const product = this.storeService.findProductById( id );
+    if( product ) {
+      if( operation === 'minus' && product.store > 0 ) {
+        product.store = product.store - 1;
+      }
+      if( operation === 'plus' ) {
+        product.store = product.store + 1;
+      }
+      if( product.store === 0 ) {
+        this.deleteProduct( id );
+      }
+    }
+  }
 
-  // Adicionar un producto desde la tabla del carrito
-  addUnitProduct() {}
+  deleteProduct(id: number ) {
+    this.storeService.deleteProduct(id);
+  }
 
-  // Disminuir un producto desde la tabla del carrito
-  restUnitProduct() {}
-
-  // Saber cuanto es el valor total por todos los productos
-  totalCostbyAllProducts() {}
+  getTotal() {
+    const total = this.storeService.getTotalCart();
+    return total;
+  }
 
 }

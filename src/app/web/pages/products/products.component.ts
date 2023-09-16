@@ -30,7 +30,8 @@ export class ProductsComponent implements OnInit {
     Description_Store: '',
     porcentaje: 0,
     baseValue: 0,
-    taxValue: 0
+    taxValue: 0,
+    store: 0
   };
   page = 1;
   limit = 10;
@@ -49,7 +50,6 @@ export class ProductsComponent implements OnInit {
 
   addToShoppingCart(product: Product) {
     this.storeService.addProduct(product);
-    // this.total = this.storeService.getTotal();
   }
 
   toggleProductDetail() {
@@ -67,5 +67,4 @@ export class ProductsComponent implements OnInit {
         // console.log( images[1] );
       });
   }
-
 }
