@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, CanMatchFn, Route, Router, RouterStateSnapshot, UrlSegment } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { Observable, delay, tap } from 'rxjs';
 
 import { AuthService } from '../services/auth.service';
 
@@ -11,6 +11,7 @@ const checkAuthStatus = (): boolean | Observable<boolean> => {
 
   return authService.userValidated()
     .pipe(
+      delay(3000),
       tap( isAuthenticated => console.log('Authenticated', isAuthenticated )),
       tap((isAuthenticated) => {
           if (!isAuthenticated) {

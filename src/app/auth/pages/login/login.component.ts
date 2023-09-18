@@ -25,14 +25,11 @@ export class LoginComponent {
 
   login(){
     const { username, password } = this.loginForm.value;
-    this.authService.login( username, password )
-      .subscribe( resp => {
-        this.token = resp.access_token;
-        this.tokeService.saveToken( this.token );
-      });
-    console.log('Login works!!!');
+    this.authService.login( username, password );
     this.loginForm.reset();
-    this.router.navigate(['/admin/list']);
+    this.authService.getUsers();
+    this.tokeService.getUserId();
+    // this.router.navigate(['/admin/list']);
   }
 
   register() {

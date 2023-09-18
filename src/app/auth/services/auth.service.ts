@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, tap } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 
 import { environments } from 'src/environments/environments';
 
@@ -16,13 +16,14 @@ import { TokenService } from './token.service';
 export class AuthService {
 
   private baseUrl = `${environments.baseUrl}/users`;
-  private userId?: Auth | number; 
   private users: User[] = [];
+  private usersId: number[] = [];
 
   constructor( private http: HttpClient, private tokenService: TokenService ) { }
 
   login( username: string, password: string ) {
     return this.http.post<Auth>(`${ this.baseUrl }/login`, { username, password })
+    .subscribe( resp => this.tokenService.saveToken( resp.access_token ));
   }
 
   register( username: string, password: string, email: string ) {
@@ -30,11 +31,29 @@ export class AuthService {
   }
 
   getUsers() {
-    return this.http.get<User[]>(`${ this.baseUrl}`).subscribe( resp => this.users = resp );
+    return this.http.get<User[]>(`${ this.baseUrl}`)
+    .subscribe( users => {
+      this.users = users; 
+      this.usersId = this.users.map(( ids ) => ids.userId )
+      console.log( this.usersId )
+    });
+  }
+
+  userAuthenticated(): boolean {
+    for (let i = 0; i < this.usersId.length; i++) {
+     if (this.tokenService.getUserId() === this.usersId[i] ) {
+      return true;
+     }
+    }
+    return false;
   }
 
   userValidated(): Observable<boolean> {
-    if( this.tokenService.getToken() ) return of( true );
+    
+    if( setTimeout(() => {
+      this.userAuthenticated()
+    }, 1000)) return of( true );
+
     return of( false );
   }
 }
