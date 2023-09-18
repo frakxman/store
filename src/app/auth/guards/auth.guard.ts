@@ -20,16 +20,10 @@ const checkAuthStatus = (): boolean | Observable<boolean> => {
     );
 }
 
-export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-  console.log('CanActivate');
-  console.log({ route, state });
-  
+export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => { 
   return checkAuthStatus();
 };
 
-export const canMatchGuard: CanMatchFn = ( route: Route, segments: UrlSegment[] ) => {
-  console.log('CanMatch');
-  console.log({ route, segments });
-  
+export const canMatchGuard: CanMatchFn = ( route: Route, segments: UrlSegment[] ) => {  
   return checkAuthStatus();
 };

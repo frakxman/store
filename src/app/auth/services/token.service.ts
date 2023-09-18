@@ -15,4 +15,23 @@ export class TokenService {
     return token;
   }
 
+  islogged(): boolean {
+    if( this.getToken() ) {
+      return true;
+    }
+    return false;
+  }
+
+  getUserName(): string {
+    if( !this.islogged() ) {
+      return 'No user logged';
+    }
+    const token = this.getToken();
+    const payload = token!.split('.')[1];
+    const values = atob(payload);
+    const valuesJson = JSON.parse(values);
+    const userName = valuesJson.username;
+    return userName;
+  }
+
 }

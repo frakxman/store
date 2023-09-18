@@ -16,21 +16,21 @@ export class StoreService {
   constructor() { }
 
   addProduct( product: Product ){
-    if( this.myShoppingCart.length === 0) {
+    if( this.myShoppingCart.length === 0 ) {
       product.store = 1;
       this.myShoppingCart.push( product );
       this.myCart.next(this.myShoppingCart);
     } else {
-      const productMod = this.myShoppingCart.find((item) => {
+      const productMod = this.myShoppingCart.find(( item ) => {
         return item.idproducto === product.idproducto
       });
       if( productMod ) {
         productMod.store = productMod.store + 1;
-        this.myCart.next(this.myShoppingCart);
+        this.myCart.next( this.myShoppingCart );
       } else {
         product.store = 1;
         this.myShoppingCart.push( product );
-        this.myCart.next(this.myShoppingCart);
+        this.myCart.next( this.myShoppingCart );
       }
     }
   }
@@ -40,7 +40,7 @@ export class StoreService {
   }
 
   getTotalCart() {
-    const total = this.myShoppingCart.reduce((sum, item) => {
+    const total = this.myShoppingCart.reduce(( sum, item ) => {
       return sum + ( item.store * item.precioventa )}, 0);
     return total;
   }
@@ -51,10 +51,10 @@ export class StoreService {
     })
   }
 
-  deleteProduct(id: number ) {
-    this.myShoppingCart = this.myShoppingCart.filter((product) => {
+  deleteProduct( id: number ) {
+    this.myShoppingCart = this.myShoppingCart.filter(( product ) => {
       return product.idproducto !== id;
     });
-    this.myCart.next(this.myShoppingCart);
+    this.myCart.next( this.myShoppingCart );
   }
 }

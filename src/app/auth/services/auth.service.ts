@@ -23,9 +23,6 @@ export class AuthService {
 
   login( username: string, password: string ) {
     return this.http.post<Auth>(`${ this.baseUrl }/login`, { username, password })
-    .pipe(
-      tap( token => this.tokenService.saveToken( token.access_token ))
-    )
   }
 
   register( username: string, password: string, email: string ) {
@@ -36,18 +33,8 @@ export class AuthService {
     return this.http.get<User[]>(`${ this.baseUrl}`).subscribe( resp => this.users = resp );
   }
 
-  getCurrentUser() {
-      const user = this.users.find((user) => user.userId === this.userId);
-      if (user) {
-          console.log('El usuario si está registrado');
-      } else {
-        console.log('El usuario no está registrado');
-      }
-  }
-
   userValidated(): Observable<boolean> {
     if( this.tokenService.getToken() ) return of( true );
-
     return of( false );
   }
 }
