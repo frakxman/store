@@ -9,7 +9,7 @@ export class ImgComponent {
 
   @Input() img: string = '';
   @Output() loaded = new EventEmitter<string>();
-  imageDefault = 'assets/logo_celulares.png';
+  imageDefault = 'assets/png/logo_celulares.png';
 
   imgError() {
     this.img = this.imageDefault;

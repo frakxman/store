@@ -1,7 +1,7 @@
 <div class="cart-table">
     <h2>Carrito</h2>
     <table class="default" *ngIf="products.length; else noProducts">
-        <tr>
+        <tr class="tr-title">
             <th>Producto</th>
             <th class="description">Descripción</th>
             <th>Cantidad</th>
@@ -9,10 +9,10 @@
             <th>Total</th>
             <th>Acción</th>
         </tr>
-        <tr *ngFor="let product of products">
+        <tr *ngFor="let product of products" class="tr-products">
             <td>
                 <a [routerLink]="'store/info'">
-                    <img src="assets/logo_celulares.png" alt="">
+                    <img src="assets/png/logo_celulares.png" alt="" class="info-product" [alt]="product.descripcion">
                 </a>
             </td>
             <td class="description">
@@ -20,15 +20,15 @@
             </td>
             <td>
                 <div class="add-product">
-                    <button (click)="updateUnitProduct('minus', product.idproducto)">
-                        -
-                    </button>
-                    <p>
+                    <a type="button" (click)="updateUnitProduct('minus', product.idproducto)">
+                        <img src="assets/png/IcoMenos-n.png" alt="disminuir producto">
+                    </a>
+                    <p class="store">
                         &nbsp;{{ product.store }}&nbsp; 
                     </p>
-                    <button (click)="updateUnitProduct('plus', product.idproducto)">
-                        +
-                    </button>
+                    <a type="button" (click)="updateUnitProduct('plus', product.idproducto)">
+                        <img src="assets/png/IcoMas-n.png" alt="disminuir producto">
+                    </a>
                 </div>
             </td>
             <td class="description">
@@ -39,11 +39,11 @@
             </td>
             <td>
                 <button class="delete" (click)="deleteProduct(product.idproducto)">
-                    <img src="assets/logo_celulares.png" alt="">
+                    <img src="assets/svg/delete.svg" alt="Boton de borrado general" class="delete-button">
                 </button>
             </td>
         </tr>
-        <tr class="totalFact">
+        <tr class="tr-total-fact">
             <td class="totalFact-td">Total</td>
             <td class="totalFact-td">{{ getTotal() }}</td>
         </tr>

@@ -12,7 +12,6 @@ import { StoreService } from '../../services/store.service';
 export class ProductsComponent implements OnInit {
 
   myShoppingCart: Product[] = [];
-  total = 0;
   products: Product[] = [];
   showProductDetail = false;
   productChosen: Product = {
@@ -45,7 +44,10 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
       this.productService.getAllProducts( this.page, this.limit )
-        .subscribe( products => this.products = products );
+        .subscribe( products => {
+          this.products = products;
+          console.log( this.products); 
+        });
   }
 
   addToShoppingCart(product: Product) {

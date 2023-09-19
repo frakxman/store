@@ -7,7 +7,11 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 40% 15%;
+    margin: 15% 1%;
+}
+.add-product a img {
+    width: 35px;
+    height: 35px;
 }
 .cart-table {
     margin: 1%;
@@ -16,18 +20,30 @@ h2 {
     box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
 }
 .default {
-    width: 98%;
+    width: 100%;
     margin: 1%;
     height: 2%;
 }
-tr {
+
+.tr-title {
     border: 1px solid white;
     border-radius: 5px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 20px;
     grid-gap: 2%;
     margin: 1%;
-    width: 98%;
+    width: 96%;
+}
+.tr-products {
+    border: 1px solid white;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 60px;
+    grid-gap: 2%;
+    margin: 1%;
+    width: 96%;
 }
 th {
     color: #fff;
@@ -38,38 +54,57 @@ th {
     grid-gap: 2%;
     width: 100%;
     margin-left: 15%;
+    text-align: center;
 }
 td {
-    height: 75px;
+    height: 40px;
 }
 .totalForProduct {
-    margin: 43% 8%;
+    margin: 35% auto;
     height: 20px;
 }
-img {
-    width:70px;
-    height:70px;
-    margin: 4% 4%;
+.info-product {
+    width:55px;
+    height:55px;
+    margin: 5% 15%;
 }
 .description {
     display: none;
 }
+.store {
+    font-weight: 900;
+    background-color: #fff;
+    padding: 3%;
+    border-radius: 5px;
+    margin: -2% auto 0;
+}
 .delete {
     background-color: transparent;
     border: none;
+    margin: 8% auto;
 }
-.totalFact {
+.delete-button {
+    width: 45px;
+    height: 45px;
+}
+.tr-total-fact {
+    border: 1px solid white;
+    border-radius: 5px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2%;
-    width: 98%;
+    margin: 1%;
+    width: 96%;
+    height: 25px;
 }
 .totalFact-td {
-    width: 40px;
+    display: flex;
+    width: 2% !important;
+    text-align: center;
 }
 /* Medium only */
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
-    tr {
+    .tr-title, .tr-products {
         grid-template-columns: repeat(6, 1fr);
     }
     .totalFact {
@@ -85,6 +120,9 @@ img {
 }
 /* Large and up */
 @media screen and (min-width: 64em) {
+    .tr-title, .tr-products {
+        grid-template-columns: repeat(6, 1fr);
+    }
     .totalFact {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
