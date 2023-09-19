@@ -49,6 +49,10 @@ h2 {
     margin: 1% 0;
     width: 97%;
 }
+.th-title{
+    margin: 1% 2%;
+    padding: 2%;
+}
 th {
     color: #fff;
     display: grid;
@@ -69,6 +73,7 @@ td {
     font-weight: 500;
     font-size: .9em;
     text-align: center;
+    width: 120%;
 }
 .info-product {
     width:55px;
@@ -88,7 +93,7 @@ td {
 .delete {
     background-color: transparent;
     border: none;
-    margin: 8% auto;
+    margin: 8% 10%;
 }
 .delete-button {
     width: 45px;

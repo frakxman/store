@@ -2,12 +2,12 @@
     <h2>Carrito</h2>
     <table class="default" *ngIf="products.length; else noProducts">
         <tr class="tr-title">
-            <th>Producto</th>
-            <th class="description">Descripción</th>
-            <th>Cantidad</th>
-            <th class="description">Unitario</th>
-            <th>Total</th>
-            <th>Acción</th>
+            <th class="th-title">Producto</th>
+            <th class="description th-title">Descripción</th>
+            <th class="th-title">Cantidad</th>
+            <th class="description th-title">Unitario</th>
+            <th class="th-title">&nbsp;&nbsp;&nbsp;Total</th>
+            <th class="th-title">Acción</th>
         </tr>
         <tr *ngFor="let product of products" class="tr-products">
             <td>
