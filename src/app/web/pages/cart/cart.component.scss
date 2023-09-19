@@ -155,9 +155,10 @@ td {
         margin: 20% auto;
     }
     .totalForProduct {
-        margin: 20% 10%;
+        margin: 20% -10%;
         font-weight: 600;
         font-size: 1em;
+        width: 100%;
     }
     .description {
         display: block;
@@ -186,14 +187,18 @@ td {
         margin: 16% auto;
     }
     .totalForProduct {
-        margin: 15% auto;
+        margin: 15% -15%;
         font-size: 1em;
         font-weight: 600;
+        width: 100%;
     }
     .description {
         display: block;
     }
     .delete {
         margin: 5%;
+    }
+    .totalFact-td {
+        margin: 1% auto;
     }
 }
