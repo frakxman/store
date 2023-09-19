@@ -7,11 +7,15 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 15% 1%;
+    margin: 20% -10%;
 }
 .add-product a img {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+}
+.button {
+    margin: 0 -10%;
 }
 .cart-table {
     margin: 1%;
@@ -24,7 +28,6 @@ h2 {
     margin: 1%;
     height: 2%;
 }
-
 .tr-title {
     border: 1px solid white;
     border-radius: 5px;
@@ -32,8 +35,9 @@ h2 {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 20px;
     grid-gap: 2%;
-    margin: 1%;
-    width: 96%;
+    width: 97%;
+    font-weight: 300;
+    font-size: .9em;
 }
 .tr-products {
     border: 1px solid white;
@@ -42,8 +46,8 @@ h2 {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 60px;
     grid-gap: 2%;
-    margin: 1%;
-    width: 96%;
+    margin: 1% 0;
+    width: 97%;
 }
 th {
     color: #fff;
@@ -53,30 +57,33 @@ th {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2%;
     width: 100%;
-    margin-left: 15%;
-    text-align: center;
+    margin-left: 15% 0;
+    // text-align: center;
 }
 td {
     height: 40px;
 }
 .totalForProduct {
-    margin: 35% auto;
+    margin: 35% 1%;
     height: 20px;
+    font-weight: 500;
+    font-size: .9em;
+    text-align: center;
 }
 .info-product {
     width:55px;
     height:55px;
     margin: 5% 15%;
 }
-.description {
+.description, .prod-description, .prod-description_price {
     display: none;
 }
 .store {
-    font-weight: 900;
+    font-weight: 400;
     background-color: #fff;
     padding: 3%;
     border-radius: 5px;
-    margin: -2% auto 0;
+    margin: -5% auto 0;
 }
 .delete {
     background-color: transparent;
@@ -88,49 +95,100 @@ td {
     height: 45px;
 }
 .tr-total-fact {
-    border: 1px solid white;
+    background-color: #fff;
     border-radius: 5px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2%;
-    margin: 1%;
-    width: 96%;
+    margin: .5%;
+    width: 97%;
     height: 25px;
 }
 .totalFact-td {
-    display: flex;
-    width: 2% !important;
-    text-align: center;
+    margin: 3% auto;
+    font-weight: 900;
 }
-/* Medium only */
+.primary-button {
+    background-color: #FF2400;
+    border-radius: 5px;
+    border: none;
+    color: #FFFFFF;
+    width: 100%;
+    cursor: pointer;
+    font-size: var(--md);
+    font-weight: bold;
+    height: 25px;
+}
+
+.message {
+    color: #FFFFFF;
+    font-weight: 700;
+    margin: 5%;
+    padding: 5%;
+    text-align: center;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+}
+
+/* Medium only Tablet*/
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
     .tr-title, .tr-products {
         grid-template-columns: repeat(6, 1fr);
     }
-    .totalFact {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 2%;
-        margin-left: 49%;
-        width: 50%;
+    .info-product {
+        margin: 1.5% 15%;
+    }
+    .add-product{
+        margin: 13%;
+    }
+    .prod-description {
+        display: block;
+        margin: 15% auto;
+    }
+    .prod-description_price {
+        display: block;
+        margin: 20% auto;
+    }
+    .totalForProduct {
+        margin: 20% 10%;
+        font-weight: 600;
+        font-size: 1em;
     }
     .description {
         display: block;
     }
 }
-/* Large and up */
+/* Large and up Laptops and Desktops*/
 @media screen and (min-width: 64em) {
     .tr-title, .tr-products {
         grid-template-columns: repeat(6, 1fr);
     }
-    .totalFact {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 2%;
-        margin-left: 49%;
-        width: 50%;
+    .info-product {
+        margin: 1.8% 20%;
     }
     .description {
         display: block;
+    }
+    .add-product{
+        margin: 10%;
+    }
+    .prod-description {
+        display: block;
+        margin: 12% auto;
+    }
+    .prod-description_price {
+        display: block;
+        margin: 16% auto;
+    }
+    .totalForProduct {
+        margin: 15% auto;
+        font-size: 1em;
+        font-weight: 600;
+    }
+    .description {
+        display: block;
+    }
+    .delete {
+        margin: 5%;
     }
 }

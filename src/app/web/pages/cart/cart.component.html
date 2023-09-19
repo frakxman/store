@@ -5,7 +5,7 @@
             <th>Producto</th>
             <th class="description">Descripción</th>
             <th>Cantidad</th>
-            <th class="description">Precio</th>
+            <th class="description">Unitario</th>
             <th>Total</th>
             <th>Acción</th>
         </tr>
@@ -15,7 +15,7 @@
                     <img src="assets/png/logo_celulares.png" alt="" class="info-product" [alt]="product.descripcion">
                 </a>
             </td>
-            <td class="description">
+            <td class="prod-description">
                 {{ product.descripcion}}
             </td>
             <td>
@@ -31,8 +31,8 @@
                     </a>
                 </div>
             </td>
-            <td class="description">
-                {{ product.precioventa }}
+            <td class="prod-description_price">
+               $ {{ product.precioventa }}
             </td>
             <td class="totalForProduct">
                 $ {{ product.precioventa *  product.store  }}
@@ -44,12 +44,17 @@
             </td>
         </tr>
         <tr class="tr-total-fact">
-            <td class="totalFact-td">Total</td>
-            <td class="totalFact-td">{{ getTotal() }}</td>
+            <td class="totalFact-td">Gran Total</td>
+            <td class="totalFact-td">$ {{ getTotal() }}</td>
+            <td>
+                <button class="primary-button">
+                    Confirmar
+                </button>
+            </td>
         </tr>
     </table>
     <ng-template #noProducts>
-        <p>No hay productos agregados al carrito aún</p>
+        <p class="message">No hay productos agregados al carrito</p>
     </ng-template>
 </div>
 <app-customer></app-customer>
