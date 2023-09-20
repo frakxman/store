@@ -1,5 +1,7 @@
 <div class="product-card">
-    <app-img [img]="product.Urls_Img"></app-img>
+    <a [routerLink]="['/product-info', product.idproducto ]">
+        <app-img [img]="product.Urls_Img"></app-img>
+    </a>
     <h2>{{ product.precioventa | currency }}</h2>
     <p>{{ product.descripcion }}</p>
     <!-- <p>{{ product.Description_Store }}</p> -->

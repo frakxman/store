@@ -31,9 +31,7 @@ export class CategoriesComponent {
 
   ngOnInit(): void {
       this.categoriesServices.getAllCategories( this.page, this.limit )
-        .subscribe( data => {
-          this.categories = data;
-        });
+        .subscribe( data => this.categories = data );
   }
 
   categorySelected( index: number ) {

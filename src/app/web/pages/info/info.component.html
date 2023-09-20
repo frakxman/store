@@ -1,1 +1,17 @@
-
+<div class="conatiner">
+    <div class="header">
+        <h1>{{ product?.descripcion }}</h1>
+        <div class="slider">
+            <app-slider></app-slider>
+        </div>
+    </div>
+    <div class="body">
+        <h4>{{ product?.precioventa }}</h4>
+        <p>{{ product?.Description_Store }}</p>
+        <p>{{ product?.codigo }}</p>
+        <p>{{ product?.cantidad }}</p>
+    </div>
+    <button [routerLink]="['/store/products']">
+        Regresar
+    </button>
+</div>
