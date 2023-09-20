@@ -13,13 +13,22 @@
 </div>
 
 <div class="product-detail" [class.active]="showProductDetail">
-    <div *ngIf="productChosen">
-        <p>{{ productChosen.descripcion }}</p>
-        <button (click)="toggleProductDetail()">
-            Cerrar
-        </button>
-        <app-slider></app-slider>
-        <p>{{ productChosen.Description_Store }}</p>
+    <div *ngIf="productChosen" class="product-info">
+        <div class="slider">
+            <app-slider></app-slider>
+        </div>
+        <h2 class="product-info_title">{{ productChosen.descripcion }}</h2>
+        <hr>
+        <p class="product-info_price">${{ productChosen.precioventa}}</p>
+        <br>
+        <p class="product-info_description">{{ productChosen.Description_Store | lowercase }}</p>
+        <br>
+        <div class="buttons">
+            <button type="button" (click)="toggleProductDetail()" class="primary-button">
+                Cerrar
+                <img src="assets/svg/close.svg" alt="close button" class="primary-button_img">
+            </button>
+        </div>
     </div>
 </div>
 

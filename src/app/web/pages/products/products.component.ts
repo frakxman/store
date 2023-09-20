@@ -44,10 +44,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
       this.productService.getAllProducts( this.page, this.limit )
-        .subscribe( products => {
-          this.products = products;
-          console.log( this.products); 
-        });
+        .subscribe( products => this.products = products );
   }
 
   addToShoppingCart(product: Product) {
@@ -62,7 +59,6 @@ export class ProductsComponent implements OnInit {
     // let images: string[] = [];
     this.productService.getOneProduct(id)
       .subscribe( data => {
-        console.log( data );
         this.toggleProductDetail();
         this.productChosen = data;
         // images = this.productChosen.Urls_Img.split(',');

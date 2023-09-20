@@ -46,6 +46,10 @@ export class ProductsService implements OnInit {
   getProductsByPage( page: number, limit: number ) {
     return this.http.get<Product[]>(`${this.baseUrl}/products/${ this.wareHouseId }`, { params: { page, limit }});
   }
+  
+  getProductsBySearch( page: number, limit: number, description: string ) {
+    return this.http.get<Product[]>(`${this.baseUrl}/products/${ this.wareHouseId }`, { params: { page, limit, description }});
+  }
 
   getOneProduct(id: number) {
     return this.http.get<Product>(`${this.baseUrl}/products/get-product/${id}/${ this.wareHouseId }`);
