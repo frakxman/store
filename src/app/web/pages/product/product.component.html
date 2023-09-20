@@ -1,10 +1,12 @@
 <div class="product-card">
-    <a [routerLink]="['/product-info', product.idproducto ]">
+    <a [routerLink]="['/store/product-info', product.idproducto ]">
         <app-img [img]="product.Urls_Img"></app-img>
     </a>
-    <h2>{{ product.precioventa | currency }}</h2>
-    <p>{{ product.descripcion }}</p>
-    <!-- <p>{{ product.Description_Store }}</p> -->
+    <div class="card-body">
+        <h2 class="card-body_price">{{ product.precioventa | currency }}</h2>
+        <p class="card-body_tittle">{{ product.descripcion }}</p>
+        <p class="card-body_description">{{ product.Description_Store | lowercase }}</p>
+    </div>
     
     <div class="button-card">
         <button (click)="onShowDetail()" class="primary-button">

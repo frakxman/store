@@ -43,8 +43,8 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      // this.productService.getAllProducts( this.page, this.limit )
-      //   .subscribe( products => this.products = products );
+      this.productService.getAllProducts( this.page, this.limit )
+        .subscribe( products => this.products = products );
   }
 
   addToShoppingCart(product: Product) {

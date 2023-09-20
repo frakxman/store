@@ -4,9 +4,15 @@
     margin-bottom: 2%;
     box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
 }
+.card-body_price, .card-body_tittle {
+    font-weight: 700;
+}
+.card-body_description {
+    font-style: italic;
+}
 
 p, h2 {
-    margin: 0 0 0.5em 0;
+    margin: .5em .5em;
     padding: 1%;
 }
 

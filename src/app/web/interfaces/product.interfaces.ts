@@ -27,3 +27,7 @@ export interface UpdateProductDTO extends Omit<Product, 'idproducto' | 'barcode'
     // costo: number,
     // ultcosto: number
 }
+
+export interface UploadProductImage {
+    Urls_Img: string;
+}

@@ -1,0 +1,30 @@
+.primary-button {
+    background-color: #FF2400;
+    border-radius: 8px;
+    border: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #FFFFFF;
+    width: 96%;
+    cursor: pointer;
+    font-size: var(--md);
+    font-weight: bold;
+    height: 35px;
+    margin: 2% auto;
+}
+
+
+// tablets
+@media screen and (min-width: 40em) and (max-width: 63.9em) {
+    .primary-button {
+        width: 50%;
+    }
+}
+
+// web
+@media screen and (min-width: 64em){
+    .primary-button {
+        width: 25%;
+    }
+}

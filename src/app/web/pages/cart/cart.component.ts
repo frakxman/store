@@ -25,10 +25,12 @@ export class CartComponent implements OnInit {
     const product = this.storeService.findProductById( id );
     if( product ) {
       if( operation === 'minus' && product.store > 0 ) {
-        product.store = product.store - 1;
+        // product.store = product.store - 1;
+        product.store -= 1;
       }
       if( operation === 'plus' ) {
-        product.store = product.store + 1;
+        // product.store = product.store + 1;
+        product.store += 1;
       }
       if( product.store === 0 ) {
         this.deleteProduct( id );

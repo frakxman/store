@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environments } from 'src/environments/environments';
 
-import { Product, UpdateProductDTO } from '../interfaces/product.interfaces';
+import { Product, UpdateProductDTO, UploadProductImage } from '../interfaces/product.interfaces';
 import { WarehouseService } from './warehouse.service';
 
 @Injectable({
@@ -57,5 +57,9 @@ export class ProductsService implements OnInit {
 
   updateProduct(id: number, dto: UpdateProductDTO ) {
     return this.http.put<UpdateProductDTO>(`${this.baseUrl}/products/update-product/${id}`, dto )
+  }
+
+  updateProductImage(id: number, url: UploadProductImage ) {
+    return this.http.put<UpdateProductDTO>(`${this.baseUrl}/products/update-photo/${id}`, url )
   }
 }
