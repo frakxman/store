@@ -1,3 +1,32 @@
+.container {
+    margin: 2%;
+    border: 1px solid white;
+    border-radius: 5px;
+    box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
+}
+.header-tittle {
+    margin: 2%;
+    text-align: center;
+    font-weight: 800;
+}
+.body {
+    margin: 2%;
+}
+.body-price {
+    margin: 0 2%;
+    padding: 2%;
+    border: 1px solid white;
+    border-radius: 5px;
+    box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
+    text-align: center;
+    font-weight: 800;
+}
+.body-description {
+    font-style: italic;
+}
+.body-code_strong {
+    font-weight: 500;
+}
 .primary-button {
     background-color: #FF2400;
     border-radius: 8px;
@@ -6,15 +35,13 @@
     justify-content: space-around;
     align-items: center;
     color: #FFFFFF;
-    width: 96%;
+    width: 100%;
     cursor: pointer;
     font-size: var(--md);
     font-weight: bold;
     height: 35px;
     margin: 2% auto;
 }
-
-
 // tablets
 @media screen and (min-width: 40em) and (max-width: 63.9em) {
     .primary-button {

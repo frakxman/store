@@ -1,20 +1,24 @@
-<div class="conatiner">
+<div class="container">
     <div class="header">
-        <!-- <h1>{{ product.descripcion }}</h1> -->
+        <h1 class="header-tittle">{{ product?.descripcion }}</h1>
         <div class="slider">
             <app-slider></app-slider>
         </div>
     </div>
     <div class="body">
-        <!-- <h4>{{ product.precioventa }}</h4>
-        <p>{{ product.Description_Store }}</p>
-        <p>{{ product.codigo }}</p>
-        <p>{{ product.cantidad }}</p> -->
-        <button class="primary-button">
-            Añadir
-        </button>
+        <h4 class="body-price">{{ product?.precioventa | currency }}</h4>
+        <br>
+        <p class="body-description">{{ product?.Description_Store | lowercase }}</p>
+        <br>
+        <p class="body-code"><strong class="body-code_strong">Código:</strong> {{ product?.codigo }}</p>
+        <br>
+        <p class="body-quantity"><strong class="body-code_strong">Disponibles:</strong> {{ product?.cantidad }}</p>
+        <br>
     </div>
-    <button [routerLink]="['/store/products']" class="primary-button">
+    <button class="primary-button">
+        Añadir
+    </button>
+    <button [routerLink]="['/store/products']" class="primary-button ">
         Regresar
     </button>
 </div>

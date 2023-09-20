@@ -11,31 +11,16 @@ import { ProductsService } from '../../services/products.service';
 })
 export class InfoComponent implements OnInit {
 
-  productId: string | null = null;
   product: Product | null = null;
 
-  constructor( private router: ActivatedRoute, private productService: ProductsService ) {}
+  constructor( private activatedRoute: ActivatedRoute, private productService: ProductsService ) {}
 
   ngOnInit(): void {
-    this.router.paramMap
+    this.activatedRoute.params
       .pipe(
-        switchMap(( params ) => {
-          this.productId = params.get('id');
-          console.log( this.productId);
-          if( this.productId ) {
-            console.log( this.productId );
-            let id = parseInt(this.productId)
-            console.log( id );
-            this.productService.getOneProduct( id );
-          }
-          return [null];
-        })
+        switchMap(({ id }) => this.productService.getOneProduct( parseInt( id )))
       )
-      .subscribe(data => {
-        console.log(data);
-        this.product = data;
-        console.log( this.product );        
-      });
+      .subscribe(data  => this.product = data );
   }
 
 }
