@@ -11,7 +11,7 @@
 -	~~Footer: Organizar los tamaños para tablets y pantallas más grandes~~
 -	Cart:  - ~~Diseño y funcionalidad de la tabla donde se renderizan los productos seleccionados~~
          - Hacer funcional el formulario de ingreso de datos de nuevos clientes.
--	Product: Crear la página de muestra especifica de cada producto.
+-	Product: ~~Crear la página de muestra especifica de cada producto~~
 ### AUTH
 -	Login: Implementar el guard para la navegación al módulo administrativo, lo que incluye validar el token y el userId respecto al que esta en la base de datos.
 ### ADMIN
