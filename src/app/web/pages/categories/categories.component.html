@@ -2,8 +2,13 @@
     <h2>Categorias</h2>
     <br>
     <ul class="categoryList">
-        <li *ngFor="let category of categories; index as i">
-            <input type="button" value="{{ category.nombre }}" (click)="categorySelected(i)" class="primary-button">
+        <li *ngFor="let category of categories">
+            <input
+                type="button"
+                value="{{ category.nombre }}"
+                (click)="categorySelected(category.nombre)"
+                class="primary-button"
+            >
         </li>
     </ul>
     <div class="products--grid">
@@ -12,8 +17,7 @@
             *ngFor="let product of products" 
             (addedProduct)="addToShoppingCart($event)"
         >
-        </app-product>
-            <!-- (showProduct)="onShowDetail($event)" -->
+    </app-product>
     </div>
 </div>
 

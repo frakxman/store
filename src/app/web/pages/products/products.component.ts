@@ -13,25 +13,6 @@ export class ProductsComponent implements OnInit {
 
   myShoppingCart: Product[] = [];
   products: Product[] = [];
-  showProductDetail = false;
-  productChosen: Product = {
-    idproducto: 0,
-    costo: 0,
-    ultcosto: 0,
-    codiva: '',
-    precioventa: 0,
-    descripcion: '',
-    barcode: '',
-    codigo: '',
-    Urls_Img: '',
-    cantidad: 0,
-    nomalmacen: '',
-    Description_Store: '',
-    porcentaje: 0,
-    baseValue: 0,
-    taxValue: 0,
-    store: 0
-  };
   page = 1;
   limit = 10;
 
@@ -49,20 +30,5 @@ export class ProductsComponent implements OnInit {
 
   addToShoppingCart(product: Product) {
     this.storeService.addProduct(product);
-  }
-
-  toggleProductDetail() {
-    this.showProductDetail = !this.showProductDetail;
-  }
-
-  onShowDetail( id: number ) {
-    // let images: string[] = [];
-    this.productService.getOneProduct(id)
-      .subscribe( data => {
-        this.toggleProductDetail();
-        this.productChosen = data;
-        // images = this.productChosen.Urls_Img.split(',');
-        // console.log( images[1] );
-      });
   }
 }

@@ -1,11 +1,14 @@
 <div class="container">
     <div class="header">
         <h1 class="header-tittle">{{ product?.descripcion }}</h1>
+        <button (click)="goBack()" class="primary-button return">
+            Regresar
+        </button>
+    </div>
+    <div class="body">
         <div class="slider">
             <app-slider></app-slider>
         </div>
-    </div>
-    <div class="body">
         <h4 class="body-price">{{ product?.precioventa | currency }}</h4>
         <br>
         <p class="body-description">{{ product?.Description_Store | lowercase }}</p>
@@ -14,11 +17,8 @@
         <br>
         <p class="body-quantity"><strong class="body-code_strong">Disponibles:</strong> {{ product?.cantidad }}</p>
         <br>
+        <button (click)="addToShoppingCart(product!)" class="primary-button">
+            Añadir
+        </button>
     </div>
-    <button class="primary-button">
-        Añadir
-    </button>
-    <button [routerLink]="['/store/products']" class="primary-button ">
-        Regresar
-    </button>
 </div>

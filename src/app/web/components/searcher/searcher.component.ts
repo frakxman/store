@@ -19,6 +19,8 @@ export class SearcherComponent {
   private productService = inject( ProductsService );  
 
   searchTag( newTag: string ) {
+    if ( newTag === '' ) return;
+    
     let tag = newTag.trim().toLowerCase();
     this.productService.getProductsBySearch( this.page, this.limit, tag )
       .subscribe( rta => {

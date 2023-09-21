@@ -34,19 +34,13 @@ export class CategoriesComponent {
         .subscribe( data => this.categories = data );
   }
 
-  categorySelected( index: number ) {
-    let categoriesNames = this.categories.map((category) => category.nombre );
-    for( let i = 0; i <= this.categories.length; i++ ) {
-      if ( index === i ) {
-        this.productsService.getByCategory( categoriesNames[i], this.page, this.limit, '' )
-          .subscribe( products => this.products = products );
-      }
-    }
+  categorySelected( name: string ) {
+    this.productsService.getByCategory( name, this.page, this.limit, '' )
+      .subscribe( data => this.products = data )
     return this.products;
   }
 
   addToShoppingCart(product: Product) {
     this.storeService.addProduct(product);
-    // this.total = this.storeService.getTotal();
   }
 }

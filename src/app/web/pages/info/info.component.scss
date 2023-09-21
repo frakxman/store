@@ -4,6 +4,12 @@
     border-radius: 5px;
     box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
 }
+.header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    align-items: center;
+}
 .header-tittle {
     margin: 2%;
     text-align: center;
@@ -12,8 +18,13 @@
 .body {
     margin: 2%;
 }
+.slider {
+    border: 1px solid white;
+    border-radius: 5px;
+    box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
+}
 .body-price {
-    margin: 0 2%;
+    margin: 2%;
     padding: 2%;
     border: 1px solid white;
     border-radius: 5px;
@@ -42,11 +53,15 @@
     height: 35px;
     margin: 2% auto;
 }
+.return {
+    width: 70%;
+}
 // tablets
 @media screen and (min-width: 40em) and (max-width: 63.9em) {
     .primary-button {
         width: 50%;
     }
+    
 }
 
 // web

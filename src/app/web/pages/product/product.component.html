@@ -7,9 +7,8 @@
         <p class="card-body_tittle">{{ product.descripcion }}</p>
         <p class="card-body_description">{{ product.Description_Store | lowercase }}</p>
     </div>
-    
     <div class="button-card">
-        <button (click)="onShowDetail()" class="primary-button">
+        <button [routerLink]="['/store/product-info', product.idproducto]" class="primary-button">
             Más...
         </button>
         <span class="spacer"></span>

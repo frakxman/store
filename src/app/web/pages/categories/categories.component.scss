@@ -11,13 +11,16 @@ h2 {
 }
 
 .categoryList {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2%;
 }
 
 .categoryList li {
-    margin: 0px auto;
+    justify-content: center;
+    align-items: center
+    ;
+    margin: 2% auto;
 }
 
 .primary-button {
@@ -50,6 +53,10 @@ h2 {
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 15px;
     }
+
+    .categoryList {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 // web
@@ -58,5 +65,8 @@ h2 {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-gap: 15px;
+    }
+    .categoryList {
+        grid-template-columns: repeat(6, 1fr);
     }
 }

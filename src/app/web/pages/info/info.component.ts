@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
-import { Product } from '../../interfaces/product.interfaces';
+
 import { ProductsService } from '../../services/products.service';
+
+import { Product } from '../../interfaces/product.interfaces';
+import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'app-info',
@@ -11,9 +15,15 @@ import { ProductsService } from '../../services/products.service';
 })
 export class InfoComponent implements OnInit {
 
+  myShoppingCart: Product[] = [];
   product: Product | null = null;
 
-  constructor( private activatedRoute: ActivatedRoute, private productService: ProductsService ) {}
+  constructor( 
+    private activatedRoute: ActivatedRoute,
+    private productService: ProductsService,
+    private storeService: StoreService,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params
@@ -23,4 +33,12 @@ export class InfoComponent implements OnInit {
       .subscribe(data  => this.product = data );
   }
 
+  goBack() {
+    this.location.back();
+  }
+
+  addToShoppingCart(product: Product) {
+    this.storeService.addProduct(product);
+  }
+  
 }
