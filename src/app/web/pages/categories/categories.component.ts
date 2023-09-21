@@ -35,8 +35,12 @@ export class CategoriesComponent {
   }
 
   categorySelected( name: string ) {
+    console.log(name);    
     this.productsService.getByCategory( name, this.page, this.limit, '' )
-      .subscribe( data => this.products = data )
+      .subscribe( resp => {
+        this.products = resp;
+        console.log(this.products);
+      })
     return this.products;
   }
 

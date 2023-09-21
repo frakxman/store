@@ -40,5 +40,7 @@ export class InfoComponent implements OnInit {
   addToShoppingCart(product: Product) {
     this.storeService.addProduct(product);
   }
+
+  // TODO: Create a method to verify the quantity available 
   
 }

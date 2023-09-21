@@ -10,8 +10,8 @@ export interface Product {
     cantidad: number;
     nomalmacen: string;
     Description_Store: string;
-    Urls_Img: string;
     porcentaje: number,
+    product_photo: string[];
     baseValue: number,
     taxValue: number,
     store: number

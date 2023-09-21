@@ -18,20 +18,33 @@ export class ProductComponent {
     descripcion: '',
     barcode: '',
     codigo: '',
-    Urls_Img: '',
     cantidad: 0,
     nomalmacen: '',
     Description_Store: '',
     porcentaje: 0,
     baseValue: 0,
     taxValue: 0,
-    store: 0
+    store: 0,
+    product_photo: ['']
   }
   
   @Output() addedProduct = new EventEmitter<Product>();
 
+  photos: string[] = [];
+
   onAddToCart() {
     this.addedProduct.emit(this.product)
+  }
+
+  transformProdcut() {
+    for (const photos of this.product.product_photo) {
+      this.photos.push(photos);
+    }
+    console.log(this.photos);
+    // this.photos.forEach(( photos ) => {
+    //   photos = photos;
+    //   photos.src = 'data:image/png;base64,'+this.photos
+    // })
   }
 
 }
