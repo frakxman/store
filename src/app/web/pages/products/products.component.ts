@@ -44,14 +44,24 @@ export class ProductsComponent implements OnInit {
     setTimeout(() => {
       this.prods = this.productsRender.map(( url ) => url.product_photo );
       console.log( this.prods );
-      for (const stringArray of this.prods) {
-        for (const string of stringArray) {
-         this.photos.push(`data:image/png;base64,${string.replace(
-          '+',
-          '%2B',
-        ).replace('/', '%2F').replace('=', '%3D')}`)
+      for (let i = 0; i < this.prods.length; i++) {
+        const stringArray = this.prods[i];
+        for (let j = 0; j < stringArray.length; j++) {
+          // console.log(`[${i}][${j}] ${stringArray[j]}`);
+          this.photos.push(`data:image/png;base64,${stringArray[j].replace(
+            '+',
+            '%2B',
+          ).replace('/', '%2F').replace('=', '%3D')}`)
         }
       }
+      // for (const stringArray of this.prods) {
+      //   for (const string of stringArray) {
+      //    this.photos.push(`data:image/png;base64,${string.replace(
+      //     '+',
+      //     '%2B',
+      //   ).replace('/', '%2F').replace('=', '%3D')}`)
+      //   }
+      // }
       console.log(this.photos);
     }, 1000);
     // console.log(this.urlArray )
