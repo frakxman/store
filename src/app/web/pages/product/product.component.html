@@ -1,6 +1,6 @@
 <div class="product-card">
     <a [routerLink]="['/store/product-info', product.idproducto ]">
-        <!-- <app-img [img]="product.product_photo"></app-img> -->
+        <!-- <app-img [img]="productRender.product_photo[0]"></app-img> -->
     </a>
     <div class="card-body">
         <h2 class="card-body_price">{{ product.precioventa | currency }}</h2>
@@ -12,8 +12,7 @@
             Más...
         </button>
         <span class="spacer"></span>
-        <button (click)="transformProdcut()" class="primary-button add-to-cart-button">
-            <!-- (click)="onAddToCart()" -->
+        <button (click)="onAddToCart()" class="primary-button add-to-cart-button">
             Añadir
         </button>
     </div>
