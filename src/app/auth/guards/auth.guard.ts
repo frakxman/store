@@ -1,30 +1,19 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, CanMatchFn, Route, Router, RouterStateSnapshot, UrlSegment } from '@angular/router';
-import { Observable, delay, tap } from 'rxjs';
+import { CanActivateFn, Router } from '@angular/router';
 
-import { AuthService } from '../services/auth.service';
+import { TokenService } from '../services/token.service';
 
-
-const checkAuthStatus = (): boolean | Observable<boolean> => {
-  const authService: AuthService = inject( AuthService );
-  const router: Router = inject( Router );
-
-  return authService.userValidated()
-    .pipe(
-      delay(3000),
-      tap( isAuthenticated => console.log('Authenticated', isAuthenticated )),
-      tap((isAuthenticated) => {
-          if (!isAuthenticated) {
-              router.navigate(['/auth/login']);
-          }
-      })
-    );
-}
-
-export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => { 
-  return checkAuthStatus();
+export const loginGuard: CanActivateFn = () => { 
+  const tokenService = inject( TokenService );
+  const router = inject( Router );
+  
+  const token = tokenService.getToken();
+  if (!token ) {
+    router.navigate(['/auth/login']);
+    return false;
+  }
+  return true;
 };
 
-export const canMatchGuard: CanMatchFn = ( route: Route, segments: UrlSegment[] ) => {  
-  return checkAuthStatus();
-};
+
+

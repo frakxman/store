@@ -17,5 +17,8 @@ export class UserService {
   create(dto: CreateUserDTO) {
     return this.http.post<User>(`${this.baseUrl}/login`, dto);
   }
-  
+
+  getUsers() {
+    return this.http.get<User[]>(`${ this.baseUrl}`);
+  }
 }

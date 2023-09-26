@@ -15,17 +15,7 @@ export class TokenService {
     return token;
   }
 
-  islogged(): boolean {
-    if( this.getToken() ) {
-      return true;
-    }
-    return false;
-  }
-
   getUserName(): string {
-    if( !this.islogged() ) {
-      return 'No user logged';
-    }
     const token = this.getToken();
     const payload = token!.split('.')[1];
     const values = atob(payload);
@@ -35,9 +25,6 @@ export class TokenService {
   }
 
   getUserId(): number {
-    if( !this.islogged() ) {
-      return 0;
-    }
     const user = this.getToken();
     const payload = user!.split('.')[1];
     const values = atob(payload);
@@ -47,4 +34,7 @@ export class TokenService {
     return userId;
   }
 
+  // logOut() {
+  //   localStorage.clear();
+  // }
 }
