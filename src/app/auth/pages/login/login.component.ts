@@ -1,8 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 
 import { AuthService } from '../../services/auth.service';
+import { TokenService } from '../../services/token.service';
+
+import { UserResp } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +17,10 @@ export class LoginComponent {
 
   private fb = inject( FormBuilder );
   private authService = inject( AuthService );
+  private tokenService = inject( TokenService );
   private router = inject( Router );
+
+  private currentUser?: UserResp;
 
   public loginForm: FormGroup = this.fb.group({
     username: ['', [ Validators.required, Validators.minLength(3)]],
@@ -22,8 +29,21 @@ export class LoginComponent {
 
   login() {
     const { username, password } = this.loginForm.value;
-    this.authService.login( username, password );
-    this.authService.userValid();
+    this.authService.login( username, password ).pipe(
+      tap( resp => {
+        this.currentUser = resp;
+        console.log( this.currentUser );
+      })
+    )
+    .subscribe( resp => {
+      if( resp.access_token ) {
+      this.tokenService.saveToken(resp.access_token);
+      this.router.navigate(['/admin/list']);
+      } else {
+        console.log('User error');
+        this.router.navigate(['/auth/login']);
+      }
+    });
     this.loginForm.reset();
   }
 

@@ -12,7 +12,6 @@ export class UserService {
 
   private baseUrl = `${environments.baseUrl}/users`;
   
-
   constructor( private http: HttpClient ) { }
 
   create(dto: CreateUserDTO) {
