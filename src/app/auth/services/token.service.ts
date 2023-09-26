@@ -15,15 +15,6 @@ export class TokenService {
     return token;
   }
 
-  getUserName(): string {
-    const token = this.getToken();
-    const payload = token!.split('.')[1];
-    const values = atob(payload);
-    const valuesJson = JSON.parse(values);
-    const userName = valuesJson.username;
-    return userName;
-  }
-
   getUserId(): number {
     const user = this.getToken();
     const payload = user!.split('.')[1];
@@ -34,7 +25,14 @@ export class TokenService {
     return userId;
   }
 
-  // logOut() {
-  //   localStorage.clear();
-  // }
+  getUserName(): string {
+    const token = this.getToken();
+    const payload = token!.split('.')[1];
+    const values = atob(payload);
+    const valuesJson = JSON.parse(values);
+    const userName = valuesJson.username;
+    console.log( userName );
+    return userName;
+  }
+
 }

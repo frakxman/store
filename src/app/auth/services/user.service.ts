@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { environments } from 'src/environments/environments';
+
 import { CreateUserDTO, User } from '../interfaces/user.interface';
 
 @Injectable({
@@ -10,7 +11,7 @@ import { CreateUserDTO, User } from '../interfaces/user.interface';
 export class UserService {
 
   private baseUrl = `${environments.baseUrl}/users`;
-  users: User[] = [];
+  
 
   constructor( private http: HttpClient ) { }
 
@@ -19,6 +20,7 @@ export class UserService {
   }
 
   getUsers() {
-    return this.http.get<User[]>(`${ this.baseUrl}`);
+    return this.http.get<User[]>(`${ this.baseUrl}`)
+     
   }
 }

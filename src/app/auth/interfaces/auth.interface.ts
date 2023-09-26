@@ -1,4 +1,9 @@
 export interface AuthResp {
     userId: number;
-    access_token: string;
+    userName: string;
+    email: string;
+}
+
+export interface TokenResp extends AuthResp {
+ access_token: string;
 }

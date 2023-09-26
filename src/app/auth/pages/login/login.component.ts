@@ -23,6 +23,7 @@ export class LoginComponent {
   login() {
     const { username, password } = this.loginForm.value;
     this.authService.login( username, password );
+    this.authService.userValid();
     this.loginForm.reset();
   }
 
