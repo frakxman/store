@@ -13,7 +13,7 @@
          - Hacer funcional el formulario de ingreso de datos de nuevos clientes.
 -	Product: ~~Crear la página de muestra especifica de cada producto~~
 ### AUTH
--	Login: Implementar el guard para la navegación al módulo administrativo, lo que incluye validar el token y el userId respecto al que esta en la base de datos.
+-	Login: ~~Implementar el guard para la navegación al módulo administrativo, lo que incluye validar el token y el userId respecto al que esta en la base de datos~~.
 ### ADMIN
 -	General: ~~Diseñar y desarrollar todo el módulo en función de los formularios para la edición y carga de los productos~~
 -	List: la renderización de los productos en la tabla o por tarjetas.
