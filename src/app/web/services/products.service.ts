@@ -3,8 +3,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environments } from 'src/environments/environments';
 
-import { Product, UpdateProductDTO, UploadProductImage } from '../interfaces/product.interfaces';
+import { Product } from '../interfaces/product.interfaces';
+
 import { WarehouseService } from './warehouse.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ export class ProductsService implements OnInit {
 
   constructor( 
     private http: HttpClient,
-    private wareHouseService: WarehouseService
+    private wareHouseService: WarehouseService,
   ) {}
 
   ngOnInit(): void {
@@ -53,13 +55,5 @@ export class ProductsService implements OnInit {
 
   getOneProduct(id: number) {
     return this.http.get<Product>(`${this.baseUrl}/products/get-product/${id}/${ this.wareHouseId }`);
-  }
-
-  updateProduct(id: number, dto: UpdateProductDTO ) {
-    return this.http.put<UpdateProductDTO>(`${this.baseUrl}/products/update-product/${id}`, dto )
-  }
-
-  updateProductImage(id: number, url: UploadProductImage ) {
-    return this.http.put<UpdateProductDTO>(`${this.baseUrl}/products/update-photo/${id}`, url )
   }
 }

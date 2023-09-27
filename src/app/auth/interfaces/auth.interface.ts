@@ -5,5 +5,5 @@ export interface AuthResp {
 }
 
 export interface TokenResp extends AuthResp {
- access_token: string;
+    access_token: string;
 }

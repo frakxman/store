@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { TokenService } from 'src/app/auth/services/token.service';
 
 @Component({
   selector: 'app-layout',
@@ -10,12 +9,13 @@ import { TokenService } from 'src/app/auth/services/token.service';
 })
 export class LayoutComponent {
 
-  constructor( private tokenService: TokenService, private router: Router ) {}
+  constructor( private router: Router ) {}
 
   logOut() {
     localStorage.clear();
     this.router.navigate(['/auth/login']);
   }
 
+  
 
 }

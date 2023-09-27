@@ -14,7 +14,13 @@ export interface Product {
     product_photo: string[];
     baseValue: number,
     taxValue: number,
-    store: number
 }
 
+export interface UpdateProductDTO extends Omit<Product, 'idproducto' | 'barcode' | 'descripcion' | 'Description_Store' | 'precioventa' | 'costo' | 'ultcosto'> {
+    precioespecial1: number,
+    precioespecial2: number,
+}
 
+export interface UploadProductImage {
+    Urls_Img: string;
+}

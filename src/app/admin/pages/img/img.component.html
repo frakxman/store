@@ -1,11 +1,6 @@
 <h2>Cargador de imagenes para Productos</h2>
 <img src="assets/png/logo_celulares.png" alt="">
 <form [formGroup]="uploadImgForm" (ngSubmit)="uploadImg( $event )" class="form">
-    <div class="input-text">
-        <label for="">Identificador del Producto</label>
-        <br>
-        <input type="number" formControlName="id" >
-    </div>
 
     <div class="input-file">
         <label for="">Imagen del producto</label>

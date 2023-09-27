@@ -12,8 +12,8 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'list', component: ProductsComponent },
-      { path: 'edit', component: EditComponent },
-      { path: 'img', component: ImgComponent },
+      { path: 'edit/:id', component: EditComponent },
+      { path: 'img/:id', component: ImgComponent },
       { path: '**', redirectTo: 'list' }
     ]
   }

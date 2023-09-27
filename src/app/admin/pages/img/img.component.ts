@@ -12,11 +12,12 @@ export class ImgComponent {
 
   public uploadImgForm: FormGroup = this.fb.group({
     id: ['', [ Validators.required ]],
-    url: ['', [ Validators.required]],
+    url: ['', [ Validators.required ]],
   });
 
   uploadImg( id: number ) {
     console.log( this.uploadImgForm.value);
+    this.uploadImgForm.reset();
   }
 
 }
