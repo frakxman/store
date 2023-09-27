@@ -1,25 +1,31 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 
 import { environments } from 'src/environments/environments';
 
 import { Product, UpdateProductDTO, UploadProductImage } from '../interfaces/product.interface';
 
-import { TokenService } from 'src/app/auth/services/token.service';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class ProductsService implements OnInit {
 
   private baseUrl: string = environments.baseUrl;
-  token: string | null = '';
+  token = '';
+ 
+  constructor( private http: HttpClient, private authService: AuthService ) {}
 
-  constructor( private http: HttpClient, private tokenService: TokenService ) {}
+  ngOnInit(): void {
+    this.authService.getUser().subscribe( user => {
+      console.log( user );
+      this.token = user.access_token;
+      console.log( this.token )
+    });
+}
 
   getAllProducts() {
-    this.token = localStorage.getItem('token')
-    console.log( this.token );
     return this.http.get<Product[]>(`${ this.baseUrl }/products`, {
       headers: {
         Authorization: `Bearer ${ this.token }`

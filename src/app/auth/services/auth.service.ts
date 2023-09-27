@@ -1,7 +1,7 @@
 import { HttpClient, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 import { environments } from 'src/environments/environments';
 
@@ -26,7 +26,6 @@ export class AuthService {
     access_token: ''
   };
   user$ = new BehaviorSubject<UserResp | null>( null );
-  token$ = new BehaviorSubject<string | null>( null )
  
   constructor(
     private http: HttpClient,
@@ -55,5 +54,10 @@ export class AuthService {
 
   register( username: string, password: string, email: string ) {
     return this.http.post<User>(`${ this.baseUrl}/signup`, { username, password, email });
+  }
+
+  getUser(): Observable<any> {
+    this.user$.next(this.user);
+    return this.user$;
   }
 }
