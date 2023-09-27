@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-img',
@@ -7,6 +8,15 @@ import { Component } from '@angular/core';
 })
 export class ImgComponent {
 
-  
+  private fb = inject( FormBuilder );
+
+  public uploadImgForm: FormGroup = this.fb.group({
+    id: ['', [ Validators.required ]],
+    url: ['', [ Validators.required]],
+  });
+
+  uploadImg( id: number ) {
+    console.log( this.uploadImgForm.value);
+  }
 
 }

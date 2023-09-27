@@ -12,26 +12,61 @@ img {
     display: block;
 }
 
-.input-text, .input-file {
-    margin: 1%;
-}
+// .input-text, .input-file {
+//     margin: 1%;
+// }
 
-.input-text label {
-    width: 96%;
-    margin: 2% 0;
+// .input-text label {
+//     width: 96%;
+//     margin: 2% 0;
+//     border-radius: 5px;
+//     outline: none;
+//     height: 8%;
+// }
+
+// .input-text input {
+//     width: 94%;
+// }
+
+// .input-file {
+//     width: 96%;
+//     margin: 2% 1%;
+//     border-radius: 5px;
+//     outline: none;
+//     height: 5%;
+// }
+
+input {
+    height: 20px;
     border-radius: 5px;
     outline: none;
-    height: 5%;
+    margin: 1% 0;
+    width: 90%;
 }
 
-.input-text input {
-    width: 94%;
-}
-
-.input-file {
-    width: 96%;
-    margin: 2% 1%;
+.primary-button {
+    background-color: #FF2400;
     border-radius: 5px;
-    outline: none;
-    height: 5%;
+    border: none;
+    color: #FFFFFF;
+    width: 50%;
+    cursor: pointer;
+    font-size: var(--md);
+    font-weight: bold;
+    height: 35px;
+    margin: 1% auto;
+}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    input {
+        width: 94%; 
+    }
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+    input {
+        width: 94%; 
+    }
 }
