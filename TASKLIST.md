@@ -16,7 +16,7 @@
 -	Login: ~~Implementar el guard para la navegación al módulo administrativo, lo que incluye validar el token y el userId respecto al que esta en la base de datos~~.
 ### ADMIN
 -	General: ~~Diseñar y desarrollar todo el módulo en función de los formularios para la edición y carga de los productos~~
--	List: la renderización de los productos en la tabla o por tarjetas.
+-	List: ~~la renderización de los productos en la tabla o por tarjetas~~
 -	Edit: Conectar el formulario con la lógica y realizar el posteo de la información, aplicar diseño al formulario.
 -	Img: Conectar el formulario para la carga de la información.
 -	Desarrollar la funcionalidad de switch de 5 colores para personalización del store.
