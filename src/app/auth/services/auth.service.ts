@@ -53,7 +53,7 @@ export class AuthService {
   }
 
   profile(id: number) {
-    this.http.get<User[]>(`${ this.baseUrl}/${ id }`).subscribe( resp => console.log( resp ));
+    this.http.get<User>(`${ this.baseUrl}/${ id }`);
   }
 
 }

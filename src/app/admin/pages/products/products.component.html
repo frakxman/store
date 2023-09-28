@@ -1,7 +1,13 @@
-
-<h2>Lista de Todos los Productos</h2>
-<app-product 
-        [product]="product" 
-        *ngFor="let product of products" 
-    >
-</app-product>
+<div class="show-mobile">
+    <h2>Todos los Productos</h2>
+    <div class="products--grid">
+        <app-product 
+                [product]="product" 
+                *ngFor="let product of products" 
+            >
+        </app-product>
+    </div>
+</div>
+<div class="hide-mobile">
+    
+</div>

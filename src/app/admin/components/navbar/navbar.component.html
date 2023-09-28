@@ -1,9 +1,9 @@
-<div class="navbar">
-    <a>
-        <img src="assets/png/logo_celulares.png" alt="">
+<div class="navbar" [class.active]="activeMenu">
+    <a (click)="toggleMenu()">
+        <img src="assets/png/logo_celulares.png" alt="Imagen corporativa" class="logo">
     </a>
     <a>
-        <img src="https://conexionpos.com/wp-content/uploads/2021/02/conexion-pos-logo.png" alt="">
+        <img src="https://conexionpos.com/wp-content/uploads/2021/02/conexion-pos-logo.png" alt="Imagen del proveedor de la tienda" class="principal">
     </a>
     <p>conexionPos@syscomp.com</p>
 </div>
