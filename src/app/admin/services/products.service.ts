@@ -1,11 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 
 import { environments } from 'src/environments/environments';
 
 import { Product, UpdateProductDTO, UploadProductImage } from '../interfaces/product.interface';
 
-import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,24 +12,19 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class ProductsService implements OnInit {
 
   private baseUrl: string = environments.baseUrl;
-  token = '';
  
-  constructor( private http: HttpClient, private authService: AuthService ) {}
+  constructor( private http: HttpClient ) {
+  }
 
-  ngOnInit(): void {
-    this.authService.getUser().subscribe( user => {
-      console.log( user );
-      this.token = user.access_token;
-      console.log( this.token )
-    });
-}
+  ngOnInit(): void {}
 
-  getAllProducts() {
-    return this.http.get<Product[]>(`${ this.baseUrl }/products`, {
-      headers: {
-        Authorization: `Bearer ${ this.token }`
-      }
-    });
+  getAllProducts(page?: number, limit?: number) {
+    let params = new HttpParams();
+    if ( page && limit ) {
+      params = params.set('page', page);
+      params = params.set('limit', limit);
+    };
+    return this.http.get<Product[]>(`${ this.baseUrl }/products`, { params } );
   }
 
   updateProduct(id: number, dto: UpdateProductDTO ) {

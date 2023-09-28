@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environments } from 'src/environments/environments';
 
 import { TokenResp } from '../interfaces/auth.interface';
-import { User, UserResp } from '../interfaces/user.interface';
+import { User } from '../interfaces/user.interface';
 
 import { TokenService } from './token.service';
 
@@ -19,13 +19,9 @@ import Swal from 'sweetalert2';
 export class AuthService {
 
   private baseUrl = `${environments.baseUrl}/users`;
-  user: TokenResp = {
-    userId: 0,
-    userName: '',
-    email: '',
-    access_token: ''
-  };
-  user$ = new BehaviorSubject<UserResp | null>( null );
+  private user = new BehaviorSubject<TokenResp | null>( null );
+  user$ = this.user.asObservable();
+  token: TokenResp | null = null;
  
   constructor(
     private http: HttpClient,
@@ -36,9 +32,9 @@ export class AuthService {
   login( username: string, password: string ) { 
     return this.http.post<TokenResp>(`${ this.baseUrl }/login`, { username, password })
     .subscribe( resp => {
-      this.user = resp;
-      if( resp.access_token ) {
-        this.tokenService.saveToken(this.user.access_token);
+      this.token = resp;
+      if( this.token ) {
+        this.tokenService.saveToken( this.token.access_token );
         this.router.navigate(['/admin/list']);
       } else {
         Swal.fire({
@@ -56,8 +52,8 @@ export class AuthService {
     return this.http.post<User>(`${ this.baseUrl}/signup`, { username, password, email });
   }
 
-  getUser(): Observable<any> {
-    this.user$.next(this.user);
-    return this.user$;
+  profile(id: number) {
+    this.http.get<User[]>(`${ this.baseUrl}/${ id }`).subscribe( resp => console.log( resp ));
   }
+
 }

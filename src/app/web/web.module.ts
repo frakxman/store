@@ -45,6 +45,9 @@ import { InfoComponent } from './pages/info/info.component';
     WebRoutingModule,
     ReactiveFormsModule,
   ],
+  exports: [
+    ProductComponent,
+  ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class WebModule { }

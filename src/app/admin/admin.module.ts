@@ -9,6 +9,7 @@ import { ImgComponent } from './pages/img/img.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { WebModule } from '../web/web.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    WebModule
   ]
 })
 export class AdminModule { }
