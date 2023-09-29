@@ -17,7 +17,7 @@ export interface Product {
     store: number;
 }
 
-export interface UpdateProductDTO extends Omit<Product, 'idproducto' | 'barcode' | 'descripcion' | 'Description_Store' | 'precioventa' | 'costo' | 'ultcosto'> {
+export interface UpdateProductDTO extends Product{
     precioespecial1?: number,
     precioespecial2?: number,
 }

@@ -5,7 +5,7 @@ import { switchMap } from 'rxjs';
 
 import { ProductsService } from '../../services/products.service';
 
-import { Product } from '../../interfaces/product.interface';
+import { Product, UpdateProductDTO } from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-edit',
@@ -15,8 +15,7 @@ import { Product } from '../../interfaces/product.interface';
 export class EditComponent implements OnInit {
 
   private fb = inject( FormBuilder );
-  products: Product[] = [];
-  productEdit: Product = {
+  productEdit: UpdateProductDTO = {
     idproducto: 0,
     costo: 0,
     ultcosto: 0,
@@ -57,9 +56,12 @@ export class EditComponent implements OnInit {
         console.log( product );
         this.productEdit = product;
         console.log( this.productEdit );
-        this.editProductForm.patchValue({ product });
 
-        // this.editProductForm.reset( this.productEdit );
+        // this.editProductForm.patchValue({ barcode: product.barcode });
+
+        // this.editProductForm.patchValue( product );
+
+        this.editProductForm.reset( this.productEdit );
 
         // this.editProductForm.reset({
         //   barcode: product.barcode,
@@ -77,8 +79,11 @@ export class EditComponent implements OnInit {
         //   precioventa: product.precioventa,
         //   costo: product.costo,
         //   ultcosto: product.ultcosto
+        // }, {
+        //   emitEvent: false
         // });
         console.log( this.editProductForm.value );
+        return;
       })
   }
 
@@ -88,7 +93,9 @@ export class EditComponent implements OnInit {
   }
 
   imgForm() {
+    setTimeout(() => {
       this.router.navigate([`admin/img/${this.productEdit.idproducto}`]);
+    }, 2000);
   }
 
 }
