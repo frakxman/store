@@ -27,7 +27,11 @@ export class ProductsService implements OnInit {
     return this.http.get<Product[]>(`${ this.baseUrl }/products`, { params } );
   }
 
-  updateProduct(id: number, dto: UpdateProductDTO ) {
+  getOneProduct(id: number) {
+    return this.http.get<Product>(`${this.baseUrl}/products/get-product/${id}`);
+  }
+
+  editProduct(id: number, dto: UpdateProductDTO ) {
     return this.http.put<UpdateProductDTO>(`${this.baseUrl}/products/update-product/${id}`, dto )
   }
 

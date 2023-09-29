@@ -15,7 +15,7 @@ export class StoreService {
 
   constructor() { }
 
-  addProduct( product: Product ){
+  addProduct( product: Product ) {
     if( this.myShoppingCart.length === 0 ) {
       product.store = 1;
       this.myShoppingCart.push( product );

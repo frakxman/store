@@ -59,15 +59,22 @@
                 id="ultcosto"
                 formControlName="ultcosto"
             >
-        
-            <button 
-                type="submit"
-                class="primary-button login-button"
-                [disabled]="editProductForm.invalid"
-                class="primary-button"
-                >
-                Actualizar
-            </button>
+            <div class="buttons">
+                <button 
+                    type="submit"
+                    class="primary-button login-button"
+                    [disabled]="editProductForm.invalid"
+                    >
+                    Actualizar
+                </button>
+                <button 
+                    type="button"
+                    class="primary-button login-button"
+                    (click)="imgForm()"
+                    >
+                    Cargar Imagen
+                </button>
+            </div>
         </form>
     </div>
 </div>

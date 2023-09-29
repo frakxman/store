@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Product } from 'src/app/web/interfaces/product.interfaces';
+import { ProductsService } from '../../services/products.service';
+import { Router } from '@angular/router';
 
-import { ProductsService } from 'src/app/web/services/products.service';
 
 @Component({
   selector: 'app-products',
@@ -23,5 +24,4 @@ export class ProductsComponent implements OnInit {
       this.products = products;
     });
   }
-
 }

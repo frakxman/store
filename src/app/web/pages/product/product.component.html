@@ -1,13 +1,13 @@
 <div class="product-card">
     <a [routerLink]="['/store/product-info', product.idproducto ]">
-        <!-- <app-img [img]="productRender.product_photo[0]"></app-img> -->
+        <!-- <app-img [img]="product.product_photo[0]"></app-img> -->
     </a>
     <div class="card-body">
         <h2 class="card-body_price">{{ product.precioventa | currency }}</h2>
         <p class="card-body_tittle">{{ product.descripcion }}</p>
         <p class="card-body_description">{{ product.Description_Store | lowercase }}</p>
     </div>
-    <div class="button-card">
+    <div class="button-card" *ngIf="purchase; else editProduct">
         <button [routerLink]="['/store/product-info', product.idproducto]" class="primary-button">
             Más...
         </button>
@@ -16,4 +16,9 @@
             Añadir
         </button>
     </div>
+    <ng-template #editProduct>
+        <button (click)="sent()" class="primary-button edit">
+            Edit
+        </button>
+    </ng-template>
 </div>

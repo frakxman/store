@@ -1,13 +1,14 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Product } from '../../interfaces/product.interfaces';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit {
 
   @Input() product: Product = {
     idproducto: 0,
@@ -29,9 +30,25 @@ export class ProductComponent {
   }
   
   @Output() addedProduct = new EventEmitter<Product>();
+  // @Output() editProduct = new EventEmitter<Product>();
+
+  purchase = false;
+
+  constructor( private router: Router ) {}
+
+  ngOnInit(): void {
+      if( this.router.url.includes('store') ) {
+        this.purchase = true;
+      }
+  }
 
   onAddToCart() {
     this.addedProduct.emit(this.product)
+  }
+
+  sent() {
+    // this.editProduct.emit(this.product);
+    this.router.navigate([`admin/edit/${this.product.idproducto}`]);
   }
 
 }

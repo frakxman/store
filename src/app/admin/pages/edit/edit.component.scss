@@ -26,6 +26,7 @@ h1 {
     outline: none;
     height: 5%;
 }
+
 .primary-button {
     background-color: #FF2400;
     border-radius: 8px;
@@ -48,6 +49,11 @@ h1 {
         margin: 0 auto;
         width: 80%;
         height: 100vh;
+    }
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }
 
