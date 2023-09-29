@@ -30,6 +30,7 @@
         }
     }
     .side-menu_header {
+        border-radius: 5px;
         background-color: #E17E68;
         display: flex;
         justify-content: space-around;
@@ -113,15 +114,15 @@
         display: flex;
         align-items: center;
         ul {
-            display: flex;
-            list-style: none;
+                display: flex;
+                list-style: none;
             li {
                 font-size: 1.2em;
             }
             a {
-            margin: 0 .2em;
-            color: inherit;
-            text-decoration: none;
+                margin: 0 .2em;
+                color: inherit;
+                text-decoration: none;
             }
         }
     }

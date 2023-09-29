@@ -5,5 +5,24 @@
     <a>
         <img src="https://conexionpos.com/wp-content/uploads/2021/02/conexion-pos-logo.png" alt="Imagen del proveedor de la tienda" class="principal">
     </a>
-    <p>conexionPos@syscomp.com</p>
+</div>
+<div class="show-mobile">
+    <div class="side-menu" [class.active]="activeMenu">
+        <div class="side-menu_header">
+            <p>Menu</p>
+            <button (click)="toggleMenu()">
+                <img src="assets/svg/close.svg" alt="cerrar pestaña">
+            </button>
+        </div>
+        <div class="side-menu_body">
+            <ul>
+                <li>
+                    <a routerLink="/admin/products" (click)="toggleMenu()">Productos</a>
+                </li>
+                <li>
+                    <a (click)="logOut()">Salir</a>
+                 </li>
+            </ul>
+        </div>
+    </div>
 </div>

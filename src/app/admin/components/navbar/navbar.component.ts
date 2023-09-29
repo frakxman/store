@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,15 @@ export class NavbarComponent {
 
   activeMenu = false;
 
+  constructor( private router: Router ) {}
+
   toggleMenu() {
     this.activeMenu = !this.activeMenu;
-    console.log('Toogle change');
+  }
+
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['/auth/login']);
   }
  
 }
