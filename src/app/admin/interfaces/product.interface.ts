@@ -17,9 +17,18 @@ export interface Product {
     store: number;
 }
 
-export interface UpdateProductDTO extends Product{
-    precioespecial1?: number,
-    precioespecial2?: number,
+export interface UpdateProductDTO {
+    Description_Store: string;
+    barcode: string;
+    codigo: string;
+    codiva: string;
+    costo: number;
+    descripcion: string;
+    idproducto: number;
+    precioespecial1: number;
+    precioespecial2: number;
+    precioventa: number;
+    ultcosto: number;
 }
 
 export interface UploadProductImage {

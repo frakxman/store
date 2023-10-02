@@ -16,22 +16,17 @@ export class EditComponent implements OnInit {
 
   private fb = inject( FormBuilder );
   productEdit: UpdateProductDTO = {
-    idproducto: 0,
-    costo: 0,
-    ultcosto: 0,
-    codiva: '',
-    precioventa: 0,
-    descripcion: '',
+    Description_Store: '',
     barcode: '',
     codigo: '',
-    cantidad: 0,
-    nomalmacen: '',
-    Description_Store: '',
-    porcentaje: 0,
-    product_photo: [''],
-    baseValue: 0,
-    taxValue: 0,
-    store: 0,
+    codiva: '',
+    costo: 0,
+    descripcion: '',
+    idproducto: 0,
+    precioespecial1: 0,
+    precioespecial2: 0,
+    precioventa: 0,
+    ultcosto: 0
   };
 
   public editProductForm: FormGroup = this.fb.group({
@@ -45,57 +40,33 @@ export class EditComponent implements OnInit {
     ultcosto: ['',[ Validators.required ]]
   });
 
-  constructor( private productService: ProductsService, private activatedRoute: ActivatedRoute, private router: Router ) {}
+  constructor(
+    private productService: ProductsService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() { 
-    this.activatedRoute.params
+    return this.activatedRoute.params
       .pipe(
         switchMap(({id}) => this.productService.getOneProduct( id )),
       )
       .subscribe( product => {
         console.log( product );
         this.productEdit = product;
-        console.log( this.productEdit );
-
-        // this.editProductForm.patchValue({ barcode: product.barcode });
-
-        // this.editProductForm.patchValue( product );
-
-        this.editProductForm.reset( this.productEdit );
-
-        // this.editProductForm.reset({
-        //   barcode: product.barcode,
-        //   descripcion: product.descripcion,
-        //   Description_Store: product.Description_Store,
-        //   precioventa: product.precioventa,
-        //   costo: product.costo,
-        //   ultcosto: product.ultcosto
-        //  });
-
-        // this.editProductForm.setValue({
-        //   barcode: product.barcode,
-        //   descripcion: product.descripcion,
-        //   Description_Store: product.Description_Store,
-        //   precioventa: product.precioventa,
-        //   costo: product.costo,
-        //   ultcosto: product.ultcosto
-        // }, {
-        //   emitEvent: false
-        // });
-        console.log( this.editProductForm.value );
+        this.editProductForm.patchValue( product );
         return;
       })
   }
 
   editProduct() {
-    // this.productService.editProduct();
-    console.log( this.editProductForm.value );
+    console.log(this.editProductForm.value);
+    this.productService.editProduct(this.productEdit.idproducto, this.editProductForm.value);
+    console.log('Update maked');
   }
 
   imgForm() {
-    setTimeout(() => {
-      this.router.navigate([`admin/img/${this.productEdit.idproducto}`]);
-    }, 2000);
+    this.router.navigate([`admin/img/${this.productEdit.idproducto}`]);
   }
 
 }

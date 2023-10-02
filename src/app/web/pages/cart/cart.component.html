@@ -57,4 +57,4 @@
         <p class="message">No hay productos agregados al carrito</p>
     </ng-template>
 </div>
-<app-customer></app-customer>
+<app-customer *ngIf="products.length"></app-customer>
