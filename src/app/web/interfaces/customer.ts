@@ -1,32 +1,32 @@
 export interface CustomerResp {
-    idtercero:       number;
+    idtercero?:       number;
     digito:          number;
     nit:             string;
     nombres:         string;
     nombre2:         string;
     apellidos:       string;
     apellido2:       string;
-    nomcomercial:    string;
+    nomcomercial?:    string;
     direccion:       string;
     telefono:        string;
     email:           string;
-    email2:          null;
+    email2:          string;
     idpais:          number;
     idmunicipio:     number;
-    tipoID:          string;
-    tipopersona:     number;
-    regiRenta:       null;
-    autoretenedor:   number;
-    matriculamercan: null;
-    inactivo:        number;
-    idclasifterc:    number;
-    usapuntos:       number;
+    TipoId:          string;
+    tipopersona?:     number;
+    regiRenta?:       null;
+    autoretenedor?:   number;
+    matriculamercan?: null;
+    inactivo?:        number;
+    idclasifterc?:    number;
+    usapuntos?:       number;
     tipofactura:     number;
     iddepto:         number;
-    cliente:         number;
-    idactividad:     null;
-    idregimen:       number;
-    aplicaprom:      number;
+    cliente?:         number;
+    idactividad?:     null;
+    idregimen?:       number;
+    aplicaprom?:      number;
 }
 
 export interface Nit {
@@ -62,3 +62,5 @@ export interface updateCustomerDto {
     RegiRenta:	     string;
     autoretenedor:	 number;
 }
+
+

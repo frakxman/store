@@ -1,16 +1,14 @@
 <div class="client-form">
+    <h2>Ingrese sus datos</h2>
     <label for="nit">Nit o C.C</label>
-    <br>
     <input
         type="text"
         name="nit"
         [(ngModel)]="id.nit"
         placeholder="C.C o Nit"
-        (keyup.enter)="calcular()"
         (keyup.enter)="searchCustomer()"
         >
-    <form [formGroup]="createCustomerForm" (ngSubmit)="createCustomer()">
-        <!-- <h2 *ngIf="!nitFound">Registro de cliente</h2> -->
+    <form [formGroup]="createCustomerForm" (ngSubmit)="createCustomer()" autocomplete="off">
         <div class="first-row">
             
             <label for="digit">Código de verificacion</label>
@@ -23,17 +21,10 @@
 
             <label for="TipoId">Tipo de Documento</label>
             <select name="TipoId"  id="TipoId" formControlName="TipoId">
-                <option value="">Tipo de Documento</option>
-                <option value="11">Registro Civil</option>
-                <option value="12">Tarjeta de Identidad</option>
-                <option value="13">Cédula de Ciudadanía</option>
-                <option value="21">Tarjeta de Extranjería</option>
-                <option value="21">Cédula de Extranjería</option>
-                <option value="31">N.I.T.</option>
-                <option value="41">Pasaporte</option>
-                <option value="42">Documento de Identificación Extranjero</option>
-                <option value="50">N.I.T. de otro País</option>
-                <option value="91">N.U.I.P</option>
+                <!-- <option value="">Tipo de Documento</option> -->
+                <option *ngFor="let id of tipoId; index as i" [value]="id.TipoId">
+                    {{ id.Documento }}
+                </option>
             </select>
 
         </div>
@@ -101,7 +92,7 @@
                 </option>
             </select>
         
-            <label for="idmunicipio">Municipalities</label>
+            <label for="idmunicipio">Municipio</label>
             <select name="idmunicipio" id="idmunicipio" formControlName="idmunicipio">
                 <option *ngFor="let municipality of municipalities; index as i" [value]="municipality.idmunicipio">
                     {{ municipality.nommunicipio }}
@@ -112,8 +103,8 @@
             <label for="tipofactura">Tipo de Factura</label>
             <select name="tipofactura" id="tipofactura" formControlName="tipofactura">
                 <option value="">Seleccione una</option>
-                <option value="pos">P.O.S.</option>
-                <option value="factElec">Factura Electrónica</option>
+                <option value="1">P.O.S.</option>
+                <option value="2">Factura Electrónica</option>
             </select>
         </div>
 
