@@ -13,7 +13,7 @@ import { CustomerResp, Nit, updateCustomerDto } from '../interfaces/customer';
 })
 export class CustomerService {
 
-  private baseUrl: string = environments.baseUrl
+  private baseUrl: string = environments.baseUrl;
 
   constructor( private http: HttpClient) { }
 
