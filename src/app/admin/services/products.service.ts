@@ -30,10 +30,10 @@ export class ProductsService {
   }
 
   editProduct(id: number, dto: UpdateProductDTO ) {
-    return this.http.put<UpdateProductDTO>(`${this.baseUrl}/update-product/${id}`, dto )
+    return this.http.put<UpdateProductDTO>(`${this.baseUrl}/update-product/${id}`, dto );
   }
 
   updateProductImage(id: number, url: UploadProductImage ) {
-    return this.http.put<UpdateProductDTO>(`${this.baseUrl}/update-photo/${id}`, url )
+    return this.http.put<UpdateProductDTO>(`${this.baseUrl}/update-photo/${id}`, url );
   }
 }

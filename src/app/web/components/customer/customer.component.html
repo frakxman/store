@@ -1,36 +1,39 @@
 <div class="client-form">
-    <form [formGroup]="createUserForm" (ngSubmit)="createUser()">
-        <h2>Creacion de cliente</h2>
+    <label for="nit">Nit o C.C</label>
+    <br>
+    <input
+        type="text"
+        name="nit"
+        [(ngModel)]="id.nit"
+        placeholder="C.C o Nit"
+        (keyup.enter)="calcular()"
+        (keyup.enter)="searchCustomer()"
+        >
+    <form [formGroup]="createCustomerForm" (ngSubmit)="createCustomer()">
+        <!-- <h2 *ngIf="!nitFound">Registro de cliente</h2> -->
         <div class="first-row">
-
-            <label for="nit">Nit o C.C</label>
-            <input
-                type="text"
-                formControlName="nit"
-                placeholder="C.C o Nit"
-            >  
-        
+            
             <label for="digit">Código de verificacion</label>
             <input
-                type="number"
-                formControlName="digit"
+                formControlName="digito"
                 placeholder="Digito de Verificacion"
                 class="digito"
+                readonly="readonly"
             >
 
-            <label for="document">Tipo de Documento</label>
-            <select name="document"  id="document" formControlName="document">
+            <label for="TipoId">Tipo de Documento</label>
+            <select name="TipoId"  id="TipoId" formControlName="TipoId">
                 <option value="">Tipo de Documento</option>
-                <option value="regCiv">Registro Civil</option>
-                <option value="tI">Tarjeta de Identidad</option>
-                <option value="cedCiu">Cédula de Ciudadanía</option>
-                <option value="tiExt">Tarjeta de Extranjería</option>
-                <option value="cedExt">Cédula de Extranjería</option>
-                <option value="nit">N.I.T.</option>
-                <option value="passport">Pasaporte</option>
-                <option value="docIdEx">Documento de Identificación Extranjero</option>
-                <option value="nitOP">N.I.T. de otro País</option>
-                <option value="nuip">N.U.I.P</option>
+                <option value="11">Registro Civil</option>
+                <option value="12">Tarjeta de Identidad</option>
+                <option value="13">Cédula de Ciudadanía</option>
+                <option value="21">Tarjeta de Extranjería</option>
+                <option value="21">Cédula de Extranjería</option>
+                <option value="31">N.I.T.</option>
+                <option value="41">Pasaporte</option>
+                <option value="42">Documento de Identificación Extranjero</option>
+                <option value="50">N.I.T. de otro País</option>
+                <option value="91">N.U.I.P</option>
             </select>
 
         </div>
@@ -38,37 +41,37 @@
             <label for="">Primer Nombre</label>
             <input
                 type="text"
-                formControlName="firstName"
+                formControlName="nombres"
                 placeholder="Primer Nombre"
             >
             <label for="">Segundo Nombre</label>
             <input
                 type="text"
-                formControlName="secondName"
+                formControlName="nombre2"
                 placeholder="Segundo Nombre"
             >
             <label for="">Primer Apellido</label>
             <input
                 type="text"
-                formControlName="firstLastName"
+                formControlName="apellidos"
                 placeholder="Primer Apellido"
             >
             <label for="">Segundo Apellido</label>
             <input
                 type="text"
-                formControlName="secondLastName"
+                formControlName="apellido2"
                 placeholder="Segundo Apellido"
             >
             <label for="">Dirección</label>
             <input
                 type="text"
-                formControlName="address"
+                formControlName="direccion"
                 placeholder="Dirección"
             >
             <label for="">Teléfono</label>
             <input
                 type="text"
-                formControlName="phone"
+                formControlName="telefono"
                 placeholder="Teléfono"
             >
             <label for="">Correo Electrónico</label>
@@ -80,34 +83,34 @@
             <label for="">Correo Alternativo</label>
             <input
                 type="email"
-                formControlName="confEmail"
+                formControlName="email2"
                 placeholder="Correo Alternativo">
         </div>
         <div class="localization">
-            <label for="country">Pais</label>
-            <select name="country" id="country" formControlName="country">
+            <label for="idpais">Pais</label>
+            <select name="idpais" id="idpais" formControlName="idpais">
                 <option *ngFor="let country of countries; index as i" [value]="country.idpais">
                     {{ country.nompais }}
                 </option>
             </select>
         
-            <label for="department">Departamento</label>
-            <select name="department" id="department" formControlName="department">
+            <label for="iddepto">Departamento</label>
+            <select name="iddepto" id="iddepto" formControlName="iddepto">
                 <option *ngFor="let department of departments; index as i" [value]="department.iddepto">
                     {{ department.nomdepartamento }}
                 </option>
             </select>
         
-            <label for="town">Municipalities</label>
-            <select name="town" id="town" formControlName="town">
+            <label for="idmunicipio">Municipalities</label>
+            <select name="idmunicipio" id="idmunicipio" formControlName="idmunicipio">
                 <option *ngFor="let municipality of municipalities; index as i" [value]="municipality.idmunicipio">
                     {{ municipality.nommunicipio }}
                 </option>
             </select>
         </div>
         <div class="last-row">
-            <label for="bill">Tipo de Factura</label>
-            <select name="bill" id="bill">
+            <label for="tipofactura">Tipo de Factura</label>
+            <select name="tipofactura" id="tipofactura" formControlName="tipofactura">
                 <option value="">Seleccione una</option>
                 <option value="pos">P.O.S.</option>
                 <option value="factElec">Factura Electrónica</option>

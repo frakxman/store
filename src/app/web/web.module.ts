@@ -18,7 +18,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { ProductComponent } from './pages/product/product.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ErrorComponent } from './pages/error/error.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { InfoComponent } from './pages/info/info.component';
@@ -44,6 +44,7 @@ import { InfoComponent } from './pages/info/info.component';
     CommonModule,
     WebRoutingModule,
     ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     ProductComponent,
