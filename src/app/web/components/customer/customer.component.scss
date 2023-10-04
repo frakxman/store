@@ -3,7 +3,9 @@ h2 {
     font-size: 2em;
     margin: 2% 0;
 }
-
+.buttons {
+    height: 15vh;
+}
 .client-form {
     border: 1px solid #fff;
     border-radius: 5px;
@@ -13,22 +15,17 @@ h2 {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     padding: 2% 0;
-    height: 30vh;
     width: 98%;
 }
-
 .client-form h2 {
     margin: 0 0 3% 0;
 }
-
 .search{
     height: 25px !important;
 }
-
 label {
     margin: 1% 0 0 1%;
 }
-
 select {
     border-radius: 5px;
     width: 98%;
@@ -43,12 +40,11 @@ input {
     margin: 1%;
     width: 96%;
 }
-
 .first-row {
     display: block;
     width: 100%;
+    margin-top: 1%;
 }
-
 .primary-button {
     background-color: #FF2400;
     border-radius: 8px;
@@ -59,33 +55,67 @@ input {
     font-size: var(--md);
     font-weight: bold;
     height: 35px;
-    margin: 2% 1%;
+    margin: 1% 1%;
 }
-
+.error-mesage {
+    color: #FF2400;
+    font-size: .7em;
+    font-style: italic;
+    font-weight: 600;
+    margin: 1% 0 0 50%;
+}
 
 /* Medium only */
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
     h2 {
         margin: 0;
     }
+    .buttons {
+        display: flex;
+        height: 10vh;
+    }
+    .edit {
+        width: 100%;
+        margin: 1% 0 0 0;
+    }
+    .notificacion {
+        display: grid;
+        margin: 1%;
+    }
     .client-form {
         width: 98%;
         margin: 0 1%;
-        height: 80vh;
     }
-    .first-row, .localization {
+    .first-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin: -3% 0 1% 0;
     }
-    .first-row input, select {
-        width: 40%;
+    .first-row input {
+        width: 35%;
     }
     .principal-row {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 2%;
         height: auto;
+        margin: 1%;
+    }
+    .localization {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1%;
+    }
+    .last-row {
+        margin: 1% 0;
+    }
+    .last-row select {
+        width: 100%;
+        margin: 0;
+    }
+    .error-mesage {
         margin: 1%;
     }
 }
@@ -95,24 +125,52 @@ input {
     h2 {
         margin: 0;
     }
+    .buttons {
+        display: flex;
+        height: 10vh;
+    }
+    .edit {
+        width: 100%;
+        margin: 1% 0 0 0;
+    }
+    .notificacion {
+        display: grid;
+        margin: 1%;
+    }
     .client-form {
         width: 98%;
         margin: 0 1%;
-        height: 65vh;
     }
-    .first-row, .localization {
+    .first-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin: -3% 0 1% 0;
     }
-    .first-row input, select {
-        width: 40%;
+    .first-row input {
+        width: 35%;
     }
     .principal-row {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 2%;
         height: auto;
+        margin: 1%;
+    }
+    .localization {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1%;
+    }
+    .last-row {
+        margin: 1% 0;
+    }
+    .last-row select {
+        width: 100%;
+        margin: 0;
+    }
+    .error-mesage {
         margin: 1%;
     }
 }

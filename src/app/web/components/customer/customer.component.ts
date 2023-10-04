@@ -87,17 +87,17 @@ export class CustomerComponent implements OnInit {
   myNit = parseInt(this.id.nit);  
 
   public createCustomerForm: FormGroup = this.fb.group({
-    nit: ['', [ Validators.required ]],
+    nit: ['', [ Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/) ]],
     digito: ['', [ Validators.required]],
     TipoId: ['', [ Validators.required ]],
     nombres: ['', [ Validators.required, Validators.minLength(3) ]],
     nombre2: [''],
-    apellidos: ['', [ Validators.minLength(3) ]],
-    apellido2: ['', [ Validators.minLength(3) ]],
+    apellidos: [''],
+    apellido2: [''],
     direccion: ['', []],
-    telefono: ['', [ Validators.required, Validators.min(10) ]],
+    telefono: ['', [ Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
     email: ['', [ Validators.required, Validators.email ]],
-    email2: ['', [ Validators.email ]],
+    email2: [''],
     idpais: [''],
     iddepto: [''],
     idmunicipio: [''],
@@ -114,6 +114,58 @@ export class CustomerComponent implements OnInit {
     this.nitFound = true ;
   }
 
+  ////////// Create Customer \\\\\\\\\\
+  createCustomer() {
+    // const dto = this.createCustomerForm.value;
+    this.createCustomerForm.patchValue({ nit: parseInt(this.id.nit) });
+    // this.customerService.createCustomer( dto );
+    console.log(this.createCustomerForm.value);
+  }
+
+  calcularDigitoVerificacion(nit: string) {
+    // Se limpia el Nit
+    nit = nit.replace(/\s/g, ""); // Espacios
+    nit = nit.replace(/,/g, ""); // Comas
+    nit = nit.replace(/\./g, ""); // Puntos
+    nit = nit.replace(/-/g, ""); // Guiones
+  
+    // Se valida el nit
+    if (isNaN(parseInt(nit))) {
+      console.log("El nit/cédula '" + nit + "' no es válido(a).");
+      return "";
+    }
+  
+    // Procedimiento
+    const vpri = [3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71];
+    const z = nit.length;
+  
+    let x = 0;
+    let y = 0;
+    for (let i = 0; i < z; i++) {
+      y = parseInt(nit.substr(i, 1));
+      x += y * vpri[z - i - 1];
+    }
+  
+    y = x % 11;
+  
+    return (y > 1) ? 11 - y : y;
+  }
+
+  calcular() {
+
+    // Verificar que haya un número
+    const nit = parseInt(this.id.nit);
+    const isNitValid = isFinite(nit) && nit > 0;
+  
+    // Si es un número se calcula el Dígito de Verificación
+    if (isNitValid) {
+      const digitoVerificacion = this.calcularDigitoVerificacion(nit.toString());
+      this.createCustomerForm.patchValue({ digito: digitoVerificacion });
+    }
+  }
+
+
+  ////////// Update Customer \\\\\\\\\\
   alreadyCustomer() {
     this.nitFound = true;
   }
@@ -176,60 +228,12 @@ export class CustomerComponent implements OnInit {
   }
 
   updateCustomer() {
-    const cusId = parseInt(this.id.nit)
-    const dto = this.createCustomerForm.value;
+    // const cusId = parseInt(this.id.nit)
+    // const dto = this.createCustomerForm.value;
     // this.customerService.updateCustomer( cusId, dto );
-  }
-
-  createCustomer() {
-    const dto = this.createCustomerForm.value;
-    // this.customerService.createCustomer( dto );
     console.log(this.createCustomerForm.value);
   }
 
-  calcularDigitoVerificacion(nit: string) {
-    // Se limpia el Nit
-    nit = nit.replace(/\s/g, ""); // Espacios
-    nit = nit.replace(/,/g, ""); // Comas
-    nit = nit.replace(/\./g, ""); // Puntos
-    nit = nit.replace(/-/g, ""); // Guiones
-  
-    // Se valida el nit
-    if (isNaN(parseInt(nit))) {
-      console.log("El nit/cédula '" + nit + "' no es válido(a).");
-      return "";
-    }
-  
-    // Procedimiento
-    const vpri = [3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71];
-    const z = nit.length;
-  
-    let x = 0;
-    let y = 0;
-    for (let i = 0; i < z; i++) {
-      y = parseInt(nit.substr(i, 1));
-      x += y * vpri[z - i - 1];
-    }
-  
-    y = x % 11;
-  
-    return (y > 1) ? 11 - y : y;
-  }
-
-  calcular() {
-
-    // Verificar que haya un número
-    const nit = parseInt(this.id.nit);
-    const isNitValid = isFinite(nit) && nit > 0;
-    console.log(nit);
-  
-    // Si es un número se calcula el Dígito de Verificación
-    if (isNitValid) {
-      const digitoVerificacion = this.calcularDigitoVerificacion(nit.toString());
-      console.log(nit.toString());
-      console.log(digitoVerificacion);
-      this.createCustomerForm.patchValue({ digito: digitoVerificacion });
-    }
-  }
+ 
 
 }
