@@ -110,11 +110,32 @@ export class CustomerComponent implements OnInit {
     this.customerService.getMunicipalities().subscribe( municipalities => this.municipalities = municipalities );
   }
 
+  isValidForm(field: string): boolean | null {
+    return this.createCustomerForm.controls[field].errors && this.createCustomerForm.controls[field].touched;
+  }
+
+  getFieldError(field: string): string | null {
+    if ( !this.createCustomerForm.controls[field] ) return null ;
+
+    const errors = this.createCustomerForm.controls[field].errors || {};
+
+    for (const key of Object.keys(errors)) {
+      switch( key ){
+        case 'required':
+          return 'Este campo es obligatorio';
+        case 'minlength':
+          return `Minimo ${ errors['minlength'].requiredLength } caracteres.`;
+      }
+    }
+
+    return null;
+  }
+
+  ////////// Create Customer \\\\\\\\\\
   newCustomer() {
     this.nitFound = true ;
   }
 
-  ////////// Create Customer \\\\\\\\\\
   createCustomer() {
     // const dto = this.createCustomerForm.value;
     this.createCustomerForm.patchValue({ nit: parseInt(this.id.nit) });
