@@ -80,14 +80,13 @@ export class CustomerComponent implements OnInit {
   countries: Country[] = [];
   departments: Departments[] = [];
   municipalities: Municipalities[] = [];
-  id: Nit = {
-    nit: ''
-  };
+  id: Nit = { nit: '' };
   nitFound: boolean = false;
+  crear: boolean = false;
   myNit = parseInt(this.id.nit);  
 
-  public createCustomerForm: FormGroup = this.fb.group({
-    nit: ['', [ Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/) ]],
+  public customerForm: FormGroup = this.fb.group({
+    nit: ['', [ Validators.pattern(/^-?(0|[1-9]\d*)?$/) ]],
     digito: ['', [ Validators.required]],
     TipoId: ['', [ Validators.required ]],
     nombres: ['', [ Validators.required, Validators.minLength(3) ]],
@@ -110,37 +109,17 @@ export class CustomerComponent implements OnInit {
     this.customerService.getMunicipalities().subscribe( municipalities => this.municipalities = municipalities );
   }
 
-  isValidForm(field: string): boolean | null {
-    return this.createCustomerForm.controls[field].errors && this.createCustomerForm.controls[field].touched;
-  }
-
-  getFieldError(field: string): string | null {
-    if ( !this.createCustomerForm.controls[field] ) return null ;
-
-    const errors = this.createCustomerForm.controls[field].errors || {};
-
-    for (const key of Object.keys(errors)) {
-      switch( key ){
-        case 'required':
-          return 'Este campo es obligatorio';
-        case 'minlength':
-          return `Minimo ${ errors['minlength'].requiredLength } caracteres.`;
-      }
-    }
-
-    return null;
-  }
-
   ////////// Create Customer \\\\\\\\\\
   newCustomer() {
     this.nitFound = true ;
+    this.crear = true;
   }
 
   createCustomer() {
     // const dto = this.createCustomerForm.value;
-    this.createCustomerForm.patchValue({ nit: parseInt(this.id.nit) });
+    this.customerForm.patchValue({ nit: parseInt(this.id.nit) });
     // this.customerService.createCustomer( dto );
-    console.log(this.createCustomerForm.value);
+    console.log(this.customerForm.value);
   }
 
   calcularDigitoVerificacion(nit: string) {
@@ -181,7 +160,7 @@ export class CustomerComponent implements OnInit {
     // Si es un número se calcula el Dígito de Verificación
     if (isNitValid) {
       const digitoVerificacion = this.calcularDigitoVerificacion(nit.toString());
-      this.createCustomerForm.patchValue({ digito: digitoVerificacion });
+      this.customerForm.patchValue({ digito: digitoVerificacion });
     }
   }
 
@@ -194,7 +173,6 @@ export class CustomerComponent implements OnInit {
   searchCustomer() {
     this.customerService.searchCustomer( this.id ) 
       .subscribe( rta => {
-        console.log( rta );
         this.customer = rta;
         this.setValues();
       });
@@ -202,59 +180,57 @@ export class CustomerComponent implements OnInit {
 
   setValues( ) {
     // Set the value of digito like as response from API 
-    this.createCustomerForm.patchValue({ digito: this.customer.digito });
+    this.customerForm.patchValue({ digito: this.customer.digito });
     // Set the value of tipoID like as response from API
     for (const id of this.tipoId) {
       if ( this.customer.TipoId === id.TipoId ) {
-        this.createCustomerForm.patchValue({ TipoId: this.customer.TipoId });
+        this.customerForm.patchValue({ TipoId: this.customer.TipoId });
       }
     }
     // Set the value of nombres like as response from API
-    this.createCustomerForm.patchValue({ nombres: this.customer.nombres });
+    this.customerForm.patchValue({ nombres: this.customer.nombres });
     // Set the value of nombre2 like as response from API
-    this.createCustomerForm.patchValue({ nombre2: this.customer.nombre2 });
+    this.customerForm.patchValue({ nombre2: this.customer.nombre2 });
     // Set the value of apellidos like as response from API
-    this.createCustomerForm.patchValue({ apellidos: this.customer.apellidos });
+    this.customerForm.patchValue({ apellidos: this.customer.apellidos });
     // Set the value of apellido2 like as response from API
-    this.createCustomerForm.patchValue({ apellido2: this.customer.apellido2 });
+    this.customerForm.patchValue({ apellido2: this.customer.apellido2 });
     // Set the value of direccion like as response from API
-    this.createCustomerForm.patchValue({ direccion: this.customer.direccion });
+    this.customerForm.patchValue({ direccion: this.customer.direccion });
     // Set the value of telefono like as response from API
-    this.createCustomerForm.patchValue({ telefono: this.customer.telefono });
+    this.customerForm.patchValue({ telefono: this.customer.telefono });
     // Set the value of email like as response from API
-    this.createCustomerForm.patchValue({ email: this.customer.email });
+    this.customerForm.patchValue({ email: this.customer.email });
     // Set the value of email2 like as response from API
-    this.createCustomerForm.patchValue({ email2: this.customer.email2 });
+    this.customerForm.patchValue({ email2: this.customer.email2 });
     // Set the value of pais like as response from API  
     for (const country of this.countries) {
       if ( this.customer.idpais === country.idpais ) {
         // this.createCustomerForm.patchValue({ idpais: country.nompais });
-        this.createCustomerForm.patchValue({ idpais: this.customer.idpais });
+        this.customerForm.patchValue({ idpais: this.customer.idpais });
       }
     }
     // Set the value of departamento like as response from API  
     for (const deparment of this.departments) {
       if ( this.customer.iddepto === deparment.iddepto ) {
-        this.createCustomerForm.patchValue({ iddepto: this.customer.iddepto });
+        this.customerForm.patchValue({ iddepto: this.customer.iddepto });
       }
     }
     // Set the value of municipio like as response from API  
     for (const municipio of this.municipalities) {
       if ( this.customer.idmunicipio === municipio.idmunicipio ) {
-        this.createCustomerForm.patchValue({ idmunicipio: this.customer.idmunicipio });
+        this.customerForm.patchValue({ idmunicipio: this.customer.idmunicipio });
       }
     }
      // Set the value of email2 like as response from API
-     this.createCustomerForm.patchValue({ tipofactura: this.customer.tipofactura });
+     this.customerForm.patchValue({ tipofactura: this.customer.tipofactura });
   }
 
   updateCustomer() {
     // const cusId = parseInt(this.id.nit)
     // const dto = this.createCustomerForm.value;
     // this.customerService.updateCustomer( cusId, dto );
-    console.log(this.createCustomerForm.value);
+    console.log(this.customerForm.value);
   }
-
- 
 
 }

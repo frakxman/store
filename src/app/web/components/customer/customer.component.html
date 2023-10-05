@@ -13,7 +13,8 @@
         </button>
     </div>
 
-    <div class="total-form" *ngIf="nitFound" [ngClass]="{'total-form': nitFound }">
+    <!-- ////////// Create Customer \\\\\\\\\\ -->
+    <div class="total-form" *ngIf="nitFound && crear; else Edit" [ngClass]="{'total-form': nitFound }">
         <!-- Nit -->
         <div class="edit">
             <div class="notificacion">
@@ -27,13 +28,11 @@
                 >
                 <span class="error-mesage">
                     *Este campo es requerido
-                    <!-- *ngIf="isValidForm('nit')"
-                    {{ getFieldError('name')}} -->
                 </span>
             </div>
         </div>
         
-        <form [formGroup]="createCustomerForm" (ngSubmit)="createCustomer()" autocomplete="off">
+        <form [formGroup]="customerForm" (ngSubmit)="createCustomer()" autocomplete="off">
             <!-- First Row -->
             <div class="first-row">
                 
@@ -51,16 +50,16 @@
                             {{ id.Documento }}
                         </option>
                     </select>
-                    <span class="error-mesage">
+                    <span class="error-mesage" >
                         *Este campo es requerido
                     </span>
                 </div>              
 
             </div>
-            <!-- Principal-row -->
+            <!-- Principal Row -->
             <div class="principal-row">
 
-                <label for="">Primer Nombre</label>
+                <label for="nombres">Primer Nombre</label>
                 <div class="notificacion">
                     <input
                         type="text"
@@ -72,31 +71,31 @@
                     </span>
                 </div>
 
-                <label for="">Segundo Nombre</label>
+                <label for="nombre2">Segundo Nombre</label>
                 <input
                     type="text"
                     formControlName="nombre2"
                     placeholder="Segundo Nombre"
                 >
-                <label for="">Primer Apellido</label>
+                <label for="apellidos">Primer Apellido</label>
                 <input
                     type="text"
                     formControlName="apellidos"
                     placeholder="Primer Apellido"
                 >
-                <label for="">Segundo Apellido</label>
+                <label for="apellido2">Segundo Apellido</label>
                 <input
                     type="text"
                     formControlName="apellido2"
                     placeholder="Segundo Apellido"
                 >
-                <label for="">Dirección</label>
+                <label for="direccion">Dirección</label>
                 <input
                     type="text"
                     formControlName="direccion"
                     placeholder="Dirección"
                 >
-                <label for="">Teléfono</label>
+                <label for="telefono">Teléfono</label>
                 <div class="notificacion">
                     <input
                         type="text"
@@ -107,7 +106,7 @@
                         *Este campo es requerido
                     </span>
                 </div>
-                <label for="">Correo Electrónico</label>
+                <label for="email">Correo Electrónico</label>
                 <div class="notificacion">
                     <input
                         type="email"
@@ -118,7 +117,7 @@
                         *Este campo es requerido
                     </span>
                 </div>
-                <label for="">Correo Alternativo</label>
+                <label for="email2">Correo Alternativo</label>
                 <input
                     type="email"
                     formControlName="email2"
@@ -147,7 +146,7 @@
                     </option>
                 </select>
             </div>
-            <!-- Last row -->
+            <!-- Last Row -->
             <div class="last-row">
                 <label for="tipofactura">Tipo de Factura</label>
                 <div class="notificacion">
@@ -162,8 +161,167 @@
                 </div>
             </div>
 
-            <input type="submit" value="Guardar" class="primary-button" >
-            <!-- [disabled]="createCustomerForm.invalid" -->
+            <input type="submit" value="Guardar" class="primary-button" [disabled]="customerForm.invalid">
+            <pre>
+                {{ customerForm.invalid }}
+            </pre>
         </form>
     </div>
+
+    <!-- ////////// Update Customer \\\\\\\\\\ -->
+    <ng-template #Edit>
+        <div class="total-form" *ngIf="nitFound" [ngClass]="{'total-form': nitFound }">
+            <!-- Nit -->
+            <div class="edit">
+                <div class="notificacion">
+                    <label for="nit">Nit o C.C</label>
+                    <input
+                        type="text"
+                        name="nit"
+                        [(ngModel)]="id.nit"
+                        placeholder="Haga enter para generar código de verificación"
+                        (keyup.enter)="searchCustomer()"
+                    >
+                    <span class="error-mesage">
+                        *Este campo es requerido
+                    </span>
+                </div>
+            </div>
+            
+            <form [formGroup]="customerForm" (ngSubmit)="updateCustomer()" autocomplete="off">
+                <!-- First Row -->
+                <div class="first-row">
+                    
+                    <label for="digit">Código de verificación</label>
+                    <input
+                        formControlName="digito"
+                        placeholder="Este código se genera automáticamente"
+                        class="digito"
+                        readonly="readonly"
+                    >
+                    <label for="TipoId">Tipo de Documento</label>
+                    <div class="notificacion">
+                        <select name="TipoId"  id="TipoId" formControlName="TipoId">
+                            <option *ngFor="let id of tipoId; index as i" [value]="id.TipoId">
+                                {{ id.Documento }}
+                            </option>
+                        </select>
+                        <span class="error-mesage">
+                            *Este campo es requerido
+                        </span>
+                    </div>              
+    
+                </div>
+                <!-- Principal-row -->
+                <div class="principal-row">
+    
+                    <label for="">Primer Nombre</label>
+                    <div class="notificacion">
+                        <input
+                            type="text"
+                            formControlName="nombres"
+                            placeholder="Primer Nombre"
+                        >
+                        <span class="error-mesage">
+                            *Este campo es requerido
+                        </span>
+                    </div>
+    
+                    <label for="">Segundo Nombre</label>
+                    <input
+                        type="text"
+                        formControlName="nombre2"
+                        placeholder="Segundo Nombre"
+                    >
+                    <label for="">Primer Apellido</label>
+                    <input
+                        type="text"
+                        formControlName="apellidos"
+                        placeholder="Primer Apellido"
+                    >
+                    <label for="">Segundo Apellido</label>
+                    <input
+                        type="text"
+                        formControlName="apellido2"
+                        placeholder="Segundo Apellido"
+                    >
+                    <label for="">Dirección</label>
+                    <input
+                        type="text"
+                        formControlName="direccion"
+                        placeholder="Dirección"
+                    >
+                    <label for="">Teléfono</label>
+                    <div class="notificacion">
+                        <input
+                            type="text"
+                            formControlName="telefono"
+                            placeholder="Teléfono"
+                        >
+                        <span class="error-mesage">
+                            *Este campo es requerido
+                        </span>
+                    </div>
+                    <label for="">Correo Electrónico</label>
+                    <div class="notificacion">
+                        <input
+                            type="email"
+                            formControlName="email"
+                            placeholder="Correo Electrónico"
+                        >
+                        <span class="error-mesage">
+                            *Este campo es requerido
+                        </span>
+                    </div>
+                    <label for="">Correo Alternativo</label>
+                    <input
+                        type="email"
+                        formControlName="email2"
+                        placeholder="Correo Alternativo">
+                </div>
+                <!-- Localization -->
+                <div class="localization">
+                    <label for="idpais">Pais</label>
+                    <select name="idpais" id="idpais" formControlName="idpais">
+                        <option *ngFor="let country of countries; index as i" [value]="country.idpais">
+                            {{ country.nompais }}
+                        </option>
+                    </select>
+                
+                    <label for="iddepto">Departamento</label>
+                    <select name="iddepto" id="iddepto" formControlName="iddepto">
+                        <option *ngFor="let department of departments; index as i" [value]="department.iddepto">
+                            {{ department.nomdepartamento }}
+                        </option>
+                    </select>
+                
+                    <label for="idmunicipio">Municipio</label>
+                    <select name="idmunicipio" id="idmunicipio" formControlName="idmunicipio">
+                        <option *ngFor="let municipality of municipalities; index as i" [value]="municipality.idmunicipio">
+                            {{ municipality.nommunicipio }}
+                        </option>
+                    </select>
+                </div>
+                <!-- Last row -->
+                <div class="last-row">
+                    <label for="tipofactura">Tipo de Factura</label>
+                    <div class="notificacion">
+                        <select name="tipofactura" id="tipofactura" formControlName="tipofactura">
+                            <option value="">Seleccione una</option>
+                            <option value="1">P.O.S.</option>
+                            <option value="2">Factura Electrónica</option>
+                        </select>
+                        <span class="error-mesage">
+                            *Este campo es requerido
+                        </span>
+                    </div>
+                </div>
+    
+                <input type="submit" value="Guardar" class="primary-button" [disabled]="customerForm.invalid">
+                <pre>
+                    {{ customerForm.invalid }}
+                </pre>
+            </form>
+        </div>
+    </ng-template>
 </div>

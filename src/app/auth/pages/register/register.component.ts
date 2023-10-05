@@ -23,7 +23,8 @@ export class RegisterComponent {
   register() {
     console.log(this.registerForm.value);
     const { username, password, email } = this.registerForm.value;
-    this.authService.register( username, password, email );
+    this.authService.register( username, password, email )
+      .subscribe( rta => console.log( rta ));
     this.router.navigate(['/auth/login']);
     this.registerForm.reset();
   }
