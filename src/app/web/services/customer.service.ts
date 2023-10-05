@@ -6,7 +6,7 @@ import { environments } from 'src/environments/environments';
 import { Country } from '../interfaces/countries';
 import { Municipalities } from '../interfaces/municipalities';
 import { Departments } from '../interfaces/departments';
-import { CustomerResp, Nit, updateCustomerDto } from '../interfaces/customer';
+import { CustomerResp, Nit, CustomerDto } from '../interfaces/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -21,12 +21,12 @@ export class CustomerService {
     return this.http.post<CustomerResp>(`${ this.baseUrl}/customers/search`, nit );
   }
 
-  createCustomer( body: updateCustomerDto ) {
-    return this.http.post<updateCustomerDto>(`${ this.baseUrl}/customers`, body );
+  createCustomer( body: CustomerDto ) {
+    return this.http.post<CustomerDto>(`${ this.baseUrl}/customers`, body );
   }
 
-  updateCustomer( id: number, body: updateCustomerDto ) {
-    return this.http.put<updateCustomerDto>(`${ this.baseUrl}/customers/${id}`, body );
+  updateCustomer( id: string, body: CustomerDto ) {
+    return this.http.put<CustomerDto>(`${ this.baseUrl}/customers/update-customer/${id}`, body );
   }
 
   getCountries() {

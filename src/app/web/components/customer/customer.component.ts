@@ -6,7 +6,7 @@ import { CustomerService } from '../../services/customer.service';
 import { Country } from '../../interfaces/countries';
 import { Departments } from '../../interfaces/departments';
 import { Municipalities } from '../../interfaces/municipalities';
-import { CustomerResp, Nit, updateCustomerDto } from '../../interfaces/customer';
+import { CustomerResp, Nit, CustomerDto } from '../../interfaces/customer';
 
 @Component({
   selector: 'app-customer',
@@ -19,6 +19,7 @@ export class CustomerComponent implements OnInit {
   private fb = inject( FormBuilder );
 
   customer: CustomerResp = {
+    idtercero: 0,
     nit: '',
     digito: 0,
     TipoId: '',
@@ -83,7 +84,7 @@ export class CustomerComponent implements OnInit {
   id: Nit = { nit: '' };
   nitFound: boolean = false;
   crear: boolean = false;
-  myNit = parseInt(this.id.nit);  
+  myNit = parseInt(this.id.nit); 
 
   public customerForm: FormGroup = this.fb.group({
     nit: ['', [ Validators.pattern(/^-?(0|[1-9]\d*)?$/) ]],
@@ -94,8 +95,8 @@ export class CustomerComponent implements OnInit {
     apellidos: [''],
     apellido2: [''],
     direccion: ['', []],
-    telefono: ['', [ Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
-    email: ['', [ Validators.required, Validators.email ]],
+    telefono: ['', [ Validators.required, Validators.pattern('/^-?(0|[1-9]\d*)?$/')]],
+    email: ['', [ Validators.required, Validators.pattern(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/) ]],
     email2: [''],
     idpais: [''],
     iddepto: [''],
@@ -115,11 +116,54 @@ export class CustomerComponent implements OnInit {
     this.crear = true;
   }
 
+  isValidField( field: string ): boolean | null {
+    return this.customerForm.controls[ field ].errors && this.customerForm.controls[ field ].touched
+  }
+
+  getFieldError( field: string ): string | null {
+    if (!this.customerForm.controls[ field ] ) return null ;
+    const errors = this.customerForm.controls[ field ].errors || {};
+    for (const key of Object.keys( errors )) {
+      switch( key ) {
+        case 'required':
+          return '*Este campo es requrido';
+        case 'minLength':
+          return `Mínimo ${ errors['minlength'].requiredLength } caracteres`;
+      }
+    }
+
+    return null;
+  }
+
   createCustomer() {
-    // const dto = this.createCustomerForm.value;
-    this.customerForm.patchValue({ nit: parseInt(this.id.nit) });
-    // this.customerService.createCustomer( dto );
-    console.log(this.customerForm.value);
+    this.customerForm.patchValue({ nit: this.id.nit });
+    const DTOCustomer = {
+      nit:	         this.customerForm.get('nit')?.value,
+      digito:	       this.customerForm.get('digito')?.value,
+      tipopersona:	 1,
+      nombres:	     this.customerForm.get('nombres')?.value,
+      nombre2:	     this.customerForm.get('nombre2')?.value,
+      apellidos:	   this.customerForm.get('apellidos')?.value,
+      apellido2:	   this.customerForm.get('apellido2')?.value,
+      nomcomercial:	 this.customerForm.get('nombres')?.value,
+      direccion:	   this.customerForm.get('direccion')?.value,
+      telefono:	     this.customerForm.get('telefono')?.value,
+      email:	       this.customerForm.get('email')?.value,
+      email2:	       this.customerForm.get('email2')?.value,
+      iddepto:	     this.customerForm.get('iddepto')?.value,
+      idmunicipio:	 this.customerForm.get('idmunicipio')?.value,
+      TipoId:	       this.customerForm.get('TipoId')?.value,
+      tipofactura:	 this.customerForm.get('tipofactura')?.value,
+      cliente:	     1,
+      idregimen:	   2,
+      aplicaprom:	   1,
+      idclasifterc:	 1,
+      inactivo:	     0,
+      usapuntos:	   1,
+      idpais:	       this.customerForm.get('idpais')?.value,
+    }
+    this.customerService.createCustomer( DTOCustomer ).subscribe( rta => console.log( rta ));
+    this.customerForm.reset();
   }
 
   calcularDigitoVerificacion(nit: string) {
@@ -164,7 +208,6 @@ export class CustomerComponent implements OnInit {
     }
   }
 
-
   ////////// Update Customer \\\\\\\\\\
   alreadyCustomer() {
     this.nitFound = true;
@@ -174,11 +217,11 @@ export class CustomerComponent implements OnInit {
     this.customerService.searchCustomer( this.id ) 
       .subscribe( rta => {
         this.customer = rta;
-        this.setValues();
+        this.setEditValues();
       });
   }
 
-  setValues( ) {
+  setEditValues( ) {
     // Set the value of digito like as response from API 
     this.customerForm.patchValue({ digito: this.customer.digito });
     // Set the value of tipoID like as response from API
@@ -227,9 +270,34 @@ export class CustomerComponent implements OnInit {
   }
 
   updateCustomer() {
-    // const cusId = parseInt(this.id.nit)
-    // const dto = this.createCustomerForm.value;
-    // this.customerService.updateCustomer( cusId, dto );
+    this.customerForm.patchValue({ nit: this.id.nit });
+    const idTercero = this.customer.idtercero!.toString();
+    const DTOCustomer: CustomerDto = {
+      nit:	         this.customerForm.get('nit')?.value,
+      digito:	       this.customerForm.get('digito')?.value,
+      tipopersona:	 1,
+      nombres:	     this.customerForm.get('nombres')?.value,
+      nombre2:	     this.customerForm.get('nombre2')?.value,
+      apellidos:	   this.customerForm.get('apellidos')?.value,
+      apellido2:	   this.customerForm.get('apellido2')?.value,
+      nomcomercial:	 this.customerForm.get('nombres')?.value,
+      direccion:	   this.customerForm.get('direccion')?.value,
+      telefono:	     this.customerForm.get('telefono')?.value,
+      email:	       this.customerForm.get('email')?.value,
+      email2:	       this.customerForm.get('email2')?.value,
+      iddepto:	     this.customerForm.get('iddepto')?.value,
+      idmunicipio:	 this.customerForm.get('idmunicipio')?.value,
+      TipoId:	       this.customerForm.get('TipoId')?.value,
+      tipofactura:	 this.customerForm.get('tipofactura')?.value,
+      cliente:	     1,
+      idregimen:	   2,
+      aplicaprom:	   1,
+      idclasifterc:	 1,
+      inactivo:	     0,
+      usapuntos:	   1,
+      idpais:	       this.customerForm.get('idpais')?.value,
+    }
+    this.customerService.updateCustomer( idTercero, DTOCustomer ).subscribe( rta => console.log( rta ));
     console.log(this.customerForm.value);
   }
 

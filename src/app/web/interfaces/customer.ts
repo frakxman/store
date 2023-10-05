@@ -33,7 +33,7 @@ export interface Nit {
     nit: string;
 }
 
-export interface updateCustomerDto {
+export interface CustomerDto {
     nit:	         string;
     digito:	         number;
     tipopersona:	 number;
@@ -51,16 +51,11 @@ export interface updateCustomerDto {
     TipoId:	         string;
     tipofactura:	 number;
     cliente:	     number;
-    idactividad:	 number;
     idregimen:	     number;
     aplicaprom:	     number;
     idclasifterc:	 number;
     inactivo:	     number;
     usapuntos:	     number;
     idpais:	         number;
-    matriculamercan: string;
-    RegiRenta:	     string;
-    autoretenedor:	 number;
 }
-
 
