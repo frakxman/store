@@ -20,13 +20,12 @@
             <div class="notificacion">
                 <label for="nit">Nit o C.C</label>
                 <input
-                    type="text"
+                    type="number"
                     name="nit"
                     [(ngModel)]="id.nit"
-                    pattern="{pattern: /^[0-9]+$/}"
                     placeholder="Introduzca # identificación y presione enter"
                     (keyup.enter)="calcular()"
-                    required
+                    require
                 >
                 <span class="error-mesage" *ngIf="">
                     *Este campo es requerido
@@ -45,6 +44,10 @@
                     class="digito"
                     readonly="readonly"
                 >
+                <span class="error-mesage" *ngIf="isValidField('digito')">
+                    {{ getFieldError('digito')}}
+                </span>
+
                 <label for="TipoId">Tipo de Documento</label>
                 <div class="notificacion">
                     <select name="TipoId"  id="TipoId" formControlName="TipoId">
@@ -97,10 +100,14 @@
                     formControlName="direccion"
                     placeholder="Dirección"
                 >
+                <span class="error-mesage" *ngIf="isValidField('direccion')">
+                    {{ getFieldError('direccion')}}
+                </span>
+
                 <label for="telefono">Teléfono</label>
                 <div class="notificacion">
                     <input
-                        type="text"
+                        type="number"
                         formControlName="telefono"
                         placeholder="Teléfono"
                     >
@@ -133,6 +140,9 @@
                         {{ country.nompais }}
                     </option>
                 </select>
+                <span class="error-mesage" *ngIf="isValidField('idpais')">
+                    {{ getFieldError('idpais')}}
+                </span>
             
                 <label for="iddepto">Departamento</label>
                 <select name="iddepto" id="iddepto" formControlName="iddepto">
@@ -140,6 +150,9 @@
                         {{ department.nomdepartamento }}
                     </option>
                 </select>
+                <span class="error-mesage" *ngIf="isValidField('iddepto')">
+                    {{ getFieldError('iddepto')}}
+                </span>
             
                 <label for="idmunicipio">Municipio</label>
                 <select name="idmunicipio" id="idmunicipio" formControlName="idmunicipio">
@@ -147,6 +160,9 @@
                         {{ municipality.nommunicipio }}
                     </option>
                 </select>
+                <span class="error-mesage" *ngIf="isValidField('idmunicipio')">
+                    {{ getFieldError('idmunicipio')}}
+                </span>
             </div>
             <!-- Last Row -->
             <div class="last-row">
@@ -164,9 +180,6 @@
             </div>
 
             <input type="submit" value="Guardar" class="primary-button" [disabled]="customerForm.invalid">
-            <pre>
-                {{ customerForm.invalid }}
-            </pre>
         </form>
     </div>
 
@@ -183,7 +196,7 @@
                         [(ngModel)]="id.nit"
                         placeholder="Introduzca # identificación y presione enter"
                         (keyup.enter)="searchCustomer()"
-                        required
+                        require
                     >
                 </div>
             </div>
@@ -206,9 +219,6 @@
                                 {{ id.Documento }}
                             </option>
                         </select>
-                        <!-- <span class="error-mesage">
-                            *Este campo es requerido
-                        </span> -->
                     </div>              
     
                 </div>
@@ -222,9 +232,6 @@
                             formControlName="nombres"
                             placeholder="Primer Nombre"
                         >
-                        <!-- <span class="error-mesage">
-                            *Este campo es requerido
-                        </span> -->
                     </div>
     
                     <label for="">Segundo Nombre</label>
@@ -258,9 +265,6 @@
                             formControlName="telefono"
                             placeholder="Teléfono"
                         >
-                        <!-- <span class="error-mesage">
-                            *Este campo es requerido
-                        </span> -->
                     </div>
                     <label for="">Correo Electrónico</label>
                     <div class="notificacion">
@@ -269,9 +273,6 @@
                             formControlName="email"
                             placeholder="Correo Electrónico"
                         >
-                        <!-- <span class="error-mesage">
-                            *Este campo es requerido
-                        </span> -->
                     </div>
                     <label for="">Correo Alternativo</label>
                     <input
@@ -311,16 +312,10 @@
                             <option value="1">P.O.S.</option>
                             <option value="2">Factura Electrónica</option>
                         </select>
-                        <!-- <span class="error-mesage">
-                            *Este campo es requerido
-                        </span> -->
                     </div>
                 </div>
     
                 <input type="submit" value="Editar" class="primary-button" [disabled]="customerForm.invalid">
-                <pre>
-                    {{ customerForm.invalid }}
-                </pre>
             </form>
         </div>
     </ng-template>

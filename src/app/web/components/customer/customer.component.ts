@@ -84,7 +84,7 @@ export class CustomerComponent implements OnInit {
   id: Nit = { nit: '' };
   nitFound: boolean = false;
   crear: boolean = false;
-  myNit = parseInt(this.id.nit); 
+  myNit = this.id.nit; 
 
   public customerForm: FormGroup = this.fb.group({
     nit: ['', [ Validators.pattern(/^-?(0|[1-9]\d*)?$/) ]],
@@ -94,14 +94,14 @@ export class CustomerComponent implements OnInit {
     nombre2: [''],
     apellidos: [''],
     apellido2: [''],
-    direccion: ['', []],
-    telefono: ['', [ Validators.required, Validators.pattern('/^-?(0|[1-9]\d*)?$/')]],
-    email: ['', [ Validators.required, Validators.pattern(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/) ]],
+    direccion: ['', Validators.required ],
+    telefono: ['', [ Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+    email: ['', [ Validators.required, Validators.email ]],
     email2: [''],
-    idpais: [''],
-    iddepto: [''],
-    idmunicipio: [''],
-    tipofactura: ['', [ Validators.required ]]
+    idpais: ['', Validators.required ],
+    iddepto: ['', Validators.required ],
+    idmunicipio: ['', Validators.required ],
+    tipofactura: [, Validators.required ]
   });
 
   ngOnInit(): void {
@@ -129,6 +129,10 @@ export class CustomerComponent implements OnInit {
           return '*Este campo es requrido';
         case 'minLength':
           return `Mínimo ${ errors['minlength'].requiredLength } caracteres`;
+        case 'email':
+          return `Email no valido`;
+        case 'pattern':
+          return `Solo números`;
       }
     }
 
@@ -136,7 +140,7 @@ export class CustomerComponent implements OnInit {
   }
 
   createCustomer() {
-    this.customerForm.patchValue({ nit: this.id.nit });
+    this.customerForm.patchValue({ nit: this.id.nit.toString() });
     const DTOCustomer = {
       nit:	         this.customerForm.get('nit')?.value,
       digito:	       this.customerForm.get('digito')?.value,
@@ -298,6 +302,7 @@ export class CustomerComponent implements OnInit {
       idpais:	       this.customerForm.get('idpais')?.value,
     }
     this.customerService.updateCustomer( idTercero, DTOCustomer ).subscribe( rta => console.log( rta ));
+    this.customerForm.reset()
     console.log(this.customerForm.value);
   }
 
