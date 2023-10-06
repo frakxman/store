@@ -33,7 +33,12 @@ export class ProductsService {
     return this.http.put<UpdateProductDTO>(`${this.baseUrl}/update-product/${id}`, dto );
   }
 
-  updateProductImage(id: number, url: UploadProductImage ) {
-    return this.http.put<UpdateProductDTO>(`${this.baseUrl}/update-photo/${id}`, url );
+  updateProductImage( id: number, dto: string ) {
+    let params = new HttpParams();
+    if ( id && dto ) {
+      params = params.set('id', id );
+      params = params.set('dto', dto );
+    }
+    return this.http.post<UploadProductImage>(`${this.baseUrl}/upload-photo`, { params } );
   }
 }

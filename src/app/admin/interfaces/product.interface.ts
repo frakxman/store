@@ -30,7 +30,6 @@ export interface UpdateProductDTO {
     precioventa: number;
     ultcosto: number;
 }
-
 export interface UploadProductImage {
     Urls_Img: string;
 }

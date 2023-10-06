@@ -1,5 +1,5 @@
 <h2>Cargador de imagenes para Productos</h2>
-<img src="assets/png/logo_celulares.png" alt="">
+<img [src]="uploadImgForm.controls['url'].value || default" alt="">
 <form [formGroup]="uploadImgForm" (ngSubmit)="uploadImg( $event )" class="form">
 
     <div class="input-file">

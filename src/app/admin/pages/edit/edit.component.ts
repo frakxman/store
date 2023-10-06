@@ -5,7 +5,7 @@ import { switchMap } from 'rxjs';
 
 import { ProductsService } from '../../services/products.service';
 
-import { Product, UpdateProductDTO } from '../../interfaces/product.interface';
+import { UpdateProductDTO } from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-edit',
@@ -52,7 +52,6 @@ export class EditComponent implements OnInit {
         switchMap(({id}) => this.productService.getOneProduct( id )),
       )
       .subscribe( product => {
-        console.log( product );
         this.productEdit = product;
         this.editProductForm.patchValue( this.productEdit );
         return;
@@ -60,11 +59,9 @@ export class EditComponent implements OnInit {
   }
 
   editProduct() {
-    console.log(this.editProductForm.value);
-    this.productService.editProduct(this.productEdit.idproducto, this.editProductForm.value);
-    console.log( this.productEdit.idproducto );
-    console.log(this.editProductForm.value);
-    console.log('Update maked');
+    this.productService.editProduct(this.productEdit.idproducto, this.editProductForm.value)
+      .subscribe( rta => console.log( rta ));
+    this.router.navigate(['admin/list']);
   }
 
   imgForm() {
