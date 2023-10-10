@@ -42,7 +42,7 @@ export class CartComponent implements OnInit {
     this.storeService.deleteProduct(id);
   }
 
-  getTotal() {
+  getTotalPrice() {
     const total = this.storeService.getTotalCart();
     return total;
   }

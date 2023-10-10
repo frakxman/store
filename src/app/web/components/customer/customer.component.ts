@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable, catchError, of } from 'rxjs';
 
 import { CustomerService } from '../../services/customer.service';
 
@@ -87,7 +88,7 @@ export class CustomerComponent implements OnInit {
   myNit = this.id.nit; 
 
   public customerForm: FormGroup = this.fb.group({
-    nit: ['', [ Validators.pattern(/^-?(0|[1-9]\d*)?$/) ]],
+    nit: [''],
     digito: ['', [ Validators.required]],
     TipoId: ['', [ Validators.required ]],
     nombres: ['', [ Validators.required, Validators.minLength(3) ]],
@@ -143,37 +144,6 @@ export class CustomerComponent implements OnInit {
     return null;
   }
 
-  createCustomer() {
-    this.customerForm.patchValue({ nit: this.id.nit.toString() });
-    const DTOCustomer = {
-      nit:	         this.customerForm.get('nit')?.value,
-      digito:	       this.customerForm.get('digito')?.value,
-      tipopersona:	 1,
-      nombres:	     this.customerForm.get('nombres')?.value,
-      nombre2:	     this.customerForm.get('nombre2')?.value,
-      apellidos:	   this.customerForm.get('apellidos')?.value,
-      apellido2:	   this.customerForm.get('apellido2')?.value,
-      nomcomercial:	 this.customerForm.get('nombres')?.value,
-      direccion:	   this.customerForm.get('direccion')?.value,
-      telefono:	     this.customerForm.get('telefono')?.value,
-      email:	       this.customerForm.get('email')?.value,
-      email2:	       this.customerForm.get('email2')?.value,
-      iddepto:	     this.customerForm.get('iddepto')?.value,
-      idmunicipio:	 this.customerForm.get('idmunicipio')?.value,
-      TipoId:	       this.customerForm.get('TipoId')?.value,
-      tipofactura:	 this.customerForm.get('tipofactura')?.value,
-      cliente:	     1,
-      idregimen:	   2,
-      aplicaprom:	   1,
-      idclasifterc:	 1,
-      inactivo:	     0,
-      usapuntos:	   1,
-      idpais:	       this.customerForm.get('idpais')?.value,
-    }
-    this.customerService.createCustomer( DTOCustomer ).subscribe( rta => console.log( rta ));
-    this.customerForm.reset();
-  }
-
   calcularDigitoVerificacion(nit: string) {
     // Se limpia el Nit
     nit = nit.replace(/\s/g, ""); // Espacios
@@ -214,6 +184,40 @@ export class CustomerComponent implements OnInit {
       const digitoVerificacion = this.calcularDigitoVerificacion(nit.toString());
       this.customerForm.patchValue({ digito: digitoVerificacion });
     }
+  }
+
+  createCustomer() {
+    this.customerForm.patchValue({ nit: this.id.nit.toString() });
+    const DTOCustomer = {
+      nit:	         this.customerForm.get('nit')?.value,
+      digito:	       this.customerForm.get('digito')?.value,
+      tipopersona:	 1,
+      nombres:	     this.customerForm.get('nombres')?.value,
+      nombre2:	     this.customerForm.get('nombre2')?.value,
+      apellidos:	   this.customerForm.get('apellidos')?.value,
+      apellido2:	   this.customerForm.get('apellido2')?.value,
+      nomcomercial:	 this.customerForm.get('nombres')?.value,
+      direccion:	   this.customerForm.get('direccion')?.value,
+      telefono:	     this.customerForm.get('telefono')?.value,
+      email:	       this.customerForm.get('email')?.value,
+      email2:	       this.customerForm.get('email2')?.value,
+      iddepto:	     this.customerForm.get('iddepto')?.value,
+      idmunicipio:	 this.customerForm.get('idmunicipio')?.value,
+      TipoId:	       this.customerForm.get('TipoId')?.value,
+      tipofactura:	 this.customerForm.get('tipofactura')?.value,
+      cliente:	     1,
+      idregimen:	   2,
+      aplicaprom:	   1,
+      idclasifterc:	 1,
+      inactivo:	     0,
+      usapuntos:	   1,
+      idpais:	       this.customerForm.get('idpais')?.value,
+    }
+    this.customerService.createCustomer( DTOCustomer )
+      .subscribe( rta => {
+        console.log( rta );
+      });
+    this.customerForm.reset();
   }
 
   ////////// Update Customer \\\\\\\\\\

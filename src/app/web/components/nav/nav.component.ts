@@ -22,4 +22,9 @@ export class NavComponent implements OnInit {
   toggleMenu() {
     this.activeMenu = !this.activeMenu;
   }
+
+   getTotalProds() {
+    const totalProds = this.storeService.getTotalProductsCart();
+    return totalProds;
+  }
 }

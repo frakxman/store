@@ -31,12 +31,22 @@ export class CategoriesComponent {
 
   ngOnInit(): void {
       this.categoriesServices.getAllCategories( this.page, this.limit )
-        .subscribe( data => this.categories = data );
+        .subscribe( data => {
+          console.log( data );
+          this.categories = data;
+          console.log( this.categories );
+        });
   }
 
   categorySelected( name: string ) {
     this.productsService.getByCategory( name, this.page, this.limit, '' )
-      .subscribe( resp => this.products = resp );
+      .subscribe( resp => {
+        // TODO: Fix problem to get products of last two categories 
+        console.log( name );
+        console.log( resp );
+        this.products = resp;
+        console.log( this.products );
+      });
     return this.products;
   }
 

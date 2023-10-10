@@ -22,14 +22,12 @@
                 <input
                     type="number"
                     name="nit"
+                    class="nit-input"
                     [(ngModel)]="id.nit"
                     placeholder="Introduzca # identificación y presione enter"
                     (keyup.enter)="calcular()"
                     require
-                >
-                <span class="error-mesage" *ngIf="">
-                    *Este campo es requerido
-                </span>                
+                >             
             </div>
         </div>
         
@@ -179,7 +177,7 @@
                 </div>
             </div>
 
-            <input type="submit" value="Guardar" class="primary-button" [disabled]="customerForm.invalid">
+            <input type="submit" value="Guardar" class="primary-button" [disabled]="customerForm.invalid" [ngClass]="{'disabled': customerForm.invalid }">
         </form>
         <button (click)="back()" class="primary-button">Regresar</button>
     </div>
@@ -194,6 +192,7 @@
                     <input
                         type="text"
                         name="nit"
+                        class="nit-input"
                         [(ngModel)]="id.nit"
                         placeholder="Introduzca # identificación y presione enter"
                         (keyup.enter)="searchCustomer()"

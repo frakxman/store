@@ -40,6 +40,11 @@ input {
     margin: 1%;
     width: 96%;
 }
+.nit-input {
+    // color: #FF2400;
+    text-align: center;
+    font-weight: 600;
+}
 .first-row {
     display: block;
     width: 100%;
@@ -65,16 +70,23 @@ input {
     margin: 1% 0 0 50%;
 }
 
+.disabled {
+    background-color: gray;
+}
+
 /* Medium only */
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
     h2 {
         margin: 0;
     }
+    .nit-input { 
+        margin: 1% 0 1% 0;
+        width: 99%;
+    }
     .buttons {
         display: flex;
         height: 10vh;
     }
-    
     .notificacion {
         display: grid;
         margin: 1%;

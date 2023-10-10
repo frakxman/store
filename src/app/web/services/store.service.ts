@@ -25,7 +25,7 @@ export class StoreService {
         return item.idproducto === product.idproducto
       });
       if( productMod ) {
-        productMod.store = productMod.store + 1;
+        productMod.store += 1;
         this.myCart.next( this.myShoppingCart );
       } else {
         product.store = 1;
@@ -43,6 +43,12 @@ export class StoreService {
     const total = this.myShoppingCart.reduce(( sum, item ) => {
       return sum + ( item.store * item.precioventa )}, 0);
     return total;
+  }
+
+  getTotalProductsCart() {
+    const totalProds = this.myShoppingCart.reduce(( sum, item ) => {
+      return sum + item.store }, 0);
+    return totalProds;
   }
 
   findProductById( id: number ) {
