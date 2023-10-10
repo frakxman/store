@@ -1,14 +1,17 @@
 <h2>Cargador de imagenes para Productos</h2>
-<img [src]="uploadImgForm.controls['url'].value || default" alt="">
-<form [formGroup]="uploadImgForm" (ngSubmit)="uploadImg( $event )" class="form">
+<img [src]="default" alt="Imagen del producto">
+<br>
+<!-- <input (change)="captureFile( $event )" type="file"> -->
+
+<form class="form" [formGroup]="uploadImgForm" (ngSubmit)="uploadImg()">
 
     <div class="input-file">
-        <label for="">Imagen del producto</label>
+        <label for="product-img">Imagen del producto</label>
         <br>
-        <input type="file" formControlName="url">
+        <input name="product-img" formControlName="url" type="file" accept="image/*" (change)="selectImg( $event )">
     </div>
 
-    <button class="primary-button" type="submit">
+    <button class="primary-button" type="submit" >
         Guardar
     </button>
 </form>

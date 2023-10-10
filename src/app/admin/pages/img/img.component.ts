@@ -14,7 +14,7 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ImgComponent implements OnInit {
 
-  url?: UploadProductImage;
+  url = '';
   id: number = 0;
   default =  'assets/png/logo_celulares.png';
 
@@ -39,13 +39,30 @@ export class ImgComponent implements OnInit {
     } );
   }
 
-  uploadImg( id: number ) {
-    const { url } = this.uploadImgForm.value;
-    console.log( this.id );
-    console.log( url );
-    this.productService.updateProductImage(this.id, url )
+  selectImg( event: any ) {
+
+    if( event.target.files.length > 0 ) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = ( event: any ) => {
+        this.default = event.target.result;
+      }
+    this.url = file.name;
+    console.log( file );
+    console.log( this.url );
+    }
+  }
+
+  uploadImg() {
+    const formData = new FormData();
+    // formData.append('file', this.url );
+    formData.append('file', this.default );
+    console.log( this.default );
+    console.log( this.url );
+    console.log( formData );
+    this.productService.updateProductImage( this.id, formData.toString() )
       .subscribe( rta => console.log( rta ));
-    this.uploadImgForm.reset();
   }
 
 }

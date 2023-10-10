@@ -110,6 +110,10 @@ export class CustomerComponent implements OnInit {
     this.customerService.getMunicipalities().subscribe( municipalities => this.municipalities = municipalities );
   }
 
+  back() {
+    this.nitFound = !this.nitFound;
+  }
+
   ////////// Create Customer \\\\\\\\\\
   newCustomer() {
     this.nitFound = true ;
@@ -303,7 +307,6 @@ export class CustomerComponent implements OnInit {
     }
     this.customerService.updateCustomer( idTercero, DTOCustomer ).subscribe( rta => console.log( rta ));
     this.customerForm.reset()
-    console.log(this.customerForm.value);
   }
 
 }

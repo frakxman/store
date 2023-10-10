@@ -39,6 +39,6 @@ export class ProductsService {
       params = params.set('id', id );
       params = params.set('dto', dto );
     }
-    return this.http.post<UploadProductImage>(`${this.baseUrl}/upload-photo`, { params } );
+    return this.http.post<UploadProductImage>(`${this.baseUrl}/upload-photo`, { params });
   }
 }
