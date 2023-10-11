@@ -48,7 +48,7 @@
             <td class="totalFact-td">$ {{ getTotalPrice() }}</td>
             <td>
                 <button class="primary-button" (click)="formRegister()">
-                    Confirmar
+                    Ordenar
                 </button>
             </td>
         </tr>
@@ -58,4 +58,4 @@
     </ng-template>
 </div>
 <app-customer *ngIf="form"></app-customer>
-<!-- <app-order></app-order> -->
+<app-order *ngIf="products.length && form"></app-order>

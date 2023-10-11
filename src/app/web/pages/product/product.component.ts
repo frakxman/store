@@ -30,7 +30,6 @@ export class ProductComponent implements OnInit {
   }
   
   @Output() addedProduct = new EventEmitter<Product>();
-  // @Output() editProduct = new EventEmitter<Product>();
 
   purchase = false;
 

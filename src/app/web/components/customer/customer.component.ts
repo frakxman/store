@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, catchError, of } from 'rxjs';
 
@@ -83,6 +83,7 @@ export class CustomerComponent implements OnInit {
   departments: Departments[] = [];
   municipalities: Municipalities[] = [];
   id: Nit = { nit: '' };
+  idTercero = 0;
   nitFound = false;
   crear = false;
   myNit = this.id.nit; 
@@ -115,12 +116,11 @@ export class CustomerComponent implements OnInit {
     this.nitFound = !this.nitFound;
   }
 
-  ////////// Update Customer \\\\\\\\\\
-
   searchCustomer() {
     this.customerService.searchCustomer( this.id ) 
       .subscribe( rta => {
         if ( rta.idtercero ) {
+          this.idTercero = rta.idtercero!;
           console.log( rta );
           this.customer = rta;
           this.nitFound = true;
@@ -131,9 +131,12 @@ export class CustomerComponent implements OnInit {
           this.nitFound = true;
           this.crear = true;
           this.calcular();
+          this.idTercero = rta.idtercero!;
         }
       });
   }
+
+  ////////// Update Customer \\\\\\\\\\
 
   setEditValues( ) {
     // Set the value of digito like as response from API 
@@ -185,7 +188,7 @@ export class CustomerComponent implements OnInit {
 
   updateCustomer() {
     this.customerForm.patchValue({ nit: this.id.nit });
-    const idTercero = this.customer.idtercero!.toString();
+    this.idTercero = this.customer.idtercero!;
     const DTOCustomer: CustomerDto = {
       nit:	         this.customerForm.get('nit')?.value,
       digito:	       this.customerForm.get('digito')?.value,
@@ -211,8 +214,7 @@ export class CustomerComponent implements OnInit {
       usapuntos:	   1,
       idpais:	       this.customerForm.get('idpais')?.value,
     }
-    this.customerService.updateCustomer( idTercero, DTOCustomer ).subscribe( rta => console.log( rta ));
-    this.customerForm.reset()
+    this.customerService.updateCustomer( this.idTercero!.toString(), DTOCustomer ).subscribe( rta => console.log( rta ));
   }
 
   ////////// Create Customer \\\\\\\\\\
@@ -311,9 +313,9 @@ export class CustomerComponent implements OnInit {
     }
     this.customerService.createCustomer( DTOCustomer )
       .subscribe( rta => {
-        console.log( rta );
-      });
-    this.customerForm.reset();
+        this.idTercero = rta.responseCustomer[0].insertId;
+        console.log( this.idTercero );
+      } );
   }
 
 }

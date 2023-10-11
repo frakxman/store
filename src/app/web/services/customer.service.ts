@@ -22,7 +22,7 @@ export class CustomerService {
   }
 
   createCustomer( body: CustomerDto ) {
-    return this.http.post<CustomerDto>(`${ this.baseUrl}/customers`, body );
+    return this.http.post<any>(`${ this.baseUrl}/customers`, body );
   }
 
   updateCustomer( id: string, body: CustomerDto ) {
