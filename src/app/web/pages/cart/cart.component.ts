@@ -10,6 +10,7 @@ import { StoreService } from '../../services/store.service';
 export class CartComponent implements OnInit {
 
   products: Product[] = [];
+  form = false;
 
   constructor( private storeService: StoreService ) {}
 
@@ -45,6 +46,10 @@ export class CartComponent implements OnInit {
   getTotalPrice() {
     const total = this.storeService.getTotalCart();
     return total;
+  }
+
+  formRegister() {
+    this.form = true;
   }
 
 }

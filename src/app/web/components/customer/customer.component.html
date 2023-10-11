@@ -1,35 +1,24 @@
 <div class="client-form">
     <h2>Ingresa tus datos</h2>
 
-    <!-- Asking customer registered -->
-    <div class="buttons" *ngIf="!nitFound" >
-
-        <button class="primary-button" (click)="newCustomer()">
-            Cliente Nuevo
-        </button>
-
-        <button class="primary-button" (click)="alreadyCustomer()">
-            Ya soy cliente
-        </button>
+    <!-- Nit -->
+    <div class="edit">
+        <div class="notificacion">
+            <label for="nit">Nit o C.C</label>
+            <input
+                type="number"
+                name="nit"
+                class="nit-input"
+                [(ngModel)]="id.nit"
+                placeholder="Introduzca # identificación y presione enter"
+                (keyup.enter)="searchCustomer()"
+                require
+            >             
+        </div>
     </div>
 
     <!-- ////////// Create Customer \\\\\\\\\\ -->
     <div class="total-form" *ngIf="nitFound && crear; else Edit" [ngClass]="{'total-form': nitFound }">
-        <!-- Nit -->
-        <div class="edit">
-            <div class="notificacion">
-                <label for="nit">Nit o C.C</label>
-                <input
-                    type="number"
-                    name="nit"
-                    class="nit-input"
-                    [(ngModel)]="id.nit"
-                    placeholder="Introduzca # identificación y presione enter"
-                    (keyup.enter)="calcular()"
-                    require
-                >             
-            </div>
-        </div>
         
         <form [formGroup]="customerForm" (ngSubmit)="createCustomer()" autocomplete="off" *ngIf="id.nit">
             <!-- First Row -->
@@ -186,7 +175,7 @@
     <ng-template #Edit>
         <div class="total-form" *ngIf="nitFound" [ngClass]="{'total-form': nitFound }">
             <!-- Nit -->
-            <div class="edit">
+            <!-- <div class="edit">
                 <div class="notificacion">
                     <label for="nit">Nit o C.C</label>
                     <input
@@ -199,7 +188,7 @@
                         require
                     >
                 </div>
-            </div>
+            </div> -->
             
             <form [formGroup]="customerForm" (ngSubmit)="updateCustomer()" autocomplete="off" *ngIf="id.nit">
                 <!-- First Row -->

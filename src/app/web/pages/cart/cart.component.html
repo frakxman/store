@@ -47,7 +47,7 @@
             <td class="totalFact-td">Gran Total</td>
             <td class="totalFact-td">$ {{ getTotalPrice() }}</td>
             <td>
-                <button class="primary-button">
+                <button class="primary-button" (click)="formRegister()">
                     Confirmar
                 </button>
             </td>
@@ -57,5 +57,5 @@
         <p class="message">No hay productos agregados al carrito</p>
     </ng-template>
 </div>
-<app-customer></app-customer>
-<!-- *ngIf="products.length" -->
+<app-customer *ngIf="form"></app-customer>
+<!-- <app-order></app-order> -->

@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { InfoComponent } from './pages/info/info.component';
+import { OrderComponent } from './components/order/order.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { InfoComponent } from './pages/info/info.component';
     FooterComponent,
     CustomerComponent,
     InfoComponent,
+    OrderComponent,
   ],
   imports: [
     CommonModule,
