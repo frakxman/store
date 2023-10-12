@@ -1,7 +1,7 @@
 import { HttpClient, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 import { environments } from 'src/environments/environments';
 
