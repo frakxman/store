@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/product.interfaces';
+import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'app-order',
@@ -8,19 +9,23 @@ import { Product } from '../../interfaces/product.interfaces';
 })
 export class OrderComponent implements OnInit {
 
-  products: Product[] = [];
-  idTercero = 0;
+  @Input() 
+  public idTercero: number = 0;
 
-  constructor(  ) {}
+  products: Product[] = [];
+
+  constructor( private storeService: StoreService ) {}
 
   ngOnInit(): void {
+    this.storeService.myCart$.subscribe( products => this.products = products );
   }
 
   // TODO: get the idTercero from customerComponentTS 
   // TODO: get the listProducts from cartComponentTs
-  // TODO: get the diferent dates from cartComponentTs
+  // TODO: get the diferent dates from new Date
   generateOrder() {
-    console.log('Order generate');
+    console.log( this.idTercero );
+    console.log( this.products );
   }
 
 }

@@ -168,27 +168,13 @@
 
             <input type="submit" value="Guardar" class="primary-button" [disabled]="customerForm.invalid" [ngClass]="{'disabled': customerForm.invalid }">
         </form>
-        <button (click)="back()" class="primary-button">Regresar</button>
+        <button (click)="back()" class="primary-button" *ngIf="customerForm.invalid">Regresar</button>
     </div>
+    <app-order [idTercero]="idTercero" *ngIf="idTercero > 0"></app-order>
 
     <!-- ////////// Update Customer \\\\\\\\\\ -->
     <ng-template #Edit>
         <div class="total-form" *ngIf="nitFound" [ngClass]="{'total-form': nitFound }">
-            <!-- Nit -->
-            <!-- <div class="edit">
-                <div class="notificacion">
-                    <label for="nit">Nit o C.C</label>
-                    <input
-                        type="text"
-                        name="nit"
-                        class="nit-input"
-                        [(ngModel)]="id.nit"
-                        placeholder="Introduzca # identificación y presione enter"
-                        (keyup.enter)="searchCustomer()"
-                        require
-                    >
-                </div>
-            </div> -->
             
             <form [formGroup]="customerForm" (ngSubmit)="updateCustomer()" autocomplete="off" *ngIf="id.nit">
                 <!-- First Row -->

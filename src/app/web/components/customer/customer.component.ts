@@ -15,8 +15,6 @@ import { CustomerResp, Nit, CustomerDto } from '../../interfaces/customer';
 })
 export class CustomerComponent implements OnInit {
 
-  @Output() thirdId: EventEmitter<any> = new EventEmitter();
-
   private customerService = inject( CustomerService );
   private fb = inject( FormBuilder );
 
@@ -127,14 +125,12 @@ export class CustomerComponent implements OnInit {
           this.nitFound = true;
           console.log('Ya registrado');
           this.setEditValues();
-          this.thirdId.emit( this.idTercero );
         } else {
           console.log('Por registrarse');
           this.nitFound = true;
           this.crear = true;
           this.calcular();
           this.idTercero = rta.idtercero!;
-          this.thirdId.emit( this.idTercero );
         }
       });
   }
