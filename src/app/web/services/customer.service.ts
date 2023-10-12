@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 
 import { environments } from 'src/environments/environments';
 
-import { Country } from '../interfaces/countries';
-import { Municipalities } from '../interfaces/municipalities';
-import { Departments } from '../interfaces/departments';
-import { CustomerResp, Nit, CustomerDto } from '../interfaces/customer';
+import { Country } from '../interfaces/countries.interface';
+import { Municipalities } from '../interfaces/municipalities.interface';
+import { Departments } from '../interfaces/departments.interface';
+import { CustomerResp, Nit, CustomerDto } from '../interfaces/customer.interface';
 
 @Injectable({
   providedIn: 'root'

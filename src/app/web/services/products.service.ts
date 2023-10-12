@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environments } from 'src/environments/environments';
 
-import { Product } from '../interfaces/product.interfaces';
+import { Product } from '../interfaces/product.interface';
 
 import { WarehouseService } from './warehouse.service';
 

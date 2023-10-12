@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CustomerService } from '../../services/customer.service';
 
-import { Country } from '../../interfaces/countries';
-import { Departments } from '../../interfaces/departments';
-import { Municipalities } from '../../interfaces/municipalities';
-import { CustomerResp, Nit, CustomerDto } from '../../interfaces/customer';
+import { Country } from '../../interfaces/countries.interface';
+import { Departments } from '../../interfaces/departments.interface';
+import { Municipalities } from '../../interfaces/municipalities.interface';
+import { CustomerResp, Nit, CustomerDto } from '../../interfaces/customer.interface';
 
 @Component({
   selector: 'app-customer',

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { Product } from '../../interfaces/product.interfaces';
+import { Product } from '../../interfaces/product.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

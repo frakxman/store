@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
-import { Product } from '../../interfaces/product.interfaces';
+import { Product } from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-paginator',

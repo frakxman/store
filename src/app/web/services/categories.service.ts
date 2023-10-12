@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
  
 import { environments } from 'src/environments/environments';
 
-import { Categories } from '../interfaces/categories.interfaces';
+import { Categories } from '../interfaces/categories.interface';
 
 @Injectable({
   providedIn: 'root'

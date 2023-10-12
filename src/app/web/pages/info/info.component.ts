@@ -5,7 +5,7 @@ import { switchMap } from 'rxjs';
 
 import { ProductsService } from '../../services/products.service';
 
-import { Product } from '../../interfaces/product.interfaces';
+import { Product } from '../../interfaces/product.interface';
 import { StoreService } from '../../services/store.service';
 
 @Component({

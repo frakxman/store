@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { environments } from 'src/environments/environments';
-import { WareHouse } from '../interfaces/wareHouse';
+import { WareHouse } from '../interfaces/wareHouse.interface';
 
 @Injectable({
   providedIn: 'root'

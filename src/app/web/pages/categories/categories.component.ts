@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
-import { Categories } from '../../interfaces/categories.interfaces';
+import { Categories } from '../../interfaces/categories.interface';
 import { CategoriesService } from '../../services/categories.service';
 import { ProductsService } from '../../services/products.service';
-import { Product } from '../../interfaces/product.interfaces';
+import { Product } from '../../interfaces/product.interface';
 import { StoreService } from '../../services/store.service';
 import { WarehouseService } from '../../services/warehouse.service';
 
