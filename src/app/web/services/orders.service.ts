@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 
 import { environments } from 'src/environments/environments';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,9 @@ export class OrdersService implements OnInit {
   getOrderNumber( id: number ) {
     return this.http.get(`${ this.baseUrl }/${ id }`);
   }
+
+  // generateOrder( body: any ) {
+  //   return this.http.post(`${ this.baseUrl }`, body );
+  // }
 
 }

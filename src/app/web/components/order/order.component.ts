@@ -19,22 +19,22 @@ export class OrderComponent implements OnInit {
   public idTercero: number = 0;
 
   products: Product[] = [];
-  // numberO = [];
   ordersNumber = {};
-  order?: ItradeOrderHeader = {
+  number = 0;
+  order: ItradeOrderHeader = {
     numero:         0,
     idtercero:      0,
     fecha:          '',
     idvendedor:     0,
     subtotal:       0,
-    valortotal:     0,
-    valimpuesto:    0,
+    valortotal:     0, //suma total del valor total de todos los prods
+    valimpuesto:    0, // suma del total del iva por todos los productos
     valdescuentos:  0,
     valretenciones: 0,
-    valiva:         0,
+    valiva:         0, // igual al valimpuesto
     idalmacen:      0,
     estado:         0,
-    detalle:        '',
+    detalle:        '', //Message X
     fechacrea:      '',
     hora:           '',
     idsoftware:     0,
@@ -71,15 +71,23 @@ export class OrderComponent implements OnInit {
   }
 
   getNumberOrder() {
+    console.log( this.wareHouseId )
     this.orderService.getOrderNumber( this.wareHouseId )
       .subscribe( rta => {
-        // console.log( rta );
-        this.ordersNumber = rta;
-        // console.log(this.ordersNumber );
-        const numberO = Object.entries(this.ordersNumber);
+        console.log( rta );
+        // const numberO = Object.entries( rta );
         // console.log(numberO);
+        // this.number = (numberO.length + 1);
+        // console.log(this.number);
+        // this.order.numero = this.number;
+        // console.log(this.order.numero);
+        
+        this.ordersNumber = rta;
+        console.log(this.ordersNumber );
+        const numberO = Object.entries(this.ordersNumber);
+        console.log(numberO);
         const number = numberO.length;
-        // console.log(number);
+        console.log(number);
         this.order!.numero = (number + 1);
         console.log(this.order!.numero);
       });
@@ -106,35 +114,83 @@ export class OrderComponent implements OnInit {
 
   setDetPedidos() {
     if( !this.products ) return;
-    for (const product of this.products) {
-      this.detPedidos.idproducto = product.idproducto;
-      this.detPedidos.cantidad = product.store;
-      this.detPedidos.valorprod = product.precioventa;
-      this.detPedidos.descuento = 0;
-      this.detPedidos.porcdesc = 0;
-      this.detPedidos.codiva = product.codiva;
-      this.detPedidos.porciva = product.porcentaje;
-      this.detPedidos.costoprod = product.costo;
-      this.detPedidos.despachado = 0;
-      this.detPedidos.base = product.baseValue;
-      this.detPedidos.ivaprod = product.taxValue;
-    }
-    console.log( this.detPedidos );
-    console.log( this.order?.detpedidos );
+    this.products.forEach( product => {
+      this.detPedidos = {
+        idpedido: '',
+        idproducto: product.idproducto,
+        cantidad: product.store,
+        valorprod: product.precioventa,
+        descuento: 0,
+        porcdesc: 0,
+        codiva: product.codiva,
+        porciva: product.porcentaje,
+        costoprod: product.costo,
+        despachado: 0,
+        base: product.baseValue,
+        ivaprod: product.taxValue,
+      }
+      this.order!.detpedidos.push(this.detPedidos);
+    });    
+    console.log( this.order.detpedidos );
+  }
+
+  setOrderSubtotal() {
+    const subTotals = this.products.reduce((total, product) => {
+      return total + product.baseValue * product.store;
+    }, 0);
+    console.log('subTotals', subTotals);
+    this.order.subtotal = subTotals;
+  }
+
+  setOrderIva() {
+    const valiva = this.products.reduce((total, product) => {
+      return total + product.taxValue * product.store;
+    }, 0);
+    console.log('Iva', valiva);
+    this.order.valiva = valiva;
+    console.log('Iva', this.order.valiva);
+    this.order.valimpuesto = valiva;
+    console.log('Iva', this.order.valimpuesto);
+  }
+
+  setOrderTotal() {
+    const totals = this.products.reduce((total, product) => {
+      return total + product.precioventa * product.store;
+    }, 0);
+    console.log('Totals', totals);
+    this.order.valortotal = totals;
   }
 
   setOrder() {
-    this.order!.fecha = this.date;
+    this.order.idtercero = this.idTercero;
+    this.order.fecha = this.date;
+    this.order.idvendedor =     1;
+    this.order.valdescuentos =  0;
+    this.order.valretenciones = 0;
+    this.order.idalmacen =      this.wareHouseId;
+    this.order.estado =         3;
+    this.order.detalle! =      'Message X';
+    this.order.fechacrea =     this.date;
+    this.order.hora =          this.currentTime;
+    this.order.idsoftware =     3;
+    this.order.plazo =          0;
   }
 
-  generateOrder() {
+  generatePreOrder() {
     this.getNumberOrder();
     this.getDate();
     this.setDetPedidos();
-    console.log( this.idTercero );
-    console.log( this.date );
-    console.log( this.currentTime );
-    console.log( this.products );
+    this.setOrder();
+    this.setOrderSubtotal();
+    this.setOrderIva();
+    this.setOrderTotal();
+  }
+
+  generateOrder() {
+    this.generatePreOrder();
+    console.log(this.order);
+    // this.orderService.generateOrder(this.order)
+    //   .subscribe( rta => console.log( rta ));
   }
 
 }
