@@ -75,21 +75,23 @@ export class OrderComponent implements OnInit {
     this.orderService.getOrderNumber( this.wareHouseId )
       .subscribe( rta => {
         console.log( rta );
-        // const numberO = Object.entries( rta );
-        // console.log(numberO);
-        // this.number = (numberO.length + 1);
-        // console.log(this.number);
-        // this.order.numero = this.number;
-        // console.log(this.order.numero);
-        
-        this.ordersNumber = rta;
-        console.log(this.ordersNumber );
-        const numberO = Object.entries(this.ordersNumber);
+        const numberO = Object.entries( rta );
         console.log(numberO);
-        const number = numberO.length;
-        console.log(number);
-        this.order!.numero = (number + 1);
-        console.log(this.order!.numero);
+        if( numberO.length === 0 ){
+          this.number = (numberO.length + 1);
+          console.log(this.number);
+          this.order.numero = this.number;
+          console.log(this.order.numero);
+        } else {
+          this.ordersNumber = rta;
+          console.log(this.ordersNumber );
+          const numberO = Object.entries(this.ordersNumber);
+          console.log(numberO);
+          const number = numberO.length;
+          console.log(number);
+          this.order!.numero = (number + 1);
+          console.log(this.order!.numero);
+        }
       });
   }
 
@@ -189,8 +191,10 @@ export class OrderComponent implements OnInit {
   generateOrder() {
     this.generatePreOrder();
     console.log(this.order);
-    // this.orderService.generateOrder(this.order)
-    //   .subscribe( rta => console.log( rta ));
+    setTimeout(() => {
+      this.orderService.generateOrder(this.order)
+        .subscribe( rta => console.log( rta ));      
+    }, 1000);
   }
 
 }

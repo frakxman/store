@@ -19,8 +19,8 @@ export class OrdersService implements OnInit {
     return this.http.get(`${ this.baseUrl }/${ id }`);
   }
 
-  // generateOrder( body: any ) {
-  //   return this.http.post(`${ this.baseUrl }`, body );
-  // }
+  generateOrder( body: any ) {
+    return this.http.post(`${ this.baseUrl }`, body );
+  }
 
 }
