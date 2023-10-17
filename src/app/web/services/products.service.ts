@@ -33,6 +33,8 @@ export class ProductsService implements OnInit {
       params = params.set('descripcion', descripcion);
     }
     return this.http.get<Product[]>(`${this.baseUrl}/categories/${ this.wareHouseId }/${categoryName}`, { params });
+    // return this.http.get<Product[]>(`${this.baseUrl}/categories/4/VARIOS`, { params });
+    // return this.http.get<Product[]>(`${this.baseUrl}/categories/4/otros`, { params });
   }
 
   getAllProducts(page?: number, limit?: number) {

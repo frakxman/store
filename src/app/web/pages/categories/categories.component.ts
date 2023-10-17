@@ -47,7 +47,6 @@ export class CategoriesComponent {
         this.products = resp;
         console.log( this.products );
       });
-    return this.products;
   }
 
   addToShoppingCart(product: Product) {

@@ -10,6 +10,8 @@ import { Product } from '../../interfaces/product.interface';
 })
 export class SearcherComponent {
 
+
+
   // TODO: Busqueda de productos y de productos por categoria, son dos @Outputs uno dirigido a Products
   products: Product[] = [];
   page = 1;
