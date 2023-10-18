@@ -67,7 +67,12 @@ export class OrderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.storeService.myCart$.subscribe( products => this.products = products );
+    this.storeService.myCart$.subscribe( products => {
+      console.log(products);
+      this.products = products
+      console.log(this.products);
+
+    } );
     this.wareHouseService.getWareHouse().subscribe(({ warehouseId }) => this.wareHouseId = warehouseId );
   }
 
@@ -75,23 +80,23 @@ export class OrderComponent implements OnInit {
     console.log( this.wareHouseId )
     this.orderService.getOrderNumber( this.wareHouseId )
       .subscribe( rta => {
-        // console.log( rta );
+        console.log( rta );
         const numberO = Object.entries( rta );
-        // console.log(numberO);
+        console.log(numberO);
         if( numberO.length === 0 ){
           this.number = (numberO.length + 1);
-          // console.log(this.number);
+          console.log(this.number);
           this.order.numero = this.number;
-          // console.log(this.order.numero);
+          console.log(this.order.numero);
         } else {
           this.ordersNumber = rta;
-          // console.log(this.ordersNumber );
+          console.log(this.ordersNumber );
           const numberO = Object.entries(this.ordersNumber);
-          // console.log(numberO);
+          console.log(numberO);
           const number = numberO.length;
-          // console.log(number);
+          console.log(number);
           this.order!.numero = (number + 1);
-          // console.log(this.order!.numero);
+          console.log(this.order!.numero);
         }
       });
   }
@@ -134,33 +139,36 @@ export class OrderComponent implements OnInit {
       }
       this.order!.detpedidos.push(this.detPedidos);
     });    
-    // console.log( this.order.detpedidos );
+    console.log( this.order.detpedidos );
   }
 
   setOrderSubtotal() {
-    const subTotals = this.products.reduce((total, product) => {
+    const subTotal = this.products.reduce((total, product) => {
       return total + product.baseValue * product.store;
     }, 0);
-    // console.log('subTotals', subTotals);
-    this.order.subtotal = subTotals;
+    console.log('subTotals', subTotal);
+    const subTotals = subTotal.toFixed(3);
+    console.log(subTotals);
+    this.order.subtotal = parseFloat(subTotals);
   }
 
   setOrderIva() {
-    const valiva = this.products.reduce((total, product) => {
+    const valivas = this.products.reduce((total, product) => {
       return total + product.taxValue * product.store;
     }, 0);
-    // console.log('Iva', valiva);
-    this.order.valiva = valiva;
-    // console.log('Iva', this.order.valiva);
-    this.order.valimpuesto = valiva;
-    // console.log('Iva', this.order.valimpuesto);
+    console.log('Valivas', valivas);
+    const valiva = valivas.toFixed(3);
+    this.order.valiva = parseFloat(valiva);
+    console.log('Valiva', this.order.valiva);
+    this.order.valimpuesto = parseFloat(valiva);
+    console.log('Valimpuesto', this.order.valimpuesto);
   }
 
   setOrderTotal() {
     const totals = this.products.reduce((total, product) => {
       return total + product.precioventa * product.store;
     }, 0);
-    // console.log('Totals', totals);
+    console.log('Totals', totals);
     this.order.valortotal = totals;
   }
 
@@ -191,7 +199,7 @@ export class OrderComponent implements OnInit {
 
   generateOrder() {
     this.generatePreOrder();
-    // console.log(this.order);
+    console.log(this.order);
     setTimeout(() => {
       this.orderService.generateOrder(this.order)
         .subscribe( rta => {

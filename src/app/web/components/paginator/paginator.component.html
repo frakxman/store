@@ -1,9 +1,9 @@
 <div class="paginator">
-    <button class="primary-button">
+    <button class="primary-button" (click)="previousPage()">
         <img src="assets/svg/back-arrow.svg" alt="">
     </button>
-    <p class="paginator-number"> 1 </p>
-    <button  class="primary-button">
+    <p class="paginator-number">{{ page }}</p>
+    <button  class="primary-button" (click)="nextPage()">
         <img src="assets/svg/foward-arrow.svg" alt="">
     </button>    
 </div>
