@@ -88,14 +88,15 @@ export class OrderComponent implements OnInit {
           console.log(this.number);
           this.order.numero = this.number;
           console.log(this.order.numero);
-        } else {
+        }
+         else {
           this.ordersNumber = rta;
           console.log(this.ordersNumber );
           const numberO = Object.entries(this.ordersNumber);
           console.log(numberO);
           const number = numberO.length;
           console.log(number);
-          this.order!.numero = (number + 1);
+          this.order.numero = (number + 1);
           console.log(this.order!.numero);
         }
       });
@@ -173,6 +174,7 @@ export class OrderComponent implements OnInit {
   }
 
   setOrder() {
+    this.getNumberOrder();
     this.order.idtercero = this.idTercero;
     this.order.fecha = this.date;
     this.order.idvendedor =     1;
@@ -185,22 +187,20 @@ export class OrderComponent implements OnInit {
     this.order.hora =          this.currentTime;
     this.order.idsoftware =     3;
     this.order.plazo =          0;
+    ;
   }
 
-  generatePreOrder() {
-    this.getNumberOrder();
+  generateOrder() {
+    // this.getNumberOrder();
     this.getDate();
     this.setDetPedidos();
     this.setOrder();
     this.setOrderSubtotal();
     this.setOrderIva();
     this.setOrderTotal();
-  }
-
-  generateOrder() {
-    this.generatePreOrder();
-    console.log(this.order);
+    console.log(this.order.numero);
     setTimeout(() => {
+    console.log(this.order);
       this.orderService.generateOrder(this.order)
         .subscribe( rta => {
           console.log( rta );
@@ -210,9 +210,10 @@ export class OrderComponent implements OnInit {
           console.log( this.id );
           for (const idprods of this.order.detpedidos) {
             idprods.idpedido = this.id;
-            console.log(this.order.detpedidos)
-         }
+          }
+          console.log(this.order.detpedidos);
         });    
     }, 1000);
+    
   } 
 }
