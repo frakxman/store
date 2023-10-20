@@ -1,3 +1,55 @@
 <button class="primary-button" (click)="generateOrder()">
     Confirmar Orden
 </button>
+<div class="dialog" *ngIf="orderResp.order.numero > 0">
+    <h3 class="title">Orden # {{ orderResp.order.numero }}</h3>
+    <div class="body">
+        <div class="detail">
+            <ul>
+                <li>
+                    <label>Nombre:</label>
+                    <input readonly="readonly" placeholder="{{ orderResp.order.nombres }}">
+                </li>
+                <li>
+                    <label>Apellido:</label>
+                    <input readonly="readonly" placeholder="{{ orderResp.order.apellidos }}">
+                </li>
+                <li>
+                    <label>Identificacion:</label>
+                    <input readonly="readonly" placeholder="{{ orderResp.order.nit }}">
+                </li>
+                <li>
+                    <label>Correo:</label>
+                    <input readonly="readonly" placeholder="{{ orderResp.order.email }}">
+                </li>
+                <li>
+                    <label>Subtotal:</label>
+                    <input readonly="readonly" placeholder="{{ orderResp.order.subtotal }}">
+                </li>
+                <li>
+                    <label>Impuesto:</label>
+                    <input readonly="readonly" placeholder="{{ orderResp.order.valor_impuesto }}">
+                </li>
+                <li>
+                    <label>TOTAL:</label>
+                    <input readonly="readonly" placeholder="{{ orderResp.order.valortotal }}">
+                </li>
+            </ul>
+        </div>
+        <div class="list">
+            <ul>
+                <li *ngFor="let product of orderResp.products">
+                    <i>
+                        {{ product.descripcion }} - {{ product.valorprod }} - {{ product.cantidad }} 
+                    </i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <button class="primary-button">
+        PAGAR
+    </button>
+</div>
+<ng-template #loading>
+    Cargando...
+</ng-template>

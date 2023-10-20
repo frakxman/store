@@ -4,7 +4,6 @@ import { StoreService } from '../../services/store.service';
 import { OrdersService } from '../../services/orders.service';
 import { WarehouseService } from '../../services/warehouse.service';
 
-
 import { Product } from '../../interfaces/product.interface';
 import { ItradeOrderHeader, ItradeOrderDetail } from '../../interfaces/orders.interface';
 
@@ -19,9 +18,6 @@ export class OrderComponent implements OnInit {
   public idTercero: number = 0;
 
   products: Product[] = [];
-  ordersNumber = {};
-  number = 0;
-  id = '';
   order: ItradeOrderHeader = {
     numero:         0,
     idtercero:      0,
@@ -56,7 +52,35 @@ export class OrderComponent implements OnInit {
     base:       0,
     ivaprod:    0,
   };
+  orderResp: any = {
+    order: {
+    numero: 0,
+    subtotal: 0,
+    valor_impuesto: 0,
+    valor_total: 0,
+    fecha: '',
+    hora: '',
+    nit: 0,
+    nombres: '',
+    apellidos: '',
+    email: '',
+    almacen: '',
+    descuentos: 0
+    },
+    products: [
+      {
+        idproducto: 0,
+        descripcion: '',
+        valorprod: 0,
+        descuento: 0,
+        porcdesc: 0,
+        cantidad: 0
+      }
+    ]
+  };
   wareHouseId = 1;
+  number = 0;
+  id = '';
   date = '';
   currentTime = '';
 
@@ -67,34 +91,23 @@ export class OrderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.storeService.myCart$.subscribe( products => {
-      console.log(products);
-      this.products = products
-      console.log(this.products);
-
-    } );
+    this.storeService.myCart$.subscribe( products => this.products = products );
     this.wareHouseService.getWareHouse().subscribe(({ warehouseId }) => this.wareHouseId = warehouseId );
   }
 
   getNumberOrder() {
-    console.log( this.wareHouseId )
     this.orderService.getOrderNumber( this.wareHouseId )
       .subscribe( rta => {
-        console.log( rta );
         const numberO = Object.values( rta );
-        console.log(numberO);
         if( numberO[0] === 0 ){
           this.number = (numberO[0] + 1);
-          console.log(this.number);
           this.order.numero = this.number;
-          console.log(this.order.numero);
         }
          else {
           this.number = (numberO[0] + 1);
-          console.log(this.number);
           this.order.numero = this.number;
-          console.log(this.order.numero);
         }
+        return this.number;
       });
   }
 
@@ -136,16 +149,13 @@ export class OrderComponent implements OnInit {
       }
       this.order!.detpedidos.push(this.detPedidos);
     });    
-    console.log( this.order.detpedidos );
   }
 
   setOrderSubtotal() {
     const subTotal = this.products.reduce((total, product) => {
       return total + product.baseValue * product.store;
     }, 0);
-    console.log('subTotals', subTotal);
     const subTotals = subTotal.toFixed(3);
-    console.log(subTotals);
     this.order.subtotal = parseFloat(subTotals);
   }
 
@@ -153,19 +163,15 @@ export class OrderComponent implements OnInit {
     const valivas = this.products.reduce((total, product) => {
       return total + product.taxValue * product.store;
     }, 0);
-    console.log('Valivas', valivas);
     const valiva = valivas.toFixed(3);
     this.order.valiva = parseFloat(valiva);
-    console.log('Valiva', this.order.valiva);
     this.order.valimpuesto = parseFloat(valiva);
-    console.log('Valimpuesto', this.order.valimpuesto);
   }
 
   setOrderTotal() {
     const totals = this.products.reduce((total, product) => {
       return total + product.precioventa * product.store;
     }, 0);
-    console.log('Totals', totals);
     this.order.valortotal = totals;
   }
 
@@ -185,45 +191,34 @@ export class OrderComponent implements OnInit {
     this.order.plazo =          0;
   }
 
+  confirmOrder() {
+    this.orderService.getConfirmOrder( this.order.numero, this.wareHouseId )
+      .subscribe( resp => {
+        console.log( resp );
+        this.orderResp = resp;
+        console.log( this.orderResp.products );
+      });
+  }
+
   generateOrder() {
-    // this.getNumberOrder();
     this.getDate();
     this.setDetPedidos();
     this.setOrder();
     this.setOrderSubtotal();
     this.setOrderIva();
     this.setOrderTotal();
-    console.log(this.order.numero);
     setTimeout(() => {
-    console.log(this.order);
     this.orderService.generateOrder(this.order)
       .subscribe( rta => {
-        console.log( rta );
         const resp  = Object.entries( rta );
-        console.log( resp );
         this.id = resp[0][1].toString();
-        console.log( this.id );
         for (const idprods of this.order.detpedidos) {
           idprods.idpedido = this.id;
         }
-        console.log(this.order.detpedidos);
-      });   
+      });
+      setTimeout(() => {
+        this.confirmOrder();
+      }, 0.500);
     }, 1000);
-    
   } 
 }
-
-// this.orderService.generateOrder(this.order)
-//  .pipe(
-//    delay(1000),
-//    tap( rta => {
-//      console.log( rta );
-//      const resp  = Object.entries( rta );
-//      console.log( resp );
-//      this.id = resp[0][1].toString();
-//      console.log( this.id );
-//      for (const idprods of this.order.detpedidos) {
-//        idprods.idpedido = this.id;
-//      }}),
-//    retry(3)
-//  )

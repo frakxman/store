@@ -1,12 +1,54 @@
-.primary-button {
-    background-color: #FF2400;
+.dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
     border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    max-width: 300px;
+    z-index: 1000;
+}
+.title {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 700;
+}
+.detail {
+    margin-bottom: 2%;
+}
+
+label{
+    margin: 1%;
+}
+
+.list {
+    margin: 2%;
+}
+
+/* Primary button styling */
+.primary-button {
+    /* Red background color */
+    background-color: #FF2400;
+    /* 8px border radius */
+    border-radius: 8px;
+    /* No border */
     border: none;
+    /* White text color */
     color: #FFFFFF;
+    /* 98% width */
     width: 98%;
+    /* Pointer cursor on hover */
     cursor: pointer;
+    /* Medium font size */
     font-size: var(--md);
+    /* Bold font weight */
     font-weight: bold;
+    /* 35px height */
     height: 35px;
+    /* 1% margin on all sides */
     margin: 1% 1%;
 }

@@ -19,6 +19,10 @@ export class OrdersService implements OnInit {
     return this.http.get(`${ this.baseUrl }/${ id }`);
   }
 
+  getConfirmOrder( orderNumber: number, wareHouseId: number) {
+    return this.http.get(`${ this.baseUrl }/${ orderNumber }/${ wareHouseId }`);
+  }
+
   generateOrder( body: any ) {
     return this.http.post(`${ this.baseUrl }`, body );
   }

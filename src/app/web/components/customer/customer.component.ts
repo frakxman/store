@@ -120,13 +120,10 @@ export class CustomerComponent implements OnInit {
       .subscribe( rta => {
         if ( rta.idtercero ) {
           this.idTercero = rta.idtercero!;
-          console.log( rta );
           this.customer = rta;
           this.nitFound = true;
-          console.log('Ya registrado');
           this.setEditValues();
         } else {
-          console.log('Por registrarse');
           this.nitFound = true;
           this.crear = true;
           this.calcular();
@@ -237,7 +234,6 @@ export class CustomerComponent implements OnInit {
           return `Solo números`;
       }
     }
-
     return null;
   }
 
@@ -311,10 +307,7 @@ export class CustomerComponent implements OnInit {
       idpais:	       this.customerForm.get('idpais')?.value,
     }
     this.customerService.createCustomer( DTOCustomer )
-      .subscribe( rta => {
-        this.idTercero = rta.responseCustomer[0].insertId;
-        console.log( this.idTercero );
-      } );
+      .subscribe( rta => this.idTercero = rta.responseCustomer[0].insertId );
   }
 
 }
