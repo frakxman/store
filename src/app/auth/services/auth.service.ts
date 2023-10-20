@@ -33,7 +33,7 @@ export class AuthService {
     return this.http.post<TokenResp>(`${ this.baseUrl }/login`, { username, password })
     .subscribe( resp => {
       this.token = resp;
-      if( this.token ) {
+      if( this.token.access_token !== undefined ) {
         this.tokenService.saveToken( this.token.access_token );
         this.router.navigate(['/admin/list']);
       } else {

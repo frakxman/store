@@ -8,7 +8,8 @@ export const loginGuard: CanActivateFn = () => {
   const router = inject( Router );
   
   const token = tokenService.getToken();
-  if (!token ) {
+  console.log( token );
+  if (token === undefined) {
     router.navigate(['/auth/login']);
     return false;
   }
