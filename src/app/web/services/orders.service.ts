@@ -19,12 +19,20 @@ export class OrdersService implements OnInit {
     return this.http.get(`${ this.baseUrl }/${ id }`);
   }
 
-  getConfirmOrder( orderNumber: number, wareHouseId: number) {
+  generateOrder( body: any ) {
+    return this.http.post(`${ this.baseUrl }`, body );
+  }
+
+  getConfirmOrder( orderNumber: number, wareHouseId: number ) {
     return this.http.get(`${ this.baseUrl }/${ orderNumber }/${ wareHouseId }`);
   }
 
-  generateOrder( body: any ) {
-    return this.http.post(`${ this.baseUrl }`, body );
+  payOrder( orderNumber: number, wareHouseId: number ) {
+    // const params = new HttpParams();
+    // params.set('numero', orderNumber);
+    // params.set('idalmacen', wareHouseId);
+    // return this.http.post(`${ this.baseUrl }/payment`, params );
+    return this.http.post(`${ this.baseUrl }/payment/${ orderNumber }/${ wareHouseId}`, '');
   }
 
 }

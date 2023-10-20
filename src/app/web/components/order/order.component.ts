@@ -6,6 +6,7 @@ import { WarehouseService } from '../../services/warehouse.service';
 
 import { Product } from '../../interfaces/product.interface';
 import { ItradeOrderHeader, ItradeOrderDetail } from '../../interfaces/orders.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -78,6 +79,7 @@ export class OrderComponent implements OnInit {
       }
     ]
   };
+  payUrl: any;
   wareHouseId = 1;
   number = 0;
   id = '';
@@ -87,7 +89,7 @@ export class OrderComponent implements OnInit {
   constructor(
     private storeService: StoreService,
     private orderService: OrdersService,
-    private wareHouseService: WarehouseService 
+    private wareHouseService: WarehouseService
   ) {}
 
   ngOnInit(): void {
@@ -220,5 +222,16 @@ export class OrderComponent implements OnInit {
         this.confirmOrder();
       }, 0.500);
     }, 1000);
-  } 
+  }
+
+  payOrder() {
+    console.log(this.order.numero);
+    console.log(this.wareHouseId);
+    this.orderService.payOrder( this.order.numero, this.wareHouseId )
+    .subscribe( resp => {
+      console.log( resp );
+      this.payUrl = resp;
+      console.log( this.payUrl.init_point );
+    })
+  }
 }
