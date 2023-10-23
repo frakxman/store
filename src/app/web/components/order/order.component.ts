@@ -89,7 +89,9 @@ export class OrderComponent implements OnInit {
   constructor(
     private storeService: StoreService,
     private orderService: OrdersService,
-    private wareHouseService: WarehouseService
+    private wareHouseService: WarehouseService,
+    private router: Router,
+    // private window: Window
   ) {}
 
   ngOnInit(): void {
@@ -194,6 +196,8 @@ export class OrderComponent implements OnInit {
   }
 
   confirmOrder() {
+    console.log( this.order.numero );
+    console.log( this.wareHouseId );
     this.orderService.getConfirmOrder( this.order.numero, this.wareHouseId )
       .subscribe( resp => {
         console.log( resp );
@@ -232,6 +236,9 @@ export class OrderComponent implements OnInit {
       console.log( resp );
       this.payUrl = resp;
       console.log( this.payUrl.init_point );
-    })
+      window.open(`${ this.payUrl.init_point }`, '_blank');
+      this.router.navigate(['/store/list']);
+    });
   }
+
 }

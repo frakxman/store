@@ -1,32 +1,82 @@
+/* Dialog container */
 .dialog {
+    /* Position fixed */
     position: fixed;
+    /* Center vertically and horizontally */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /* Background color, border, and border-radius */
     background-color: #FFFFFF;
     border: 1px solid #CCCCCC;
     border-radius: 8px;
+    /* Padding and box-shadow */
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    width: 80%;
-    max-width: 300px;
+    /* Width and max-width */
+    width: 90%;
+    height: 100vh;
+    max-width: 320px;
+    overflow: auto;
+    /* High z-index for visibility */
     z-index: 1000;
 }
 .title {
     text-align: center;
     font-size: 2em;
     font-weight: 700;
+    margin: 2%;
+}
+.body {
+    border: 1px solid #FF2400;
+    border-radius: 5px;
+    padding: 2%;
 }
 .detail {
     margin-bottom: 2%;
 }
-
-label{
+.label{
     margin: 1%;
+    font-weight: 500;
+    font-style: italic;
+    color: #FF2400;
 }
-
+.input {
+    margin: 1%;
+    width: 95%;
+}
 .list {
     margin: 2%;
+}
+// Estilos para la tabla
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 1% 0 1% -2%;
+}
+
+// Estilos para las celdas de la tabla
+th, td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #FF2400;
+}
+
+// Estilos para el encabezado de la tabla
+th {
+    background-color: #FF2400;
+    font-weight: bold;
+    color: #fff;
+}
+
+// Estilos para las filas pares de la tabla
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+// Estilos para las filas impares de la tabla
+tr:nth-child(odd) {
+    background-color: #fff;
 }
 
 /* Primary button styling */

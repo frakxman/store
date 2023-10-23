@@ -7,43 +7,55 @@
         <div class="detail">
             <ul>
                 <li>
-                    <label>Nombre:</label>
-                    <input readonly="readonly" placeholder="{{ orderResp.order.nombres }}">
+                    <label class="label">Nombre:</label>
+                    <br>
+                    <input class="input" readonly="readonly" placeholder="{{ orderResp.order.nombres }}">
                 </li>
                 <li>
-                    <label>Apellido:</label>
-                    <input readonly="readonly" placeholder="{{ orderResp.order.apellidos }}">
+                    <label class="label">Apellido:</label>
+                    <br>
+                    <input class="input" readonly="readonly" placeholder="{{ orderResp.order.apellidos }}">
                 </li>
                 <li>
-                    <label>Identificacion:</label>
-                    <input readonly="readonly" placeholder="{{ orderResp.order.nit }}">
+                    <label class="label">Identificacion:</label>
+                    <br>
+                    <input class="input" readonly="readonly" placeholder="{{ orderResp.order.nit }}">
                 </li>
                 <li>
-                    <label>Correo:</label>
-                    <input readonly="readonly" placeholder="{{ orderResp.order.email }}">
+                    <label class="label">Correo:</label>
+                    <br>                
+                    <input class="input" readonly="readonly" placeholder="{{ orderResp.order.email }}">
                 </li>
                 <li>
-                    <label>Subtotal:</label>
-                    <input readonly="readonly" placeholder="{{ orderResp.order.subtotal }}">
+                    <label class="label">Subtotal:</label>
+                    <br>                
+                    <input class="input" readonly="readonly" placeholder="{{ orderResp.order.subtotal }}">
                 </li>
                 <li>
-                    <label>Impuesto:</label>
-                    <input readonly="readonly" placeholder="{{ orderResp.order.valor_impuesto }}">
+                    <label class="label">Impuesto:</label>
+                    <br>                
+                    <input class="input" readonly="readonly" placeholder="{{ orderResp.order.valor_impuesto }}">
                 </li>
                 <li>
-                    <label>TOTAL:</label>
-                    <input readonly="readonly" placeholder="{{ orderResp.order.valortotal }}">
+                    <label class="label">TOTAL:</label>
+                    <br>                
+                    <input class="input" readonly="readonly" placeholder="{{ orderResp.order.valortotal }}">
                 </li>
             </ul>
         </div>
         <div class="list">
-            <ul>
-                <li *ngFor="let product of orderResp.products">
-                    <i>
-                        {{ product.descripcion }} - {{ product.valorprod }} - {{ product.cantidad }} 
-                    </i>
-                </li>
-            </ul>
+            <table >
+                <tr>
+                    <th>Descripcion</th>
+                    <th>Valor</th>
+                    <th>Cantidad</th>
+                 </tr>
+                <tr *ngFor="let product of orderResp.products">
+                    <td>{{ product.descripcion | slice:0:15 }}...</td>
+                    <td>{{ product.valorprod }}</td>
+                    <td>{{ product.cantidad }}</td>
+                </tr>
+            </table>
         </div>
     </div>
     <button class="primary-button" (click)="payOrder()">
