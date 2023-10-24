@@ -102,3 +102,13 @@ tr:nth-child(odd) {
     /* 1% margin on all sides */
     margin: 1% 1%;
 }
+
+
+/* Medium only Tablet*/
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    
+}
+/* Large and up Laptops and Desktops*/
+@media screen and (min-width: 64em) {
+
+}

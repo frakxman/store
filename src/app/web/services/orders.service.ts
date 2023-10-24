@@ -28,10 +28,6 @@ export class OrdersService implements OnInit {
   }
 
   payOrder( orderNumber: number, wareHouseId: number ) {
-    // const params = new HttpParams();
-    // params.set('numero', orderNumber);
-    // params.set('idalmacen', wareHouseId);
-    // return this.http.post(`${ this.baseUrl }/payment`, params );
     return this.http.post(`${ this.baseUrl }/payment/${ orderNumber }/${ wareHouseId}`, '');
   }
 

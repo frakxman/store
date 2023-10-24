@@ -16,15 +16,14 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
       this.storeService.myCart$
-        .subscribe( products => this.counter = products.length );
+        .subscribe( products => {
+          this.counter = products.reduce(( sum, item ) => {
+            return sum + item.store }, 0);
+        });
   }
 
   toggleMenu() {
     this.activeMenu = !this.activeMenu;
   }
 
-   getTotalProds() {
-    const totalProds = this.storeService.getTotalProductsCart();
-    return totalProds;
-  }
 }

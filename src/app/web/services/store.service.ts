@@ -18,8 +18,10 @@ export class StoreService {
   addProduct( product: Product ) {
     if( this.myShoppingCart.length === 0 ) {
       product.store = 1;
-      this.myShoppingCart.push( product );
-      this.myCart.next(this.myShoppingCart);
+      if (product.store === 1) {
+        this.myShoppingCart.push( product );
+        this.myCart.next(this.myShoppingCart);
+      }
     } else {
       const productMod = this.myShoppingCart.find(( item ) => {
         return item.idproducto === product.idproducto
@@ -33,6 +35,15 @@ export class StoreService {
         this.myCart.next( this.myShoppingCart );
       }
     }
+  }
+
+  subtractProduct( id: number ) {
+    this.myShoppingCart.forEach(( item ) => {
+      if( item.idproducto === id && item.store > 0 ) {
+        item.store -= 1;
+        this.myCart.next( this.myShoppingCart );
+      }
+    });
   }
 
   getSoppingCart() {
@@ -62,5 +73,9 @@ export class StoreService {
       return product.idproducto !== id;
     });
     this.myCart.next( this.myShoppingCart );
+  }
+
+  resetShoppingCart() {
+    this.myShoppingCart = [];
   }
 }

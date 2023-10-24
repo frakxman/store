@@ -20,7 +20,7 @@
             </td>
             <td>
                 <div class="add-product">
-                    <a type="button" (click)="updateUnitProduct('minus', product.idproducto)">
+                    <a type="button" (click)="updateUnitProduct('minus', product.idproducto)" *ngIf="product.store > 1">
                         <img src="assets/png/IcoMenos-n.png" alt="disminuir producto">
                     </a>
                     <p class="store">

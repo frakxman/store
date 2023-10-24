@@ -91,7 +91,6 @@ export class OrderComponent implements OnInit {
     private orderService: OrdersService,
     private wareHouseService: WarehouseService,
     private router: Router,
-    // private window: Window
   ) {}
 
   ngOnInit(): void {
@@ -238,6 +237,7 @@ export class OrderComponent implements OnInit {
       console.log( this.payUrl.init_point );
       window.open(`${ this.payUrl.init_point }`, '_blank');
       this.router.navigate(['/store/list']);
+      this.storeService.resetShoppingCart();
     });
   }
 
