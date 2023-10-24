@@ -76,6 +76,11 @@ export class StoreService {
   }
 
   resetShoppingCart() {
-    this.myShoppingCart = [];
+    console.log("Reset shopping cart");
+    this.myShoppingCart.splice(0, this.myShoppingCart.length);
+    this.myCart.next( this.myShoppingCart );
+    console.log( this.myShoppingCart );
   }
+
+  
 }
