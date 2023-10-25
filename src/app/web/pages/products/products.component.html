@@ -3,7 +3,7 @@
     <app-slider></app-slider>
 </div>
 
-<div class="products--grid">
+<div class="products--grid" *ngIf="products.length > 0; else noProducts">
     <app-product 
         [product]="product" 
         *ngFor="let product of products" 
@@ -11,6 +11,13 @@
     >
     </app-product>
 </div>
+<ng-template #noProducts>
+    <div class="message">
+        <h2>Actualmente estos son todos los productos que podemos ofrecerte!</h2>
+        <br>
+        <p>Te invitamos a regresar al listado</p>
+    </div>
+</ng-template>
 <app-paginator (pageSelected)="chargeProducts( $event )">
 </app-paginator>
 

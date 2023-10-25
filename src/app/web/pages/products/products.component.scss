@@ -79,6 +79,16 @@
     height: 20px;
 }
 
+.message {
+    color: #FFFFFF;
+    font-weight: 700;
+    margin: 5%;
+    padding: 5%;
+    text-align: center;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+}
+
 // tablets
 @media screen and (min-width: 40em) and (max-width: 63.9em){
     .products--grid {

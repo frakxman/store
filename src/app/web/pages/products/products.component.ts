@@ -37,11 +37,12 @@ export class ProductsComponent implements OnInit {
   chargeProducts( page: number ) {
     this.productService.getAllProducts( page, this.limit )
     .subscribe( products => {
-      if( !products ) {
-        alert('No hay mas productos');
+      if( products.length > 0 ) {
+        console.log( products );
+        this.products = products;
+      } else {
+        this.products = [];
       }
-      console.log( products );
-      this.products = products;
     });
   }
 }
