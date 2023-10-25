@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { ProductsService } from '../../services/products.service';
-import { Product } from '../../interfaces/product.interface';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-paginator',
@@ -9,33 +7,24 @@ import { Product } from '../../interfaces/product.interface';
 })
 export class PaginatorComponent {
 
+  @Output() pageSelected: EventEmitter<number>;
+
   page = 1;
   limit = 10;
-  newProducts: Product[] = [];
-  products: Product[] = [];
 
-  constructor( private productService: ProductsService ) {}
-
-  previousPage() {
-    this.productService.getProductsByPage(this.page, this.limit)
-      .subscribe( data => {
-        if(this.newProducts.length === 0 ) {
-          return;
-        }
-        this.newProducts = data;
-        this. products = this.newProducts;
-        this.page--;
-      });
+  constructor() {
+    this.pageSelected = new EventEmitter();
   }
 
-  nextPage() {
-    this.productService.getProductsByPage(this.page, this.limit)
-      .subscribe( data => {
-        console.log( data );
-        this.newProducts = data;
-        this. products = this.newProducts;
-        this.page++;
-      });
+  updateUnitProduct( operation: string ) {
+    if( operation === 'minus' && this.page > 1 ) {
+      this.page--;
+      this.pageSelected.emit( this.page );
+    }
+    if( operation === 'plus' ) {
+      this.page++;
+      this.pageSelected.emit( this.page );
+    }
   }
 
 }

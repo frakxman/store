@@ -33,4 +33,15 @@ export class ProductsComponent implements OnInit {
   addToShoppingCart(product: Product) {
     this.storeService.addProduct(product);
   }
+
+  chargeProducts( page: number ) {
+    this.productService.getAllProducts( page, this.limit )
+    .subscribe( products => {
+      if( !products ) {
+        alert('No hay mas productos');
+      }
+      console.log( products );
+      this.products = products;
+    });
+  }
 }
