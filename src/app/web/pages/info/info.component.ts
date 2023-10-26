@@ -32,12 +32,16 @@ export class InfoComponent implements OnInit {
     this.warehouseService.getWareHouse()
       .subscribe( ({ warehouseId }) => {
         this.warehouseId = warehouseId;
-        this.activatedRoute.params
-          .pipe(
-            switchMap(({ id }) => this.productService.getOneProduct( parseInt( id ), this.warehouseId ))
-          )
-          .subscribe(data  => this.product = data );
+        this.getProduct();
        });
+  }
+
+  getProduct() {
+    this.activatedRoute.params
+      .pipe(
+        switchMap(({ id }) => this.productService.getOneProduct( parseInt( id ), this.warehouseId ))
+      )
+      .subscribe(data  => this.product = data )
   }
 
   goBack() {

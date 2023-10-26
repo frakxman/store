@@ -43,10 +43,12 @@ export class ProductsComponent implements OnInit {
   }
   
   searchProduct( tag: string ) {
+    if (tag === '') return;
     this.productService.getProductsBySearch( this.warehouseId, this.page, this.limit, tag )
       .subscribe( rta => {
-        this.products = rta;
-      });
+        if ( rta ) {
+          this.products = rta;
+        }});
   }
 
   chargeProducts( page: number ) {

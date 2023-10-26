@@ -7,7 +7,6 @@ import { Product } from '../../interfaces/product.interface';
 import { StoreService } from '../../services/store.service';
 import { WarehouseService } from '../../services/warehouse.service';
 
-
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -36,7 +35,6 @@ export class CategoriesComponent {
     this.categoriesServices.getAllCategories( this.page, this.limit )
       .subscribe( data => {
         this.categories = data;
-        console.log( this.categories );
       });
   }
 
@@ -51,13 +49,9 @@ export class CategoriesComponent {
   }
 
   categorySelected( name: string ) {
-    console.log( name );
     this.productsService.getByCategory( this.warehouseId, name, this.page, this.limit, '' )
       .subscribe( resp => {
-        // TODO: Fix problem to get products of last n categories 
-        console.log( resp );
         this.products = resp;
-        console.log( this.products );
       });
   }
 
