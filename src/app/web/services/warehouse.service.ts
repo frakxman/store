@@ -9,11 +9,11 @@ import { WareHouse } from '../interfaces/wareHouse.interface';
 })
 export class WarehouseService {
 
-  baseUrl: string = environments.baseUrl;
+  baseUrl: string = `${environments.baseUrl}/warehouses`;
 
   constructor( private http: HttpClient ) { }
 
   getWareHouse() {
-    return this.http.get<WareHouse>(`${this.baseUrl}/warehouses/active-virtual-store`);
+    return this.http.get<WareHouse>(`${this.baseUrl}/active-virtual-store`);
   } 
 }

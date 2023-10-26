@@ -6,12 +6,15 @@
     <br>
     <ul class="categoryList">
         <li *ngFor="let category of categories">
-            <input
+            <button (click)="categorySelected(category.nombre)" class="primary-button">
+                {{ category.nombre }}
+            </button>
+            <!-- <input
                 type="button"
                 value="{{ category.nombre }}"
                 (click)="categorySelected(category.nombre)"
                 class="primary-button"
-            >
+            > -->
         </li>
     </ul>
     <div class="products--grid">

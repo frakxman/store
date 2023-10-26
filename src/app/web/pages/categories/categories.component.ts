@@ -18,6 +18,7 @@ export class CategoriesComponent {
   myShoppingCart: Product[] = [];
   categories: Categories[] = [];
   products: Product[] = [];
+  warehouseId = 0;
   page = 1;
   limit = 10;
   
@@ -25,17 +26,23 @@ export class CategoriesComponent {
     private categoriesServices: CategoriesService,
     private productsService: ProductsService,
     private storeService: StoreService,
+    private warehouseService: WarehouseService
   ) {
     this.myShoppingCart = this.storeService.getSoppingCart();
   }
 
   ngOnInit(): void {
-      this.categoriesServices.getAllCategories( this.page, this.limit )
-        .subscribe( data => {
-          console.log( data );
-          this.categories = data;
-          console.log( this.categories );
-        });
+    this.setWareHouseId();
+    this.categoriesServices.getAllCategories( this.page, this.limit )
+      .subscribe( data => {
+        this.categories = data;
+        console.log( this.categories );
+      });
+  }
+
+  setWareHouseId() {
+    this.warehouseService.getWareHouse()
+      .subscribe( ({ warehouseId }) => this.warehouseId = warehouseId );
   }
 
   searchCategory( tag: string ) {
@@ -45,7 +52,7 @@ export class CategoriesComponent {
 
   categorySelected( name: string ) {
     console.log( name );
-    this.productsService.getByCategory( name, this.page, this.limit, '' )
+    this.productsService.getByCategory( this.warehouseId, name, this.page, this.limit, '' )
       .subscribe( resp => {
         // TODO: Fix problem to get products of last n categories 
         console.log( resp );

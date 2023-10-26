@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Product } from 'src/app/web/interfaces/product.interface';
 import { ProductsService } from '../../services/products.service';
-import { Router } from '@angular/router';
+
+import { Product } from 'src/app/web/interfaces/product.interface';
 
 
 @Component({
@@ -24,4 +24,17 @@ export class ProductsComponent implements OnInit {
       this.products = products;
     });
   }
+
+  chargeProducts( page: number ) {
+    this.productService.getAllProducts( page, this.limit )
+    .subscribe( products => {
+      if( products.length > 0 ) {
+        console.log( products );
+        this.products = products;
+      } else {
+        this.products = [];
+      }
+    });
+  }
+
 }

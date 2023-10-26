@@ -15,8 +15,10 @@ h2 {
 @media screen and (min-width: 40em) and (max-width: 63.9em){
     .products--grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-gap: 15px;
+        width: 96%;
+        margin: 2% auto;
     }
     .primary-button {
         width: 20%;
@@ -27,7 +29,7 @@ h2 {
 @media screen and (min-width: 64em){
     .products--grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-gap: 15px;
     }
     .primary-button {

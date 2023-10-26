@@ -3,10 +3,11 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 
-import { ProductsService } from '../../services/products.service';
-
 import { Product } from '../../interfaces/product.interface';
+
+import { ProductsService } from '../../services/products.service';
 import { StoreService } from '../../services/store.service';
+import { WarehouseService } from '../../services/warehouse.service';
 
 @Component({
   selector: 'app-info',
@@ -17,20 +18,26 @@ export class InfoComponent implements OnInit {
 
   myShoppingCart: Product[] = [];
   product: Product | null = null;
+  warehouseId = 0;
 
   constructor( 
     private activatedRoute: ActivatedRoute,
     private productService: ProductsService,
     private storeService: StoreService,
+    private warehouseService: WarehouseService,
     private location: Location
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params
-      .pipe(
-        switchMap(({ id }) => this.productService.getOneProduct( parseInt( id )))
-      )
-      .subscribe(data  => this.product = data );
+    this.warehouseService.getWareHouse()
+      .subscribe( ({ warehouseId }) => {
+        this.warehouseId = warehouseId;
+        this.activatedRoute.params
+          .pipe(
+            switchMap(({ id }) => this.productService.getOneProduct( parseInt( id ), this.warehouseId ))
+          )
+          .subscribe(data  => this.product = data );
+       });
   }
 
   goBack() {
