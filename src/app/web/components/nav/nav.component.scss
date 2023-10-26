@@ -110,20 +110,21 @@
         width: 60px;
         height: 60px;
     }
-    nav {
+    .navigator {
         display: flex;
+        justify-content: space-around;
         align-items: center;
         ul {
                 display: flex;
                 list-style: none;
             li {
                 font-size: 1.2em;
-            }
-            a {
-                margin: 0 .2em;
-                color: inherit;
-                text-decoration: none;
-            }
+                a {
+                    margin: 0 2em;
+                    color: inherit;
+                    text-decoration: none;
+                }
+            }  
         }
     }
     .account {

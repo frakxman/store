@@ -38,11 +38,16 @@ export class CategoriesComponent {
         });
   }
 
+  searchCategory( tag: string ) {
+   let name = tag.trim();
+   this.categorySelected( name );
+  }
+
   categorySelected( name: string ) {
+    console.log( name );
     this.productsService.getByCategory( name, this.page, this.limit, '' )
       .subscribe( resp => {
-        // TODO: Fix problem to get products of last two categories 
-        console.log( name );
+        // TODO: Fix problem to get products of last n categories 
         console.log( resp );
         this.products = resp;
         console.log( this.products );
