@@ -1,3 +1,6 @@
+<div>
+    <app-searcher (searchProduct)="searchProduct( $event )"></app-searcher>
+</div>
 
 <div class="slider">
     <app-slider></app-slider>
@@ -11,6 +14,7 @@
     >
     </app-product>
 </div>
+
 <ng-template #noProducts>
     <div class="message">
         <h2>Actualmente estos son todos los productos que podemos ofrecerte!</h2>
@@ -18,9 +22,7 @@
         <p>Te invitamos a regresar al listado</p>
     </div>
 </ng-template>
+
 <app-paginator (pageSelected)="chargeProducts( $event )">
 </app-paginator>
-
-<div >
-</div>
 

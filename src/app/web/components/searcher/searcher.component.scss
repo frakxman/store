@@ -3,11 +3,12 @@
     display: flex;
     justify-content: space-between;
     height: 30px;
-    width: 100%;
+    width: 98%;
+    margin: 2% auto;
 }
 
 .searcher-bar_input {
-    width: 100%;
+    width: 98%;
     border-radius: 5px;
     outline: none;
 }
@@ -25,7 +26,8 @@
 /* Medium only */
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
     .searcher-bar {
-        width: 100%;
+        width: 75%;
+        margin: 2% auto;
     }
     .searcher-bar button {
         display: block;
@@ -42,8 +44,8 @@
 @media screen and (min-width: 64em) {
     .searcher-bar {
         border-radius: 5px;
-        flex-grow: 1;
-        width: 100%;
+        width: 75%;
+        margin: 2% auto;
     }
     .searcher-bar_img {
         display: block;

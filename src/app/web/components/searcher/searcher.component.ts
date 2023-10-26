@@ -1,7 +1,4 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
-import { ProductsService } from '../../services/products.service';
-
-import { Product } from '../../interfaces/product.interface';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-searcher',
@@ -10,26 +7,16 @@ import { Product } from '../../interfaces/product.interface';
 })
 export class SearcherComponent {
 
+  @Output() searchProduct: EventEmitter<string>;
 
-
-  // TODO: Busqueda de productos y de productos por categoria, son dos @Outputs uno dirigido a Products
-  products: Product[] = [];
-  page = 1;
-  limit = 10;
-
-
-  private productService = inject( ProductsService );  
+  constructor() {
+    this.searchProduct = new EventEmitter();
+  }
 
   searchTag( newTag: string ) {
     if ( newTag === '' ) return;
-    
     let tag = newTag.trim().toLowerCase();
-    this.productService.getProductsBySearch( this.page, this.limit, tag )
-      .subscribe( rta => {
-        this.products = rta;
-        console.log( this.products );
-      });
-    return this.products;
+    this.searchProduct.emit( tag );
   }
 
 }

@@ -29,9 +29,12 @@ export class ProductsComponent implements OnInit {
         this.products = products;
       });
   }
-
-  addToShoppingCart(product: Product) {
-    this.storeService.addProduct(product);
+  
+  searchProduct( tag: string ) {
+    this.productService.getProductsBySearch( this.page, this.limit, tag )
+      .subscribe( rta => {
+        this.products = rta;
+      });
   }
 
   chargeProducts( page: number ) {
@@ -45,4 +48,9 @@ export class ProductsComponent implements OnInit {
       }
     });
   }
+
+  addToShoppingCart(product: Product) {
+    this.storeService.addProduct(product);
+  }
+  
 }

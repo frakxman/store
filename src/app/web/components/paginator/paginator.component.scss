@@ -1,7 +1,6 @@
 img {
     height: 20px;
 }
-
 .paginator {
     border: 1px solid white;
     border-radius: 5px;
@@ -13,13 +12,11 @@ img {
     margin: 1%;
     box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
 }
-
 .paginator-number {
     color: #FFFFFF;
     font-size: 1.2em;
     font-weight: 600;
 }
-
 .primary-button {
     background-color: #FF2400;
     border-radius: 5px;
@@ -34,7 +31,16 @@ img {
 
 /* Medium only */
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
-    img {
-        margin: 0 auto;
+    .paginator {
+        width: 75%;
+        margin: 2% auto;
+    }
+}
+
+// web
+@media screen and (min-width: 64em){
+    .paginator {
+        width: 75%;
+        margin: 2% auto;
     }
 }
