@@ -55,7 +55,6 @@ export class ProductsComponent implements OnInit {
     this.productService.getAllProducts( this.warehouseId, page, this.limit )
     .subscribe( products => {
       if( products.length > 0 ) {
-        console.log( products );
         this.products = products;
       } else {
         this.products = [];

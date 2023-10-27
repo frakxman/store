@@ -5,10 +5,19 @@
 
 * {
     font-family: Montserrat;
+    box-sizing: border-box;
 }
 
-body{
-    background-color: #E17E68;
+
+.container {
+    // background-color:#FFFFFF;
+    // background-color: #000000;
+    background-color: #E17E68;// Principal 
+    // background-color: #cbf8cb;
+    // background-color: #d19292;
+    // background-color: #0000ff;
+    // background-color: #666666;
+    color: white;
 }
 
 .spacer {
