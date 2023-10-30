@@ -44,14 +44,16 @@
             </ul>
         </div>
         <div class="list">
-            <table >
-                <tr>
-                    <th>Descripcion</th>
-                    <th>Valor</th>
-                    <th>Cantidad</th>
-                 </tr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Descr.</th>
+                        <th>Valor</th>
+                        <th>Cant.</th>
+                    </tr>
+                </thead>
                 <tr *ngFor="let product of orderResp.products">
-                    <td>{{ product.descripcion | slice:0:15 }}...</td>
+                    <td>{{ product.descripcion | slice:0:10 }}...</td>
                     <td>{{ product.valorprod }}</td>
                     <td>{{ product.cantidad }}</td>
                 </tr>

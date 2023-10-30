@@ -43,16 +43,17 @@
 }
 .input {
     margin: 1%;
-    width: 95%;
+    width: 98%;
 }
 .list {
-    margin: 2%;
+    margin: 1%;
+    border: 1px solid green;
+    width: 98%;
 }
 // Estilos para la tabla
 table {
-    width: 90%;
+    width: 98%;
     border-collapse: collapse;
-    margin: 1% 0 1% -2%;
 }
 
 // Estilos para las celdas de la tabla
@@ -106,9 +107,23 @@ tr:nth-child(odd) {
 
 /* Medium only Tablet*/
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
-    
+    .dialog {
+        width: 100%;
+        max-width: 538px;
+    }   
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    } 
 }
 /* Large and up Laptops and Desktops*/
 @media screen and (min-width: 64em) {
-
+    .dialog {
+        width: 100%;
+        max-width: 1000px;
+    }   
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
 }
