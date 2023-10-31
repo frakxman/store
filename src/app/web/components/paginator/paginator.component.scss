@@ -2,7 +2,8 @@ img {
     height: 20px;
 }
 .paginator {
-    border: 1px solid white;
+    border: 1px solid #FF2400;
+    // border: 1px solid white;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
@@ -13,13 +14,14 @@ img {
     box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
 }
 .paginator-number {
-    color: #FFFFFF;
+    // color: #FFFFFF;
+    color: #000000;
     font-size: 1.2em;
     font-weight: 600;
 }
 .primary-button {
     background-color: #FF2400;
-    border-radius: 5px;
+    border-radius: 3px;
     border: none;
     color: #FFFFFF;
     width: 30%;

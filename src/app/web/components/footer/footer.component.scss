@@ -3,7 +3,8 @@
     justify-content: space-between;
     align-items: center;
     width: 97.5%;
-    border: 1px solid white;
+    // border: 1px solid white;
+    border: 1px solid #FF2400;
     margin: 3% 1%;
     border-radius: 5px;
     box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
@@ -14,7 +15,8 @@
 }
 
 h3, h6 { 
-    color: white;
+    // color: white;
+    color: #FF2400;
     text-align: center;
     font-style: italic;
     padding: 2% 0;
@@ -31,8 +33,11 @@ img {
 /* Medium only */
 @media screen and (min-width: 40em) and (max-width: 63.9375em) {
     .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         width: 98%;
-        height: 200px;
+        height: 100px;
         margin: 1% 1%;
     }
     img {
