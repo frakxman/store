@@ -19,7 +19,7 @@ h2 {
 }
 .cart-table {
     margin: 1%;
-    border: 1px solid #fff;
+    border: 1px solid #FF2400;
     border-radius: 5px;
     box-shadow: 10px 8px 15px rgba(000, 000,  000, 0.5);
 }
@@ -40,7 +40,8 @@ h2 {
     font-size: .9em;
 }
 .tr-products {
-    border: 1px solid white;
+    // border: 1px solid white;
+    border: 1px solid #FF2400;
     border-radius: 5px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -49,12 +50,15 @@ h2 {
     margin: 1% 0;
     width: 97%;
 }
-.th-title{
-    margin: 1% 2%;
+.th-title {
+    text-align: center;
     padding: 2%;
 }
 th {
-    color: #fff;
+    border: 1px solid #FF2400;
+    border-radius: 5px;
+    // color: #fff;
+    color: #000;
     display: grid;
     font-size: 1.1em;
     font-weight: 600;
@@ -101,12 +105,13 @@ td {
     height: 35px;
 }
 .tr-total-fact {
+    border: 1px solid #FF2400;
     background-color: #fff;
     border-radius: 5px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 2%;
-    margin: .5%;
+    margin: .2%;
     width: 97%;
     height: 25px;
 }
@@ -116,23 +121,24 @@ td {
 }
 .primary-button {
     background-color: #FF2400;
-    border-radius: 5px;
+    border-radius: 4px;
     border: none;
     color: #FFFFFF;
     width: 100%;
     cursor: pointer;
     font-size: var(--md);
     font-weight: bold;
-    height: 25px;
+    height: 23px;
 }
 
 .message {
     color: #FFFFFF;
+    color: #000;
     font-weight: 700;
     margin: 5%;
     padding: 5%;
     text-align: center;
-    border: 1px solid #FFFFFF;
+    border: 1px solid #FF2400;
     border-radius: 5px;
 }
 
